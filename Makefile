@@ -1,6 +1,6 @@
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
-CFILES = main.c
+CFLAGS = -Wall 
+CFILES = main.c map_validator.c parser.c io_utils.c errors.c
 OBJ = $(CFILES:.c=.o) 
 NAME = so_long
 mlx = mlx_linux/libmlx.a
@@ -9,7 +9,7 @@ libft = $(libft_dir)/libft
 
 all: $(NAME)
 
-$(NAME): $(libft) $(OBJ) $(mlx)
+$(NAME): $(OBJ) $(mlx) $(libft)
 	$(CC) $(CFLAGS) -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz $^ -o $@
 
 $(libft): $(libft_dir) 
