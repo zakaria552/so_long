@@ -16,5 +16,7 @@ t_map *parse_map(char *name)
 		err_msg("Invalid map", 0);
 		return NULL;
 	}
-
+	map = malloc(sizeof(t_map));
+	map->grid = ft_split(str_map, '\n');
+	return map;
 }
