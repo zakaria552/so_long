@@ -1,31 +1,32 @@
 CC = cc
-CFLAGS = -Wall 
-CFILES = main.c map_validator.c parser.c io_utils.c errors.c
-OBJ = $(CFILES:.c=.o) 
+CFLAGS = -g -Wall
+CFILES = main.c map_validator.c draw_map.c player.c parser.c io_utils.c errors.c textures.c
+OBJ = $(CFILES:.c=.o)
 NAME = so_long
 mlx = mlx_linux/libmlx.a
 libft_dir = libft
-libft = $(libft_dir)/libft
+libft = $(libft_dir)/libft.a
+MLX = ./MLX42/build/libmlx42.a
+HEADERS = -I ./include -I ./MLX42/include/MLX42 -I libft
 
 all: $(NAME)
 
-$(NAME): $(OBJ) $(mlx) $(libft)
-	$(CC) $(CFLAGS) -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz $^ -o $@
+$(NAME): $(MLX) $(libft) $(OBJ)
+	$(CC) $(CFLAGS) $(HEADERS) $(OBJ) $(MLX) $(libft) -ldl -lglfw -pthread -lm -o $@
 
-$(libft): $(libft_dir) 
-	make -C $^
+$(libft):
+	$(MAKE) -C $(libft_dir) all
 
-$(mlx):
-	make -C mlx_linux
+$(MLX):
+	git clone https://github.com/codam-coding-college/MLX42.git
+	cd ./MLX42 && cmake -B build
+	make -C build -j4
 
 %.o: %.c
-	$(CC) $(CFLAGS) -I/usr/include -Imlx_linux -O3 -c $< -o $@
+	$(CC) $(HEADERS) $(CFLAGS) -c $< -o $@
 
 clean:
 	rm -f $(OBJ)
 
-
 fclean: clean
 	rm -f $(NAME)
-	make clean -C mlx_linux
-
