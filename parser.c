@@ -18,5 +18,11 @@ t_map *parse_map(char *name)
 	}
 	map = malloc(sizeof(t_map));
 	map->grid = ft_split(str_map, '\n');
+	map->size = 64;
+	map->width = ft_strlen(map->grid[0]) * map->size;
+	map->height = 0;
+	while (map->grid[map->height])
+		map->height++;	
+	map->height = map->height * map->size;
 	return map;
 }
