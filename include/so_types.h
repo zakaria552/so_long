@@ -12,6 +12,7 @@ typedef struct s_player
 {
 	t_vec2 *pos;
 	int orbs;
+	int speed;
 } t_player;
 
 
@@ -43,6 +44,8 @@ typedef struct s_map
 {
 	char **grid;
 	char **init_grid;
+	int width;
+	int height;
 	int size;
 	t_tiles *tiles;
 	t_vec2 *start;
