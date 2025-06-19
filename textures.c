@@ -62,6 +62,10 @@ bool load_textures(t_ctx *ctx)
 		return false;		
 	}
 	ctx->map->tiles = tiles;
+	mlx_resize_image(tiles->wall, 64, 64);
+	mlx_resize_image(tiles->empty, 64, 64);
+	mlx_resize_image(tiles->coin, 64, 64);
+	mlx_resize_image(tiles->player, 48, 48);
 	ft_printf("Loaded textures\n");
 	return true;
 }
