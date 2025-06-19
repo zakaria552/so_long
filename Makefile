@@ -1,7 +1,8 @@
 CC = cc
 CFLAGS = -g -Wall
-CFILES = main.c map_validator.c draw_map.c player.c parser.c io_utils.c errors.c textures.c
-OBJ = $(CFILES:.c=.o)
+CFILES = main.c map_validator.c draw.c player.c collision.c collect.c player_mov_hook.c parser.c io_utils.c errors.c textures.c
+OBJ_DIR = ./obj/
+OBJ = $(addprefix $(OBJ_DIR),$(CFILES:.c=.o))
 NAME = so_long
 mlx = mlx_linux/libmlx.a
 libft_dir = libft
@@ -22,7 +23,7 @@ $(MLX):
 	cd ./MLX42 && cmake -B build
 	make -C build -j4
 
-%.o: %.c
+$(OBJ_DIR)%.o: %.c
 	$(CC) $(HEADERS) $(CFLAGS) -c $< -o $@
 
 clean:
