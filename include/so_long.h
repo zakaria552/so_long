@@ -32,5 +32,14 @@ void	draw_map(t_ctx *ctx);
 
 // player
 bool	initialize_player(t_ctx *ctx);
-void	set_pod(t_vec2 *pos, int x, int y);
+void	set_pos(t_vec2 *pos, int x, int y);
+void handle_player_movement(mlx_key_data_t keydata, t_ctx *ctx);
+
+// collision
+bool check_collision(t_ctx *ctx, char c);
+t_vec2 get_collided_tile(t_map *map, t_vec2 *pos, char c);
+
+// collect
+void collect(t_ctx *ctx);
+
 #endif
