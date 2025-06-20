@@ -28,3 +28,39 @@ char *read_from_file(char *name)
 	close(fd);
 	return (txt);
 }
+
+char *read_from_file2(char *name)
+{
+	char *buff;
+	char *tmp;
+	char *line;
+	int fd;	
+
+	fd = open(name, O_RDONLY);
+	if (fd < 0)
+		return NULL;
+	buff = get_next_line(fd);
+	if (!buff)
+	{
+		close(fd);
+		return NULL;
+	}
+	while (true)
+	{
+		line = get_next_line(fd);
+		if (!line)
+			break;
+		tmp = buff;
+		buff = ft_strjoin(buff, line);
+		if (!buff)
+		{
+			free(tmp);
+			free(line);
+			break;
+		}
+		free(tmp);
+		free(line);
+	}
+	close(fd);
+	return buff;
+}
