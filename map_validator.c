@@ -3,6 +3,7 @@
 static bool has_extension(char *name, char *ext);
 static bool is_rectangular(char **map);
 static bool is_enclosed(char **map);
+static bool valid_char_set(char **map);
 
 bool validate_map(char *fname, char *map)
 {
@@ -13,16 +14,54 @@ bool validate_map(char *fname, char *map)
 	split = ft_split(map, '\n');
 	if (!split)
 		return false;
-	ft_printf("Checking rec\n");
-	if (!is_rectangular(split) || !is_enclosed(split))
+	if (!valid_char_set(split))
 	{
+		ft_printf("Contains/missing char set");
+		free(split);
+		return false;
+	}
+	if (!is_rectangular(split))
+	{
+		ft_printf("Not rectangular\n");
+		free(split);
+		return (false);
+	}	
+	if (!is_enclosed(split))
+	{
+		ft_printf("Not enclosed\n");
 		free(split);
 		return (false);
 	}
 	free(split);
 	return (true);
 }
+static bool valid_char_set(char **map)
+{
+	int x;
+	int y;
+	int e;
+	int p;
+	int c;
 
+	e = p = c = 0; 
+	x = y = -1;
+	while(map[++y])
+	{
+		x = -1;
+		while (map[y][++x])
+		{
+			if (!ft_strchr("01CEP", map[y][x]))
+				return false;
+			if (map[y][x] == 'P')
+				p++;	
+			if (map[y][x] == 'C')
+				c++;
+			if (map[y][x] == 'E')
+				e++;
+		}
+	}
+	return p == 1 && c > 0 && e == 1;
+}
 bool is_rectangular(char **map)
 {
 	int w;
