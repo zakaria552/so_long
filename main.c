@@ -6,27 +6,29 @@ t_ctx *ctx_init(char *map_name)
 
 	ctx = malloc(sizeof(t_ctx));
 	if (!ctx)
-		exit_with_err(ENOMEM);
+		clean_exit(ctx, strerror(errno), errno);
+	ctx->map = NULL;
+	ctx->player = NULL;	
+	ctx->mlx = NULL;
 	ctx->map = parse_map(map_name);
 	if (!ctx->map)
-		exit(1);
+		clean_exit(ctx, strerror(errno), errno);
 	return ctx;
-
 }
-
 
 int main(int argc, char **args)
 {
 	t_ctx *ctx;
 
+	ctx = NULL;
 	if (argc < 2)
-		exit_with_err(EINVAL);
+		clean_exit(ctx, strerror(EINVAL), EINVAL);
 	ctx = ctx_init(args[1]);
 	ctx->mlx = mlx_init(ctx->map->width, ctx->map->height, args[0], true);
 	if (!initialize_player(ctx))
-		exit(1);
+		clean_exit(ctx, strerror(errno), errno);
 	if (!load_textures(ctx))
-		exit(errno);
+		clean_exit(ctx, strerror(errno), errno);
 	draw_map(ctx);
 	mlx_key_hook(ctx->mlx, handle_player_movement, ctx);
 	mlx_loop_hook(ctx->mlx, collect, ctx);
