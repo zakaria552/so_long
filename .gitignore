@@ -1,2 +1,4 @@
 .vscode
 *.o
+output.txt
+trace.txt
