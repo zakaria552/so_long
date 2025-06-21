@@ -39,8 +39,8 @@ static bool init_player_pos(t_ctx *ctx)
 		{
 			if (grid[y][x] == 'P')
 			{
-				ctx->player->pos->x = x *ctx->map->size;
-				ctx->player->pos->y = y * ctx->map->size;
+				ctx->player->pos->x = x;
+				ctx->player->pos->y = y;
 				return true;
 			}
 		}
