@@ -48,4 +48,7 @@ void collect(t_ctx *ctx);
 void clean_up(t_ctx *ctx);
 void free_map(t_map *map, mlx_t *mlx);
 
+
+bool valid_path(t_map *map, t_vec2 start, t_vec2 end);
+
 #endif
