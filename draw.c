@@ -40,5 +40,5 @@ void	draw_player(t_ctx *ctx)
 	tile_size = ctx->map->size;
 	pos = ctx->player->pos;
 	ft_printf("Drawing player (%d, %d)\n", pos->x, pos->y);
-	mlx_image_to_window(ctx->mlx, tiles->player, pos->x, pos->y);
+	mlx_image_to_window(ctx->mlx, tiles->player, pos->x *ctx->map->size, pos->y* ctx->map->size);
 }
