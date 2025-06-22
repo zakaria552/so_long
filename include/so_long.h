@@ -47,8 +47,16 @@ void collect(t_ctx *ctx);
 // clean
 void clean_up(t_ctx *ctx);
 void free_map(t_map *map, mlx_t *mlx);
+void	*free_matrix_mem(char **matrix);
 
+// valid path
+t_list *dfs_target(t_map *map, int bounds[2], t_vec2 start, t_vec2 target);
+bool valid_path_exists(t_map *map, t_player *player);
 
-bool valid_path(t_map *map, t_vec2 start, t_vec2 end);
-
+// valid path utils
+void print_visit(int **visited, int w, int h);
+bool is_valid_adj(t_list **q, t_vec2 *adj, int bounds[2], int **visited);
+int **initialize_visited(int w, int h);
+void show_path(t_list *p);
+void **free_visited(int **visited, int w, int h);
 #endif
