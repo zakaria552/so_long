@@ -19,20 +19,16 @@ t_ctx *ctx_init(char *map_name)
 int main(int argc, char **args)
 {
 	t_ctx *ctx;
-
+	t_list *p;
 	ctx = NULL;
 	if (argc < 2)
 		clean_exit(ctx, strerror(EINVAL), EINVAL);
 	ctx = ctx_init(args[1]);
-	//ctx->mlx = mlx_init(ctx->map->width, ctx->map->height, args[0], true);
 	if (!initialize_player(ctx))
 		clean_exit(ctx, strerror(errno), errno);
-	t_vec2 end;
-	end.x = 4;
-	end.y = 1;
-	ft_printf("Reached");
-	valid_path(ctx->map, *ctx->player->pos, end);
-	exit(1);
+	if (!valid_path_exists(ctx->map, ctx->player))
+		clean_exit(ctx, strerror(errno), errno);
+	ctx->mlx = mlx_init(ctx->map->width, ctx->map->height, args[0], true);
 	if (!load_textures(ctx))
 		clean_exit(ctx, strerror(errno), errno);
 	draw_map(ctx);
