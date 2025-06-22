@@ -1,93 +1,105 @@
 #include "so_long.h"
 
-int **initialize_visited(int w, int h)
-{
-	int **visited;
-	int x;
-	int y;
-	visited = malloc(sizeof(int *) * h);
-	x = y = -1;
-	while (++y < h)
-	{
-		visited[y] = calloc(w, sizeof(int));
-	}
-	return visited;
-}
+static void enqueue_next_adj(t_list **q, int bounds[2], int **visited, char **grid);
 
-void print_visit(int **visited, int w, int h)
+bool valid_path_exists(t_map *map, t_player *player)
 {
+	t_list *path;
+	t_vec2 target;
 	int x;
 	int y;
 
 	x = y = -1;
-	ft_printf("\n");
-	while (++y < h)
+	while (map->grid[++y])
 	{
 		x = -1;
-		while (++x < w)
+		while (map->grid[y][++x])
 		{
-			ft_printf("%d", visited[y][x]);
+			if (map->grid[y][x] != '1' && map->grid[y][x] != '0' && map->grid[y][x] != 'P')
+			{
+				target.x = x;
+				target.y = y;
+				path = dfs_target(map, map->bounds, *player->pos, target);
+				if (!path)
+				{
+					ft_printf("Error: Invalid map : no path leading to %c(%d, %d)", map->grid[y][x], x, y);
+					ft_lstclear(&path, free);
+					return false;	
+				}
+				ft_lstclear(&path, free);
+			}
 		}
-		ft_printf("\n");
 	}
-
+	return true;
 }
-
-
-bool valid_path(t_map *map, t_vec2 start, t_vec2 end)
+t_list *dfs_target(t_map *map, int bounds[2], t_vec2 start, t_vec2 target)
 {
 	t_list *q;
 	int **visited;
-	int rdir[4] = {0, 1, 0, -1};
-	int cdir[4] = {-1, 0, 1, 0};
-	int w = map->width / map->size;
-	int h = map->height / map->size;
-	int i;
-	q = malloc(sizeof(t_list));
-	visited = initialize_visited(map->width/map->size, map->height/map->size);
-	q->content = &start;
-	ft_printf("(%d, %d)\n", start.x, start.y);
+	t_vec2 *begin;
+	
+	begin = malloc(sizeof(t_vec2));
+	begin->x = start.x;
+	begin->y = start.y;
+	visited = initialize_visited(bounds[0], bounds[1]);
+	if (!visited)
+		return NULL;
+	q = ft_lstnew(begin);
 	visited[start.y][start.x] = 1; 
-	print_visit(visited, map->width / map->size, map->height/map->size);
+	print_visit(visited, bounds[0], bounds[1]);
 	while (ft_lstsize(q) > 0)
 	{
-		t_vec2 *curr = q->content;
-		if (curr->x == end.x && curr->y == end.y)
+		ft_printf("Curr: (%d, %d)\n", ((t_vec2 *)q->content)->x, ((t_vec2 *)q->content)->y);
+		if (((t_vec2 *)q->content)->x == target.x && ((t_vec2 *)q->content)->y == target.y)
 		{
 			ft_printf("Found path");
-			print_visit(visited, w, h);
+			print_visit(visited, bounds[0], bounds[1]);
 			break;
 		}
-		ft_printf("Curr: (%d, %d)\n", curr->x, curr->y);
-		i = -1;
-		while (++i < 4)
+		enqueue_next_adj(&q, bounds, visited, map->grid);
+
+	}
+	free_visited(visited, bounds[0], bounds[1]);
+	return q;
+}
+
+static void enqueue_next_adj(t_list **q, int bounds[2], int **visited, char **grid)
+{
+	int dir[4][2] = {{0, -1}, {1, 0}, {0, 1}, {-1, 0}};
+	t_vec2 *adj;
+	t_list *to_q;
+	int  i;
+	t_list *tmp;
+	
+	adj = malloc(sizeof(t_vec2));
+	if (!adj)
+		return;
+	i = -1;
+	while (++i < 4)
+	{
+		adj->x = ((t_vec2*)(*q)->content)->x + dir[i][0];
+		adj->y = ((t_vec2*)(*q)->content)->y + dir[i][1];
+		ft_printf("Visiting adj: (%d, %d)\n", adj->x, adj->y);
+		if (grid[adj->y][adj->x] == '1' || !is_valid_adj(q, adj, bounds, visited))
 		{
-			t_vec2 *adj = malloc(sizeof(t_vec2));
-			adj->x = curr->x + rdir[i];
-			adj->y = curr->y + cdir[i];
-			if(adj->x < 1 || adj->y < 1||
-				adj->x >= (w - 1) || adj->y >= (h - 1))
+			if (i == 3)
 			{
-				ft_printf("invalid (x:%d, y:%d)\n", adj->x, adj->y);
+				tmp = *q;
+				*q = (*q)->next;
+				ft_lstdelone(tmp, free);
 				free(adj);
-				continue;
 			}
-			if (map->grid[adj->y][adj->x] == '1')
-			{
-				free(adj);
-				continue;
-			}
-			if (visited[adj->y][adj->x])
-			{
-				ft_printf("visited (x:%d, y:%d)\n", adj->x, adj->y);
-				q = q->next;
-				continue;
-			}
-			ft_lstadd_front(&q, ft_lstnew(adj));
-			visited[adj->y][adj->x] = 1;
-			print_visit(visited, w, h);
-			break;
+			continue;
 		}
-		
+		to_q = ft_lstnew(adj);
+		if(!to_q)
+		{
+			free(adj);
+			return ;
+		}
+		ft_printf("Adding to the queue (%d, %d)\n", adj->x, adj->y);
+		ft_lstadd_front(q, to_q);
+		visited[adj->y][adj->x] = 1;
+		break;
 	}
 }
