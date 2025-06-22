@@ -46,6 +46,7 @@ typedef struct s_map
 	char **init_grid;
 	int width;
 	int height;
+	int bounds[2];
 	int size;
 	t_tiles *tiles;
 	t_vec2 *start;
