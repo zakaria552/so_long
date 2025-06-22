@@ -17,22 +17,22 @@ bool validate_map(char *fname, char *map)
 	if (!valid_char_set(split))
 	{
 		ft_printf("Contains/missing char set");
-		free(split);
+		free_matrix_mem(split);
 		return false;
 	}
 	if (!is_rectangular(split))
 	{
 		ft_printf("Not rectangular\n");
-		free(split);
+		free_matrix_mem(split);
 		return (false);
 	}	
 	if (!is_enclosed(split))
 	{
 		ft_printf("Not enclosed\n");
-		free(split);
+		free_matrix_mem(split);
 		return (false);
 	}
-	free(split);
+	free_matrix_mem(split);
 	return (true);
 }
 static bool valid_char_set(char **map)
