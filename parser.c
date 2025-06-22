@@ -31,10 +31,12 @@ t_map *parse_map(char *name)
 		return NULL;
 	}
 	map->size = 64;
-	map->width = ft_strlen(map->grid[0]) * map->size;
-	map->height = 0;
-	while (map->grid[map->height])
-		map->height++;	
-	map->height = map->height * map->size;
+	map->bounds[0] = ft_strlen(map->grid[0]);
+	map->bounds[1] = 0;
+	while (map->grid[map->bounds[1]])
+		map->bounds[1]++;		
+	map->width = map->bounds[0] * map->size;
+	map->height = map->bounds[1] * map->size;
+	free(str_map);
 	return map;
 }
