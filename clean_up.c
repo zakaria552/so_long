@@ -1,6 +1,5 @@
 #include "so_long.h"
 
-static void	*free_matrix_mem(char **matrix);
 void free_map(t_map *map, mlx_t *mlx);
 static void free_player(t_player *player);
 
@@ -53,7 +52,7 @@ void free_map(t_map *map, mlx_t *mlx)
 	free(map);
 }
 
-static void	*free_matrix_mem(char **matrix)
+void	*free_matrix_mem(char **matrix)
 {
 	int	i;
 
