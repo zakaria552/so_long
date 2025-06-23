@@ -61,11 +61,37 @@ bool load_textures(t_ctx *ctx)
 		err_msg("Failed to turn texture to image", errno);
 		return false;		
 	}
+	tiles->txt_exit = mlx_load_png("./textures/exit.png");
+	if (!tiles->txt_exit)
+	{
+		err_msg("Failed to load texture", errno);
+		return false;		
+	}
+	tiles->exit = mlx_texture_to_image(ctx->mlx, tiles->txt_exit);
+	if (!tiles->exit)
+	{
+		err_msg("Failed to turn texture to image", errno);
+		return false;		
+	}
+	tiles->txt_exit_door = mlx_load_png("./textures/exit_door.png");
+	if (!tiles->txt_exit_door)
+	{
+		err_msg("Failed to load texture", errno);
+		return false;		
+	}
+	tiles->exit_door = mlx_texture_to_image(ctx->mlx, tiles->txt_exit_door);
+	if (!tiles->exit_door)
+	{
+		err_msg("Failed to turn texture to image", errno);
+		return false;		
+	}
 	ctx->map->tiles = tiles;
 	mlx_resize_image(tiles->wall, 64, 64);
 	mlx_resize_image(tiles->empty, 64, 64);
 	mlx_resize_image(tiles->coin, 64, 64);
 	mlx_resize_image(tiles->player, 48, 48);
+	mlx_resize_image(tiles->exit, 64, 64);
+	mlx_resize_image(tiles->exit_door, 64, 64);
 	ft_printf("Loaded textures\n");
 	return true;
 }
