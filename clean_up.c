@@ -1,6 +1,5 @@
 #include "so_long.h"
 
-void free_map(t_map *map, mlx_t *mlx);
 static void free_player(t_player *player);
 
 void clean_up(t_ctx *ctx)
@@ -11,6 +10,8 @@ void clean_up(t_ctx *ctx)
 	free_player(ctx->player);
 	if (ctx->mlx)
 		mlx_terminate(ctx->mlx);
+	if(ctx->state)
+		free(ctx->state);
 	free(ctx);
 }
 
@@ -29,26 +30,10 @@ void free_map(t_map *map, mlx_t *mlx)
 		return ;
 	if (map->grid)
 		free_matrix_mem(map->grid);
-	if (mlx && map->tiles)
-	{
-		if (map->tiles->coin)
-			mlx_delete_image(mlx, map->tiles->coin);
-		if (map->tiles->empty)
-			mlx_delete_image(mlx, map->tiles->empty);
-		if (map->tiles->player)
-			mlx_delete_image(mlx, map->tiles->player);
-		if (map->tiles->wall)
-			mlx_delete_image(mlx, map->tiles->wall);
-		if (map->tiles->txt_coin)
-			mlx_delete_texture(map->tiles->txt_coin);
-		if (map->tiles->txt_empty)
-			mlx_delete_texture(map->tiles->txt_empty);
-		if (map->tiles->txt_player)
-			mlx_delete_texture(map->tiles->txt_player);
-		if (map->tiles->txt_wall)
-			mlx_delete_texture(map->tiles->txt_wall);
-		free(map->tiles);
-	}
+	if (mlx)
+		free_tiles(mlx, map->tiles);
+	if (map->exit)
+		free(map->exit);
 	free(map);
 }
 
@@ -64,4 +49,36 @@ void	*free_matrix_mem(char **matrix)
 	}
 	free(matrix);
 	return (NULL);
+}
+
+void	free_tiles(mlx_t *mlx, t_tiles *tiles)
+{
+	if (!tiles)
+		return;
+	if (tiles->coin)
+		mlx_delete_image(mlx, tiles->coin);
+	if (tiles->empty)
+		mlx_delete_image(mlx, tiles->empty);
+	if (tiles->player)
+		mlx_delete_image(mlx, tiles->player);
+	if (tiles->exit_door)
+		mlx_delete_image(mlx, tiles->exit_door);
+	if (tiles->exit)
+		mlx_delete_image(mlx, tiles->exit);
+	if (tiles->wall)
+		mlx_delete_image(mlx, tiles->wall);
+	if (tiles->txt_coin)
+		mlx_delete_texture(tiles->txt_coin);
+	if (tiles->txt_empty)
+		mlx_delete_texture(tiles->txt_empty);
+	if (tiles->txt_player)
+		mlx_delete_texture(tiles->txt_player);
+	if (tiles->txt_wall)
+		mlx_delete_texture(tiles->txt_wall);
+	if (tiles->txt_exit_door)
+		mlx_delete_texture(tiles->txt_exit_door);
+	if (tiles->txt_exit)
+		mlx_delete_texture(tiles->txt_exit);
+	
+	free(tiles);
 }
