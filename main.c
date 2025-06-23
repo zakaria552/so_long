@@ -1,25 +1,31 @@
 #include "so_long.h"
 
-t_ctx *ctx_init(char *map_name)
+void endgame(t_ctx *ctx)
 {
-	t_ctx *ctx;
-
-	ctx = malloc(sizeof(t_ctx));
-	if (!ctx)
-		clean_exit(ctx, strerror(errno), errno);
-	ctx->map = NULL;
-	ctx->player = NULL;	
-	ctx->mlx = NULL;
-	ctx->map = parse_map(map_name);
-	if (!ctx->map)
-		clean_exit(ctx, strerror(errno), errno);
-	return ctx;
+	if (ctx->state->exited)
+		mlx_close_window(ctx->mlx);
+	if (!ctx->state->ready_to_exit)
+		return;
+	if (!ctx->map->tiles->exit->instances[0].enabled)	
+	{
+		ctx->map->tiles->exit->instances[0].enabled = true;	
+		ctx->map->tiles->exit_door->instances[0].enabled = false;	
+	}
+	if (check_collision(ctx, 'E'))
+	{
+		ctx->state->exited = true;
+	}
+}
+void hooks(t_ctx *ctx)
+{
+	collect(ctx);
+	endgame(ctx);
 }
 
 int main(int argc, char **args)
 {
 	t_ctx *ctx;
-	t_list *p;
+
 	ctx = NULL;
 	if (argc < 2)
 		clean_exit(ctx, strerror(EINVAL), EINVAL);
@@ -33,7 +39,8 @@ int main(int argc, char **args)
 		clean_exit(ctx, strerror(errno), errno);
 	draw_map(ctx);
 	mlx_key_hook(ctx->mlx, handle_player_movement, ctx);
-	mlx_loop_hook(ctx->mlx, collect, ctx);
+	mlx_loop_hook(ctx->mlx, hooks, ctx);
 	mlx_loop(ctx->mlx);
+	clean_up(ctx);
 	return 0;
 }
