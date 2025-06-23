@@ -26,6 +26,9 @@ void collect(t_ctx *ctx)
 	t_vec2 tile;
 	int i;
 
+	if (ctx->state->ready_to_exit)
+		return;
+	ft_printf("state: %d/%d, ready_to_exit:%d\n", ctx->state->collected, ctx->state->total_orbs, ctx->state->ready_to_exit);
 	tile = get_collided_tile(ctx->map, ctx->player->pos, 'C');
 	if (tile.x < 0)
 		return ;	
@@ -33,6 +36,7 @@ void collect(t_ctx *ctx)
 	if (!ctx->map->tiles->coin->instances[i].enabled)
 		return;
 	ctx->map->tiles->coin->instances[i].enabled = false;
-	ctx->player->orbs += 1;
-	ft_printf("Collected: %d\n", ctx->player->orbs);
+	ctx->state->collected += 1;
+	if (ctx->state->collected == ctx->state->total_orbs)
+		ctx->state->ready_to_exit = true;
 }
