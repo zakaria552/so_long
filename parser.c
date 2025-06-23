@@ -1,4 +1,5 @@
 #include "so_long.h"
+void set_exit(t_map *map);
 
 t_map *parse_map(char *name)
 {
@@ -30,6 +31,12 @@ t_map *parse_map(char *name)
 		free_map(map, NULL);
 		return NULL;
 	}
+	set_exit(map);
+	if (!map->exit)
+	{
+		free_map(map, NULL);
+		return NULL;	
+	}
 	map->size = 64;
 	map->bounds[0] = ft_strlen(map->grid[0]);
 	map->bounds[1] = 0;
@@ -39,4 +46,27 @@ t_map *parse_map(char *name)
 	map->height = map->bounds[1] * map->size;
 	free(str_map);
 	return map;
+}
+
+void set_exit(t_map *map)
+{
+	int x;
+	int y;
+	
+	x = y = -1;
+	map->exit = malloc(sizeof(t_vec2));
+	if (!map->exit)
+		return ;
+	while (map->grid[++y])
+	{
+		x = -1;
+		while (map->grid[y][++x])
+		{
+			if (map->grid[y][x] == 'E')
+			{
+				map->exit->x = x;
+				map->exit->y = y;
+			}
+		}
+	}
 }
