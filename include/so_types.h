@@ -33,11 +33,14 @@ typedef struct s_tiles
 	mlx_image_t *wall;
 	mlx_image_t *coin;
 	mlx_image_t *player;
+	mlx_image_t *exit;
+	mlx_image_t *exit_door;
 	mlx_texture_t *txt_player;
 	mlx_texture_t *txt_coin;
 	mlx_texture_t *txt_wall;
 	mlx_texture_t *txt_empty;
-
+	mlx_texture_t *txt_exit;
+	mlx_texture_t *txt_exit_door;
 } t_tiles;
 
 typedef struct s_map
@@ -54,12 +57,21 @@ typedef struct s_map
 	t_orb *orbs;
 } t_map;
 
+typedef struct s_game_state
+{
+	int total_orbs;
+	int collected;
+	bool ready_to_exit;
+	bool exited;
+} t_game_state;
+
 typedef struct s_ctx
 {
 	mlx_t *mlx;
 	t_player *player;
 	t_player *enemies;
 	t_map *map;
+	t_game_state *state;
 
 } t_ctx;
 

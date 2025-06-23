@@ -6,13 +6,17 @@
 #include <stdio.h>
 #include <errno.h>
 #include <stdbool.h>
-#include <unistd.h>
 #include <fcntl.h>
 #include "libft.h"
 #include "so_types.h"
 #include "MLX42.h"
+
 // parser
 t_map *parse_map(char *name);
+
+// ctx init
+t_ctx *ctx_init(char *map_name);
+void init_game_state(t_ctx *ctx);
 
 // map validator
 bool validate_map(char *fname, char *map);
@@ -48,6 +52,7 @@ void collect(t_ctx *ctx);
 void clean_up(t_ctx *ctx);
 void free_map(t_map *map, mlx_t *mlx);
 void	*free_matrix_mem(char **matrix);
+void	free_tiles(mlx_t *mlx, t_tiles *tiles);
 
 // valid path
 t_list *dfs_target(t_map *map, int bounds[2], t_vec2 start, t_vec2 target);
@@ -59,4 +64,6 @@ bool is_valid_adj(t_list **q, t_vec2 *adj, int bounds[2], int **visited);
 int **initialize_visited(int w, int h);
 void show_path(t_list *p);
 void **free_visited(int **visited, int w, int h);
+
+
 #endif
