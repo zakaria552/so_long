@@ -6,6 +6,9 @@ void handle_player_movement(mlx_key_data_t keydata, t_ctx *ctx)
 	t_vec2 *pos;
 	mlx_image_t *img;
 	
+	if (ctx->state->exited)
+		return;
+	ft_printf("Player moving\n");
 	img = ctx->map->tiles->player;	
 	pos = ctx->player->pos;
 	if (keydata.key == MLX_KEY_W && (keydata.action == MLX_PRESS || keydata.action == MLX_REPEAT))
@@ -16,6 +19,9 @@ void handle_player_movement(mlx_key_data_t keydata, t_ctx *ctx)
 		move_player(ctx, pos->x - 8, pos->y);
 	if (keydata.key == MLX_KEY_D && (keydata.action == MLX_PRESS || keydata.action == MLX_REPEAT))
 		move_player(ctx, pos->x + 8, pos->y);
+	if (keydata.key == MLX_KEY_ESCAPE)
+		mlx_close_window(ctx->mlx);
+		
 }
 void move_player(t_ctx *ctx, int nx, int ny)
 {
