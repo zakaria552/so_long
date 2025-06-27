@@ -15,7 +15,6 @@ typedef struct s_player
 	int speed;
 } t_player;
 
-
 typedef struct s_orb
 {
 	t_vec2 *pos;
@@ -27,20 +26,20 @@ typedef struct s_textures
 	mlx_texture_t *empty_tile;
 } t_textures;
 
+typedef struct s_asset
+{
+	mlx_texture_t *txt;
+	mlx_image_t *img;
+} t_asset;
+
 typedef struct s_tiles
 {
-	mlx_image_t *empty;	
-	mlx_image_t *wall;
 	mlx_image_t *coin;
-	mlx_image_t *player;
-	mlx_image_t *exit;
-	mlx_image_t *exit_door;
-	mlx_texture_t *txt_player;
 	mlx_texture_t *txt_coin;
-	mlx_texture_t *txt_wall;
-	mlx_texture_t *txt_empty;
-	mlx_texture_t *txt_exit;
-	mlx_texture_t *txt_exit_door;
+	t_asset *walls;
+	t_asset *floors;
+	t_asset *doors;
+	t_asset *p_idle;
 } t_tiles;
 
 typedef struct s_map
