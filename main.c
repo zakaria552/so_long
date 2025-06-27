@@ -6,10 +6,10 @@ void endgame(t_ctx *ctx)
 		mlx_close_window(ctx->mlx);
 	if (!ctx->state->ready_to_exit)
 		return;
-	if (!ctx->map->tiles->exit->instances[0].enabled)	
+	if (!ctx->map->tiles->doors[1].img->instances[0].enabled)	
 	{
-		ctx->map->tiles->exit->instances[0].enabled = true;	
-		ctx->map->tiles->exit_door->instances[0].enabled = false;	
+		ctx->map->tiles->doors[1].img->instances[0].enabled = true;	
+		ctx->map->tiles->doors[0].img->instances[0].enabled = false;	
 	}
 	if (check_collision(ctx, 'E'))
 	{
