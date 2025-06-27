@@ -4,12 +4,10 @@ static void move_player(t_ctx *ctx, int nx, int ny);
 void handle_player_movement(mlx_key_data_t keydata, t_ctx *ctx)
 {
 	t_vec2 *pos;
-	mlx_image_t *img;
 	
 	if (ctx->state->exited)
 		return;
-	ft_printf("Player moving\n");
-	img = ctx->map->tiles->player;	
+	//ft_printf("Player moving\n");
 	pos = ctx->player->pos;
 	if (keydata.key == MLX_KEY_W && (keydata.action == MLX_PRESS || keydata.action == MLX_REPEAT))
 		move_player(ctx, pos->x, pos->y - 8);
@@ -25,15 +23,18 @@ void handle_player_movement(mlx_key_data_t keydata, t_ctx *ctx)
 }
 void move_player(t_ctx *ctx, int nx, int ny)
 {
+	mlx_image_t *img;
+
+	img = ctx->map->tiles->p_idle->img;	
 	ctx->player->pos->x = nx;
 	ctx->player->pos->y = ny;
 	if (check_collision(ctx, '1'))
 	{
-		ctx->player->pos->x = ctx->map->tiles->player->instances[0].x;
-		ctx->player->pos->y = ctx->map->tiles->player->instances[0].y;
+		ctx->player->pos->x = img->instances[0].x;
+		ctx->player->pos->y = img->instances[0].y;
 		return ;
 	}
-	ctx->map->tiles->player->instances[0].x = nx;
-	ctx->map->tiles->player->instances[0].y = ny;
+	img->instances[0].x = nx;
+	img->instances[0].y = ny;
 	return ;
 }
