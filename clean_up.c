@@ -55,30 +55,6 @@ void	free_tiles(mlx_t *mlx, t_tiles *tiles)
 {
 	if (!tiles)
 		return;
-	if (tiles->coin)
-		mlx_delete_image(mlx, tiles->coin);
-	if (tiles->empty)
-		mlx_delete_image(mlx, tiles->empty);
-	if (tiles->player)
-		mlx_delete_image(mlx, tiles->player);
-	if (tiles->exit_door)
-		mlx_delete_image(mlx, tiles->exit_door);
-	if (tiles->exit)
-		mlx_delete_image(mlx, tiles->exit);
-	if (tiles->wall)
-		mlx_delete_image(mlx, tiles->wall);
-	if (tiles->txt_coin)
-		mlx_delete_texture(tiles->txt_coin);
-	if (tiles->txt_empty)
-		mlx_delete_texture(tiles->txt_empty);
-	if (tiles->txt_player)
-		mlx_delete_texture(tiles->txt_player);
-	if (tiles->txt_wall)
-		mlx_delete_texture(tiles->txt_wall);
-	if (tiles->txt_exit_door)
-		mlx_delete_texture(tiles->txt_exit_door);
-	if (tiles->txt_exit)
-		mlx_delete_texture(tiles->txt_exit);
 	
 	free(tiles);
 }
