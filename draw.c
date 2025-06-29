@@ -72,11 +72,14 @@ void	draw_player(t_ctx *ctx)
 	t_tiles *tiles;
 	int tile_size;
 	t_vec2 *pos;
-	
+	//handle failure	
 	tiles = ctx->map->tiles;
 	tile_size = ctx->map->size;
 	pos = ctx->player->pos;
 	ft_printf("Drawing player (%d, %d)\n", pos->x, pos->y);
+	ctx->player->vision->img = mlx_new_image(ctx->mlx, ctx->map->width, ctx->map->height * 4);
+	mlx_image_to_window(ctx->mlx, ctx->player->vision->img, 0, 0);
+	update_vision(ctx);
 	mlx_image_to_window(ctx->mlx, tiles->p_idle[0].img, pos->x *ctx->map->size, pos->y* ctx->map->size);
 }
 
