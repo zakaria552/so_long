@@ -19,8 +19,9 @@ void err_msg(char *msg, int errnum)
 void clean_exit(t_ctx *ctx, char *msg, int err_code)
 {
 	errno = err_code;
+	ft_putstr_fd("Error\n", 2);
 	if (msg)
-		ft_printf("Error: %s\n", msg);
+		ft_printf("%s\n", msg);
 	clean_up(ctx);
 	exit(errno);
 }
