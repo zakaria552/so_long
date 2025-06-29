@@ -37,6 +37,7 @@ void collect(t_ctx *ctx)
 		return;
 	ctx->map->tiles->coin->instances[i].enabled = false;
 	ctx->state->collected += 1;
+	ctx->player->vision->r += 50;
 	if (ctx->state->collected == ctx->state->total_orbs)
 		ctx->state->ready_to_exit = true;
 }
