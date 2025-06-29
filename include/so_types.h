@@ -8,11 +8,18 @@ typedef struct s_vec2
 	int y;
 } t_vec2;
 
+typedef struct s_vision
+{
+	mlx_image_t *img;
+	int r;
+} t_vision;
+
 typedef struct s_player
 {
 	t_vec2 *pos;
 	int orbs;
 	int speed;
+	t_vision *vision;
 } t_player;
 
 typedef struct s_orb
