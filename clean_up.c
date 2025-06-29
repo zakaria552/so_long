@@ -1,13 +1,13 @@
 #include "so_long.h"
 
-static void free_player(t_player *player);
+static void free_player(t_ctx *ctx, t_player *player);
 
 void clean_up(t_ctx *ctx)
 {
 	if (!ctx)
 		return;
 	free_map(ctx->map, ctx->mlx);
-	free_player(ctx->player);
+	free_player(ctx, ctx->player);
 	if (ctx->mlx)
 		mlx_terminate(ctx->mlx);
 	if(ctx->state)
@@ -15,14 +15,19 @@ void clean_up(t_ctx *ctx)
 	free(ctx);
 }
 
-void free_player(t_player *player)
+void free_player(t_ctx *ctx, t_player *player)
 {
-	if (player)
+	if (!player)
+		return;
+	if (player->pos)
+		free(player->pos);
+	if (player->vision)
 	{
-		if (player->pos)
-			free(player->pos);
-		free(player);
+		if (player->vision->img)
+			mlx_delete_image(ctx->mlx, player->vision->img);
+		free(player->vision);
 	}
+	free(player);
 }
 void free_map(t_map *map, mlx_t *mlx)
 {
