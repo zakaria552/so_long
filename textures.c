@@ -5,16 +5,13 @@ static void load_floor_textures(t_ctx *ctx, t_tiles *tiles);
 static void load_doors_textures(t_ctx *ctx, t_tiles *tiles);
 static void load_player_textures(t_ctx *ctx, t_tiles *tiles);
 
-bool load_textures(t_ctx *ctx)
+void load_textures(t_ctx *ctx)
 {
 	t_tiles *tiles;
 
 	tiles = malloc(sizeof(t_tiles));
 	if (!tiles)
-	{
-		err_msg("", ENOMEM);
-		return false;
-	}
+		clean_exit(ctx, NULL, errno);
 	ctx->map->tiles = tiles;
 	load_wall_textures(ctx, tiles);
 	load_floor_textures(ctx, tiles);
@@ -22,19 +19,12 @@ bool load_textures(t_ctx *ctx)
 	load_player_textures(ctx, tiles);
 	tiles->txt_coin = mlx_load_png("./textures/coin.png");
 	if (!tiles->txt_coin)
-	{
-		err_msg("Failed to load texture", errno);
-		return false;		
-	}
+		clean_exit(ctx, "Failed to load texture", errno);
 	tiles->coin = mlx_texture_to_image(ctx->mlx, tiles->txt_coin);
 	if (!tiles->coin)
-	{
-		err_msg("Failed to turn texture to image", errno);
-		return false;		
-	}
+		clean_exit(ctx, "Failed to turn texture to image", errno);
 	mlx_resize_image(tiles->coin, 64, 64);
 	ft_printf("Loaded textures\n");
-	return true;
 }
 
 static void load_wall_textures(t_ctx *ctx, t_tiles *tiles)
