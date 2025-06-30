@@ -1,6 +1,6 @@
 #include "so_long.h"
 
-bool check_collision(t_ctx *ctx, char c)
+bool check_collision(t_ctx *ctx, char c, const off[2][2])
 {
 	char **grid;	
 	t_vec2 *pos;
@@ -19,8 +19,8 @@ bool check_collision(t_ctx *ctx, char c)
 		{
 			if (grid[y][x] != c)
 				continue;
-			if (pos->x < (x * s + s) && (pos->x + 48)> (x * s) &&
-				pos->y < (y*s + s) && (pos->y + 48) > (y * s) )	
+			if ((pos->x + 48 - off[0][0]) > x*s && (pos->x + off[0][1]) < (x*s + s) &&
+				(pos->y + 48 - off[1][0]) > (y * s) && (pos->y + off[1][1]) < (y*s + s) )	
 				return true;
 		}
 	}
