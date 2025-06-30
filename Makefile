@@ -1,6 +1,10 @@
 CC = cc
 CFLAGS = -g -Wall
-CFILES = main.c map_validator.c draw.c valid_path.c ctx_init.c valid_path_utils.c player.c clean_up.c collision.c vision.c collect.c player_mov_hook.c parser.c io_utils.c errors.c textures.c
+CFILES = main.c map_validator.c draw.c valid_path.c ctx_init.c \
+		valid_path_utils.c player.c clean_up.c collision.c \
+ 		vision.c collect.c player_mov_hook.c parser.c io_utils.c \
+ 		errors.c textures.c textures_utils.c path_finder.c \
+
 OBJ_DIR = ./obj/
 OBJ = $(addprefix $(OBJ_DIR),$(CFILES:.c=.o))
 NAME = so_long
