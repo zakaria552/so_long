@@ -28,14 +28,14 @@ void collect(t_ctx *ctx)
 
 	if (ctx->state->ready_to_exit)
 		return;
-	ft_printf("state: %d/%d, ready_to_exit:%d\n", ctx->state->collected, ctx->state->total_orbs, ctx->state->ready_to_exit);
+	//ft_printf("state: %d/%d, ready_to_exit:%d\n", ctx->state->collected, ctx->state->total_orbs, ctx->state->ready_to_exit);
 	tile = get_collided_tile(ctx->map, ctx->player->pos, 'C');
 	if (tile.x < 0)
 		return ;	
 	i = get_instance(ctx->map->grid, tile, 'C');
-	if (!ctx->map->tiles->coin->instances[i].enabled)
+	if (!ctx->map->tiles->orbs->img->instances[i].enabled)
 		return;
-	ctx->map->tiles->coin->instances[i].enabled = false;
+	ctx->map->tiles->orbs->img->instances[i].enabled = false;
 	ctx->state->collected += 1;
 	ctx->player->vision->r += 50;
 	if (ctx->state->collected == ctx->state->total_orbs)
