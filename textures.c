@@ -44,7 +44,7 @@ static void load_wall_textures(t_ctx *ctx, t_tiles *tiles)
 		tiles->walls[i].img = mlx_texture_to_image(ctx->mlx, tiles->walls[i].txt);
 		if (!tiles->walls[i].img)
 			clean_exit(ctx, "Failed to load assets", errno);
-		mlx_resize_image(tiles->walls[i].img, 64, 64);
+		mlx_resize_image(tiles->walls[i].img, ctx->map->size, ctx->map->size);
 	}
 }
 
@@ -67,7 +67,7 @@ static void load_floor_textures(t_ctx *ctx, t_tiles *tiles)
 		tiles->floors[i].img = mlx_texture_to_image(ctx->mlx, tiles->floors[i].txt);
 		if (!tiles->floors[i].img)
 			clean_exit(ctx, "Failed to load assets", errno);
-		mlx_resize_image(tiles->floors[i].img, 64, 64);
+		mlx_resize_image(tiles->floors[i].img, ctx->map->size, ctx->map->size);
 	}
 }
 static void load_doors_textures(t_ctx *ctx, t_tiles *tiles)
@@ -88,7 +88,7 @@ static void load_doors_textures(t_ctx *ctx, t_tiles *tiles)
 		tiles->doors[i].img = mlx_texture_to_image(ctx->mlx, tiles->doors[i].txt);
 		if (!tiles->doors[i].img)
 			clean_exit(ctx, "Failed to load assets", errno);
-		mlx_resize_image(tiles->doors[i].img, 64, 64);
+		mlx_resize_image(tiles->doors[i].img, ctx->map->size, ctx->map->size);
 	}
 }
 static void load_player_textures(t_ctx *ctx, t_tiles *tiles)
