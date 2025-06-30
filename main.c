@@ -49,6 +49,7 @@ int main(int argc, char **args)
 	mlx_loop_hook(ctx->mlx, update_vision, ctx);
 	mlx_key_hook(ctx->mlx, key_hooks, ctx);
 	mlx_loop(ctx->mlx);
+	ft_printf("Freeing....");
 	clean_up(ctx);
 	return 0;
 }
