@@ -47,7 +47,7 @@ void	draw_map_grid(t_ctx *ctx, t_map *map)
 			else 
 				mlx_image_to_window(ctx->mlx, tiles->floors[(x * y) % 4].img, x * map->size, y * map->size);
 			if (grid[y][x] == 'C')
-				mlx_image_to_window(ctx->mlx, tiles->coin, x * map->size, y * map->size);
+				mlx_image_to_window(ctx->mlx, tiles->orbs->img, x * map->size, y * map->size);
 		}
 	}
 }
