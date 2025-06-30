@@ -41,8 +41,6 @@ typedef struct s_asset
 
 typedef struct s_tiles
 {
-	mlx_image_t *coin;
-	mlx_texture_t *txt_coin;
 	t_asset *walls;
 	t_asset *floors;
 	t_asset *doors;
