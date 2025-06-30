@@ -35,10 +35,10 @@ void free_map(t_map *map, mlx_t *mlx)
 		return ;
 	if (map->grid)
 		free_matrix_mem(map->grid);
-	if (mlx)
-		free_tiles(mlx, map->tiles);
 	if (map->exit)
 		free(map->exit);
+	if (mlx && map->tiles)
+		free_tiles(mlx, map->tiles);
 	free(map);
 }
 
@@ -56,10 +56,34 @@ void	*free_matrix_mem(char **matrix)
 	return (NULL);
 }
 
+void free_assets(mlx_t *mlx, t_asset *asset, int size)
+{
+	int i;
+
+	i = -1;
+	while (++i < size)
+	{
+		if (asset[i].img)
+			mlx_delete_image(mlx, asset[i].img);
+		if (asset[i].txt)
+			mlx_delete_texture(asset[i].txt);
+	}
+	free(asset);
+}
+
 void	free_tiles(mlx_t *mlx, t_tiles *tiles)
 {
 	if (!tiles)
 		return;
-	
+	if (tiles->doors)
+		free_assets(mlx, tiles->doors, 2);
+	if (tiles->floors)
+		free_assets(mlx, tiles->floors, 4);
+	if (tiles->walls)
+		free_assets(mlx, tiles->walls, 2);
+	if (tiles->p_idle)
+		free_assets(mlx, tiles->p_idle, 1);
+	if (tiles->orbs)
+		free_assets(mlx, tiles->orbs, 1);
 	free(tiles);
 }
