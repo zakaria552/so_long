@@ -17,6 +17,7 @@ void move_hook(t_ctx *ctx)
 
 void move_player(t_ctx *ctx, int nx, int ny)
 {
+	static int move_count;
 	mlx_image_t *img;
 	const offsets[2][2] = {{10, 10}, {0, 36}};
 
@@ -29,6 +30,7 @@ void move_player(t_ctx *ctx, int nx, int ny)
 		ctx->player->pos->y = img->instances[0].y;
 		return ;
 	}
+	ft_printf("Move count: %d\n", ++move_count);
 	img->instances[0].x = nx;
 	img->instances[0].y = ny;
 	return ;
