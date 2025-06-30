@@ -32,6 +32,13 @@ char *read_from_file2(char *name);
 
 // textures
 void load_textures(t_ctx *ctx);
+void init_assets(t_asset *asset, int size);
+
+// textures utils
+void load_wall_textures(t_ctx *ctx, t_tiles *tiles);
+void load_floor_textures(t_ctx *ctx, t_tiles *tiles);
+void load_doors_textures(t_ctx *ctx, t_tiles *tiles);
+void load_orbs_textures(t_ctx *ctx, t_tiles *tiles);
 
 // draw
 void	draw_map(t_ctx *ctx);
@@ -67,6 +74,9 @@ bool is_valid_adj(t_list **q, t_vec2 *adj, int bounds[2], int **visited);
 int **initialize_visited(int w, int h);
 void show_path(t_list *p);
 void **free_visited(int **visited, int w, int h);
+
+// path finder
+t_list *dfs_target(t_map *map, int bounds[2], t_vec2 start, t_vec2 target);
 
 
 #endif

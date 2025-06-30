@@ -47,6 +47,7 @@ typedef struct s_tiles
 	t_asset *floors;
 	t_asset *doors;
 	t_asset *p_idle;
+	t_asset *orbs;
 } t_tiles;
 
 typedef struct s_map
