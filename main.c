@@ -1,7 +1,14 @@
 #include "so_long.h"
 
+void key_hooks(mlx_key_data_t keydata, t_ctx *ctx)
+{
+	if (keydata.key == MLX_KEY_ESCAPE)
+		mlx_close_window(ctx->mlx);
+}
+
 void endgame(t_ctx *ctx)
 {
+	const offsets[2][2] = {{40, 40}, {40, 40}};
 	if (ctx->state->exited)
 		mlx_close_window(ctx->mlx);
 	if (!ctx->state->ready_to_exit)
@@ -11,7 +18,7 @@ void endgame(t_ctx *ctx)
 		ctx->map->tiles->doors[1].img->instances[0].enabled = true;	
 		ctx->map->tiles->doors[0].img->instances[0].enabled = false;	
 	}
-	if (check_collision(ctx, 'E'))
+	if (check_collision(ctx, 'E', offsets))
 		ctx->state->exited = true;
 }
 
@@ -37,10 +44,10 @@ int main(int argc, char **args)
 		clean_exit(ctx, NULL, errno);
 	load_textures(ctx);
 	draw_map(ctx);
-	//mlx_is_key_down
-	mlx_key_hook(ctx->mlx, handle_player_movement, ctx);
+	mlx_loop_hook(ctx->mlx, move_hook, ctx);
 	mlx_loop_hook(ctx->mlx, hooks, ctx);
 	mlx_loop_hook(ctx->mlx, update_vision, ctx);
+	mlx_key_hook(ctx->mlx, key_hooks, ctx);
 	mlx_loop(ctx->mlx);
 	clean_up(ctx);
 	return 0;
