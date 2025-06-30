@@ -37,12 +37,15 @@ void load_textures(t_ctx *ctx);
 void	draw_map(t_ctx *ctx);
 
 // player
+void move_hook(t_ctx *ctx);
 void	initialize_player(t_ctx *ctx);
-void handle_player_movement(mlx_key_data_t keydata, t_ctx *ctx);
+
+// vision
 void	update_vision(t_ctx *ctx);
+void	init_vision(t_ctx *ctx);
 
 // collision
-bool check_collision(t_ctx *ctx, char c);
+bool check_collision(t_ctx *ctx, char c, const off[2][2]);
 t_vec2 get_collided_tile(t_map *map, t_vec2 *pos, char c);
 
 // collect
