@@ -6,7 +6,7 @@
 /*   By: zfarah <zfarah@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 15:50:49 by zfarah            #+#    #+#             */
-/*   Updated: 2025/07/01 15:53:35 by zfarah           ###   ########.fr       */
+/*   Updated: 2025/07/01 19:29:06 by zfarah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,9 @@ static bool	is_in_bound(int bounds[2], t_vec2 *adj);
 bool	is_valid_adj(t_list **q, t_vec2 *adj, int bounds[2], int **visited)
 {
 	if (!is_in_bound(bounds, adj))
-	{
-		ft_printf("out of bound/ (x:%d, y:%d)\n", adj->x, adj->y);
-		print_visit(visited, bounds[0], bounds[1]);
 		return (false);
-	}
 	if (visited[adj->y][adj->x])
-	{
-		ft_printf("visited (x:%d, y:%d)\n", adj->x, adj->y);
-		print_visit(visited, bounds[0], bounds[1]);
 		return (false);
-	}
 	return (true);
 }
 
@@ -84,10 +76,7 @@ static bool	is_in_bound(int bounds[2], t_vec2 *adj)
 {
 	if (adj->x < 1 || adj->y < 1 || adj->x >= (bounds[0] - 1)
 		|| adj->y >= (bounds[1] - 1))
-	{
-		ft_printf("invalid (x:%d, y:%d)\n", adj->x, adj->y);
 		return (false);
-	}
 	return (true);
 }
 /*
