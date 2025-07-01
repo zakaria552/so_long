@@ -6,7 +6,7 @@ CFILES = main.c map_validator.c draw.c valid_path.c ctx_init.c \
 		valid_path_utils.c player.c clean_up.c collision.c \
  		vision.c collect.c player_mov_hook.c parser.c io_utils.c \
  		errors.c textures.c textures_utils.c path_finder.c clean_up_utils.c \
-		map_validator_utils.c
+		map_validator_utils.c hooks.c mlx_safe_funcs.c
 OBJ = $(addprefix $(OBJ_DIR),$(CFILES:.c=.o))
 NAME = so_long
 mlx = mlx_linux/libmlx.a
