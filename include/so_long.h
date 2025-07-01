@@ -6,7 +6,7 @@
 /*   By: zfarah <zfarah@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 17:33:42 by zfarah            #+#    #+#             */
-/*   Updated: 2025/07/01 17:33:43 by zfarah           ###   ########.fr       */
+/*   Updated: 2025/07/01 20:31:33 by zfarah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ void	clean_exit(t_ctx *ctx, char *msg, int err_code);
 
 // io_utils
 char	*read_from_file(char *name);
-char	*read_from_file2(char *name);
 
 // textures
 void	load_textures(t_ctx *ctx);
@@ -61,6 +60,10 @@ void	draw_map(t_ctx *ctx);
 void	move_hook(t_ctx *ctx);
 void	initialize_player(t_ctx *ctx);
 
+// hooks
+void	hooks(t_ctx *ctx);
+void	key_hooks(mlx_key_data_t keydata, t_ctx *ctx);
+
 // vision
 void	update_vision(t_ctx *ctx);
 void	init_vision(t_ctx *ctx);
@@ -74,7 +77,7 @@ void	collect(t_ctx *ctx);
 
 // clean/utils
 void	clean_up(t_ctx *ctx);
-void	free_map(t_map *map, mlx_t *mlx);
+bool	free_map(t_map *map, mlx_t *mlx);
 void	*free_matrix_mem(char **matrix);
 void	free_tiles(mlx_t *mlx, t_tiles *tiles);
 void	free_player(t_ctx *ctx, t_player *player);
@@ -93,5 +96,9 @@ void	free_visited(int **visited, int w, int h);
 
 // path finder
 t_list	*dfs_target(t_map *map, int bounds[2], t_vec2 start, t_vec2 target);
+
+// safe mlx funcs
+void	img_to_window(t_ctx *ctx, mlx_image_t *img, int32_t x, int32_t y);
+mlx_image_t *new_img(t_ctx *ctx, uint32_t w, uint32_t h);
 
 #endif
