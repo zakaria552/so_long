@@ -6,7 +6,7 @@
 /*   By: zfarah <zfarah@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 15:48:01 by zfarah            #+#    #+#             */
-/*   Updated: 2025/07/01 15:48:02 by zfarah           ###   ########.fr       */
+/*   Updated: 2025/07/01 20:50:34 by zfarah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	initialize_player(t_ctx *ctx)
 	if (!ctx->player->vision)
 		clean_exit(ctx, NULL, errno);
 	ctx->player->orbs = 0;
-	ctx->player->speed = 8;
+	ctx->player->speed = 6;
 	ctx->player->vision->r = 150;
 	init_player_pos(ctx);
 }
