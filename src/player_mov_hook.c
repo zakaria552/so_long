@@ -6,7 +6,7 @@
 /*   By: zfarah <zfarah@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 15:46:42 by zfarah            #+#    #+#             */
-/*   Updated: 2025/07/01 15:47:54 by zfarah           ###   ########.fr       */
+/*   Updated: 2025/07/01 20:49:36 by zfarah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,20 @@ static void	move_player(t_ctx *ctx, int nx, int ny);
 void	move_hook(t_ctx *ctx)
 {
 	const t_vec2	*pos = ctx->player->pos;
+	const int		speed = ctx->player->speed;
 
-	if (mlx_is_key_down(ctx->mlx, MLX_KEY_W))
-		move_player(ctx, pos->x, pos->y - 8);
-	if (mlx_is_key_down(ctx->mlx, MLX_KEY_S))
-		move_player(ctx, pos->x, pos->y + 8);
-	if (mlx_is_key_down(ctx->mlx, MLX_KEY_A))
-		move_player(ctx, pos->x - 8, pos->y);
-	if (mlx_is_key_down(ctx->mlx, MLX_KEY_D))
-		move_player(ctx, pos->x + 8, pos->y);
+	if (mlx_is_key_down(ctx->mlx, MLX_KEY_W) || mlx_is_key_down(ctx->mlx,
+			MLX_KEY_UP))
+		move_player(ctx, pos->x, pos->y - speed);
+	if (mlx_is_key_down(ctx->mlx, MLX_KEY_S) || mlx_is_key_down(ctx->mlx,
+			MLX_KEY_DOWN))
+		move_player(ctx, pos->x, pos->y + speed);
+	if (mlx_is_key_down(ctx->mlx, MLX_KEY_A) || mlx_is_key_down(ctx->mlx,
+			MLX_KEY_LEFT))
+		move_player(ctx, pos->x - speed, pos->y);
+	if (mlx_is_key_down(ctx->mlx, MLX_KEY_D) || mlx_is_key_down(ctx->mlx,
+			MLX_KEY_RIGHT))
+		move_player(ctx, pos->x + speed, pos->y);
 }
 
 void	move_player(t_ctx *ctx, int nx, int ny)
