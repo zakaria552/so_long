@@ -6,7 +6,7 @@
 /*   By: zfarah <zfarah@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 13:59:58 by zfarah            #+#    #+#             */
-/*   Updated: 2025/07/01 13:59:59 by zfarah           ###   ########.fr       */
+/*   Updated: 2025/07/01 18:57:52 by zfarah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,10 @@ void	free_player(t_ctx *ctx, t_player *player)
 	free(player);
 }
 
-void	free_map(t_map *map, mlx_t *mlx)
+bool	free_map(t_map *map, mlx_t *mlx)
 {
 	if (!map)
-		return ;
+		return (true);
 	if (map->grid)
 		free_matrix_mem(map->grid);
 	if (map->exit)
@@ -38,6 +38,7 @@ void	free_map(t_map *map, mlx_t *mlx)
 	if (mlx && map->tiles)
 		free_tiles(mlx, map->tiles);
 	free(map);
+	return (true);
 }
 
 void	*free_matrix_mem(char **matrix)
