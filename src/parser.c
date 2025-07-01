@@ -6,13 +6,14 @@
 /*   By: zfarah <zfarah@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 15:39:53 by zfarah            #+#    #+#             */
-/*   Updated: 2025/07/01 15:40:59 by zfarah           ###   ########.fr       */
+/*   Updated: 2025/07/01 18:56:43 by zfarah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static void	set_exit(t_map *map);
+static void		set_exit(t_map *map);
+static t_map	*init_map(char *str_map);
 
 t_map	*parse_map(char *name)
 {
@@ -21,9 +22,7 @@ t_map	*parse_map(char *name)
 
 	if (!name)
 		return (NULL);
-	ft_printf("name: %s\n", name);
-	str_map = read_from_file2(name);
-	ft_printf("map: \n%s\n", str_map);
+	str_map = read_from_file(name);
 	if (!str_map || !validate_map(name, str_map))
 	{
 		free(str_map);
@@ -31,32 +30,7 @@ t_map	*parse_map(char *name)
 		err_msg("Invalid map", 0);
 		return (NULL);
 	}
-	map = malloc(sizeof(t_map));
-	if (!map)
-	{
-		free(str_map);
-		return (NULL);
-	}
-	map->grid = ft_split(str_map, '\n');
-	if (!map->grid)
-	{
-		free(str_map);
-		free_map(map, NULL);
-		return (NULL);
-	}
-	set_exit(map);
-	if (!map->exit)
-	{
-		free_map(map, NULL);
-		return (NULL);
-	}
-	map->size = 64;
-	map->bounds[0] = ft_strlen(map->grid[0]);
-	map->bounds[1] = 0;
-	while (map->grid[map->bounds[1]])
-		map->bounds[1]++;
-	map->width = map->bounds[0] * map->size;
-	map->height = map->bounds[1] * map->size;
+	map = init_map(str_map);
 	free(str_map);
 	return (map);
 }
@@ -83,4 +57,27 @@ static void	set_exit(t_map *map)
 			}
 		}
 	}
+}
+
+static t_map	*init_map(char *str_map)
+{
+	t_map	*map;
+
+	map = malloc(sizeof(t_map));
+	if (!map)
+		return (NULL);
+	map->grid = ft_split(str_map, '\n');
+	if (!map->grid && free_map(map, NULL))
+		return (NULL);
+	set_exit(map);
+	if (!map->exit && free_map(map, NULL))
+		return (NULL);
+	map->size = 64;
+	map->bounds[0] = ft_strlen(map->grid[0]);
+	map->bounds[1] = 0;
+	while (map->grid[map->bounds[1]])
+		map->bounds[1]++;
+	map->width = map->bounds[0] * map->size;
+	map->height = map->bounds[1] * map->size;
+	return (map);
 }
