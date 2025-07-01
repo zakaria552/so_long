@@ -6,7 +6,7 @@
 /*   By: zfarah <zfarah@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 14:50:24 by zfarah            #+#    #+#             */
-/*   Updated: 2025/07/01 15:38:53 by zfarah           ###   ########.fr       */
+/*   Updated: 2025/07/01 18:34:45 by zfarah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ bool	is_rectangular(char **map)
 		w = i;
 		h++;
 	}
-	if (h < 2 || w < 2)
+	if (h < 2 || w < 2 || h == w)
 		return (false);
 	return (true);
 }
