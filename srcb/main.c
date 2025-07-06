@@ -20,7 +20,7 @@ char *dir(t_dir dir)
 	else if (dir == RIGHT)
 		return "right";
 	else if (dir == LEFT)
-		return "right";
+		return "left";
 	else if (dir == UP)
 		return "up";
 	else if (dir == DOWN)
@@ -48,7 +48,7 @@ void	animate(t_ctx *ctx)
 	i = -1;
 	printf("lt: %.2f, dt: %.2f, fi: %d\n", info->lt, dt, info->frame_index);
 	ft_printf("Dir: %s", dir(ctx->player->dir));
-	if (dt > 0.2)
+	if ((dt > 0.07 && ctx->player->dir != IDLE) || dt > 0.25)
 	{
 		ft_printf("Moving to next frame....\n");
 		ft_printf("frame: %d, fi: %d\n", ctx->player->ani_info->frame, ctx->player->ani_info->frame_index);
