@@ -6,7 +6,7 @@
 /*   By: zfarah <zfarah@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 15:49:34 by zfarah            #+#    #+#             */
-/*   Updated: 2025/07/06 16:22:18 by zfarah           ###   ########.fr       */
+/*   Updated: 2025/07/06 16:55:45 by zfarah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ void	load_textures(t_ctx *ctx)
 	load_doors_textures(ctx, tiles);
 	load_player_textures(ctx, tiles);
 	load_orbs_textures(ctx, tiles);
+	load_enemy(ctx);
 	ft_printf("Loaded textures\n");
 }
 
