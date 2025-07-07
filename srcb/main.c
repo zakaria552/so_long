@@ -77,6 +77,7 @@ int	main(int argc, char **args)
 		clean_exit(ctx, strerror(EINVAL), EINVAL);
 	ctx = ctx_init(args[1]);
 	initialize_player(ctx);
+	initialize_enemy(ctx);
 	if (!valid_path_exists(ctx->map, ctx->player))
 		clean_exit(ctx, strerror(errno), errno);
 	ctx->mlx = mlx_init(ctx->map->width, ctx->map->height, args[0], true);
