@@ -6,7 +6,7 @@
 /*   By: zfarah <zfarah@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 18:19:52 by zfarah            #+#    #+#             */
-/*   Updated: 2025/07/05 22:41:22 by zfarah           ###   ########.fr       */
+/*   Updated: 2025/07/07 13:59:50 by zfarah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ static void	draw_player(t_ctx *ctx);
 static void	draw_exit(t_ctx *ctx);
 static void	draw_map_borders(t_ctx *ctx, t_asset *walls, int size);
 static void	draw_map_grid(t_ctx *ctx, t_map *map);
+void	draw_enemy(t_ctx *ctx);
 
 void	draw_map(t_ctx *ctx)
 {
@@ -30,9 +31,15 @@ void	draw_map(t_ctx *ctx)
 	draw_map_borders(ctx, tiles->walls, tile_size);
 	draw_map_grid(ctx, ctx->map);
 	draw_exit(ctx);
+	draw_enemy(ctx);
 	draw_player(ctx);
 }
-
+void	draw_enemy(t_ctx *ctx)
+{
+	ctx->enemy->pos.x *= ctx->map->size;
+	ctx->enemy->pos.y *= ctx->map->size;
+	img_to_window(ctx, ctx->enemy->idle[0].img, ctx->enemy->pos.x, ctx->enemy->pos.y);
+}
 static void	draw_map_borders(t_ctx *ctx, t_asset *walls, int size)
 {
 	int	x;
