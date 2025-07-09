@@ -13,6 +13,7 @@
 #include "so_long.h"
 
 static void	move_player(t_ctx *ctx, int nx, int ny, t_dir dir);
+static void update_pos(t_asset *sprites[5], int nx, int ny);
 
 void	move_hook(t_ctx *ctx)
 {
@@ -42,31 +43,24 @@ void	move_hook(t_ctx *ctx)
 		}
 	}
 }
-
-void update_pos(t_tiles *tiles, int nx, int ny)
+static void update_pos(t_asset *sprites[5], int nx, int ny)
 {
 	int i;
+	int j;
 
 	i = -1;
 	while (++i < 5)
 	{
-		tiles->idle[i].img->instances[0].x = nx;
-		tiles->idle[i].img->instances[0].y = ny;
-
-		tiles->left[i].img->instances[0].x = nx;
-		tiles->left[i].img->instances[0].y = ny;
-
-		tiles->right[i].img->instances[0].x = nx;
-		tiles->right[i].img->instances[0].y = ny;
-
-		tiles->up[i].img->instances[0].x = nx;
-		tiles->up[i].img->instances[0].y = ny;
-
-		tiles->down[i].img->instances[0].x = nx;
-		tiles->down[i].img->instances[0].y = ny;
+		j = -1;
+		while (++j < 5)
+		{
+			sprites[i][j].img->instances[0].x = nx;
+			sprites[i][j].img->instances[0].y = ny;
+		}
 	}
 }
-void	move_player(t_ctx *ctx, int nx, int ny, t_dir dir)
+
+static void	move_player(t_ctx *ctx, int nx, int ny, t_dir dir)
 {
 	static int	move_count;
 	t_asset	*img = ctx->player->sprites[dir];
@@ -91,6 +85,6 @@ void	move_player(t_ctx *ctx, int nx, int ny, t_dir dir)
 	}
 	
 	ft_printf("Move count: %d\n", ++move_count);
-	update_pos(ctx->map->tiles, nx, ny);
+	update_pos(ctx->player->sprites, nx, ny);
 	return ;
 }
