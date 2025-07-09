@@ -6,7 +6,7 @@
 /*   By: zfarah <zfarah@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 14:04:26 by zfarah            #+#    #+#             */
-/*   Updated: 2025/07/01 14:39:22 by zfarah           ###   ########.fr       */
+/*   Updated: 2025/07/08 22:05:31 by zfarah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,13 @@
 
 static void	init_vals(t_vec2 *tile, int *x, int *y);
 
-bool	check_collision(t_ctx *ctx, char c, const int off[2][2])
+bool	check_collision(t_ctx *ctx, char c, const int off[2][2], t_vec2 *pos)
 {
 	char	**grid;
-	t_vec2	*pos;
 	int		s;
 	int		x;
 	int		y;
 
-	pos = ctx->player->pos;
 	s = ctx->map->size;
 	grid = ctx->map->grid;
 	x = -1;
