@@ -6,7 +6,7 @@
 /*   By: zfarah <zfarah@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 17:33:42 by zfarah            #+#    #+#             */
-/*   Updated: 2025/07/06 16:54:56 by zfarah           ###   ########.fr       */
+/*   Updated: 2025/07/07 17:19:50 by zfarah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,4 +119,10 @@ t_asset *get_img_from_dir(t_ctx *ctx, t_dir dir);
 
 // enemy
 void    initialize_enemy(t_ctx *ctx);
+
+// random
+int random_num(int lower, int upper);
+void	show_path(t_list *p);
+
+
 #endif

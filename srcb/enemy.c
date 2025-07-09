@@ -14,6 +14,7 @@ void    initialize_enemy(t_ctx *ctx)
     ctx->enemy->pos.y = 0;
     ctx->enemy->dir = IDLE;
 	ctx->enemy->speed = 3;
+	ctx->enemy->path = NULL;
     init_enemy_pos(ctx);
     ft_printf("Pos: %d, %d", ctx->enemy->pos.x, ctx->enemy->pos.y);
 }
@@ -39,4 +40,9 @@ static void	init_enemy_pos(t_ctx *ctx)
 			}
 		}
 	}
+}
+
+void random_pos(t_ctx *ctx)
+{
+
 }

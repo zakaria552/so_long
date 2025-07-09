@@ -6,7 +6,7 @@
 /*   By: zfarah <zfarah@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 17:34:14 by zfarah            #+#    #+#             */
-/*   Updated: 2025/07/06 20:00:21 by zfarah           ###   ########.fr       */
+/*   Updated: 2025/07/07 14:16:37 by zfarah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ typedef struct s_enemy
 	t_vision	*vision;
 	int			speed;
 	t_asset		*idle;
+	t_list		*path;
 } t_enemy;
 
 typedef struct s_player

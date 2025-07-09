@@ -6,7 +6,7 @@
 /*   By: zfarah <zfarah@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 15:50:49 by zfarah            #+#    #+#             */
-/*   Updated: 2025/07/01 19:29:06 by zfarah           ###   ########.fr       */
+/*   Updated: 2025/07/07 17:19:28 by zfarah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ static bool	is_in_bound(int bounds[2], t_vec2 *adj)
 		return (false);
 	return (true);
 }
-/*
+
 void	show_path(t_list *p)
 {
 	while (p)
@@ -90,4 +90,3 @@ void	show_path(t_list *p)
 	}
 	ft_printf("\n");
 }
-*/
