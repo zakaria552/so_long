@@ -6,7 +6,7 @@
 /*   By: zfarah <zfarah@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 18:19:52 by zfarah            #+#    #+#             */
-/*   Updated: 2025/07/07 13:59:50 by zfarah           ###   ########.fr       */
+/*   Updated: 2025/07/09 15:59:41 by zfarah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,24 @@ void	draw_map(t_ctx *ctx)
 }
 void	draw_enemy(t_ctx *ctx)
 {
-	ctx->enemy->pos.x *= ctx->map->size;
-	ctx->enemy->pos.y *= ctx->map->size;
-	img_to_window(ctx, ctx->enemy->idle[0].img, ctx->enemy->pos.x, ctx->enemy->pos.y);
+	const int		tile_size = ctx->map->size;
+	t_vec2	*pos;
+	int i;
+
+	i = -1;
+	pos = &ctx->enemy->pos;
+	pos->x *= ctx->map->size;
+	pos->y *= ctx->map->size;
+	ctx->player->vision->img = new_img(ctx, ctx->map->width, ctx->map->height);
+	img_to_window(ctx, ctx->player->vision->img, 0, 0);
+	while (++i < 5)
+	{
+		img_to_window(ctx, ctx->enemy->idle[i].img, pos->x, pos->y);
+		img_to_window(ctx, ctx->enemy->right[i].img, pos->x, pos->y);
+		img_to_window(ctx, ctx->enemy->left[i].img, pos->x, pos->y);
+		img_to_window(ctx, ctx->enemy->up[i].img, pos->x, pos->y);
+		img_to_window(ctx, ctx->enemy->down[i].img, pos->x, pos->y);
+	}
 }
 static void	draw_map_borders(t_ctx *ctx, t_asset *walls, int size)
 {
