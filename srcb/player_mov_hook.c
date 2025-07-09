@@ -43,19 +43,6 @@ void	move_hook(t_ctx *ctx)
 	}
 }
 
-t_asset *get_img_from_dir(t_ctx *ctx, t_dir dir)
-{
-	if (dir == IDLE)
-		return (ctx->map->tiles->idle);
-	if (dir == RIGHT)
-		return (ctx->map->tiles->right);
-	if (dir == LEFT)
-		return (ctx->map->tiles->left);
-	if (dir == DOWN)
-		return (ctx->map->tiles->down);
-	if (dir == UP)
-		return (ctx->map->tiles->up);
-}
 void update_pos(t_tiles *tiles, int nx, int ny)
 {
 	int i;
@@ -82,11 +69,10 @@ void update_pos(t_tiles *tiles, int nx, int ny)
 void	move_player(t_ctx *ctx, int nx, int ny, t_dir dir)
 {
 	static int	move_count;
-	t_asset	*img = get_img_from_dir(ctx, ctx->player->dir);
+	t_asset	*img = ctx->player->sprites[dir];
 	const int	offsets[2][2] = {{10, 10}, {0, 36}};
 	const int	frame_index = ctx->player->ani_info->frame;
 
-	ft_printf("");
 	if (dir != ctx->player->dir)
 	{
 		ctx->player->ani_info->frame = 0;
