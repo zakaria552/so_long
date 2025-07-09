@@ -1,24 +1,37 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   enemy.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: zfarah <zfarah@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/07/09 21:22:53 by zfarah            #+#    #+#             */
+/*   Updated: 2025/07/09 21:23:06 by zfarah           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <so_long.h>
+
 static void	init_enemy_pos(t_ctx *ctx);
 
-void    initialize_enemy(t_ctx *ctx)
+void	initialize_enemy(t_ctx *ctx)
 {
-    ctx->enemy = malloc(sizeof(t_enemy));
-    if (!ctx->enemy)
-        clean_exit(ctx, NULL, errno);
-    ctx->enemy->vision = malloc(sizeof(t_vision));
-    if (!ctx->enemy->vision)
-        clean_exit(ctx, NULL, errno);
-    ctx->enemy->vision->r = 20;
-    ctx->enemy->pos.x = 0;
-    ctx->enemy->pos.y = 0;
-    ctx->enemy->dir = IDLE;
+	ctx->enemy = malloc(sizeof(t_enemy));
+	if (!ctx->enemy)
+		clean_exit(ctx, NULL, errno);
+	ctx->enemy->vision = malloc(sizeof(t_vision));
+	if (!ctx->enemy->vision)
+		clean_exit(ctx, NULL, errno);
+	ctx->enemy->vision->r = 20;
+	ctx->enemy->pos.x = 0;
+	ctx->enemy->pos.y = 0;
+	ctx->enemy->dir = IDLE;
 	ctx->enemy->speed = 1;
 	ctx->enemy->path = NULL;
 	ctx->enemy->ani_info.frame_index = 0;
 	ctx->enemy->ani_info.frame = 0;
 	ctx->enemy->ani_info.lt = 0;
-    init_enemy_pos(ctx);
+	init_enemy_pos(ctx);
 }
 
 static void	init_enemy_pos(t_ctx *ctx)
