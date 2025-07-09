@@ -6,7 +6,7 @@
 /*   By: zfarah <zfarah@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 15:00:25 by zfarah            #+#    #+#             */
-/*   Updated: 2025/07/09 15:07:34 by zfarah           ###   ########.fr       */
+/*   Updated: 2025/07/09 21:21:54 by zfarah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,10 @@
 
 void	load_enemy_idle(t_ctx *ctx)
 {
-	const char	*src[] = {"./textures/player/idle/1.png", "./textures/player/idle/2.png",
-		"./textures/player/idle/3.png", "./textures/player/idle/4.png", "./textures/player/idle/5.png",NULL};
+	const char	*src[] = {"./textures/player/idle/1.png",
+		"./textures/player/idle/2.png", "./textures/player/idle/3.png",
+		"./textures/player/idle/4.png", "./textures/player/idle/5.png",
+		NULL};
 	int			i;
 
 	ctx->enemy->idle = malloc(sizeof(t_asset) * 5);
@@ -36,12 +38,14 @@ void	load_enemy_idle(t_ctx *ctx)
 		mlx_resize_image(ctx->enemy->idle[i].img, 48, 48);
 	}
 	ft_printf("Loaded \n");
-}		
+}
 
 void	load_enemy_right(t_ctx *ctx)
 {
-	const char	*src[] = {"./textures/player/right/1.png", "./textures/player/right/2.png",
-		"./textures/player/right/3.png", "./textures/player/right/4.png", "./textures/player/right/5.png",NULL};
+	const char	*src[] = {"./textures/player/right/1.png",
+		"./textures/player/right/2.png", "./textures/player/right/3.png",
+		"./textures/player/right/4.png", "./textures/player/right/5.png",
+		NULL};
 	int			i;
 
 	ctx->enemy->right = malloc(sizeof(t_asset) * 5);
@@ -62,12 +66,14 @@ void	load_enemy_right(t_ctx *ctx)
 		mlx_resize_image(ctx->enemy->right[i].img, 48, 48);
 	}
 	ft_printf("Loaded \n");
-}		
+}
 
 void	load_enemy_left(t_ctx *ctx)
 {
-	const char	*src[] = {"./textures/player/left/1.png", "./textures/player/left/2.png",
-		"./textures/player/left/3.png", "./textures/player/left/4.png", "./textures/player/left/5.png",NULL};
+	const char	*src[] = {"./textures/player/left/1.png",
+		"./textures/player/left/2.png", "./textures/player/left/3.png",
+		"./textures/player/left/4.png", "./textures/player/left/5.png",
+		NULL};
 	int			i;
 
 	ctx->enemy->left = malloc(sizeof(t_asset) * 5);
@@ -92,8 +98,10 @@ void	load_enemy_left(t_ctx *ctx)
 
 void	load_enemy_up(t_ctx *ctx)
 {
-	const char	*src[] = {"./textures/player/up/1.png", "./textures/player/up/2.png",
-		"./textures/player/up/3.png", "./textures/player/up/4.png", "./textures/player/up/5.png",NULL};
+	const char	*src[] = {"./textures/player/up/1.png",
+		"./textures/player/up/2.png", "./textures/player/up/3.png",
+		"./textures/player/up/4.png", "./textures/player/up/5.png",
+		NULL};
 	int			i;
 
 	ctx->enemy->up = malloc(sizeof(t_asset) * 5);
@@ -118,8 +126,10 @@ void	load_enemy_up(t_ctx *ctx)
 
 void	load_enemy_down(t_ctx *ctx)
 {
-	const char	*src[] = {"./textures/player/down/1.png", "./textures/player/down/2.png",
-		"./textures/player/down/3.png", "./textures/player/down/4.png", "./textures/player/down/5.png",NULL};
+	const char	*src[] = {"./textures/player/down/1.png",
+		"./textures/player/down/2.png", "./textures/player/down/3.png",
+		"./textures/player/down/4.png", "./textures/player/down/5.png",
+		NULL};
 	int			i;
 
 	ctx->enemy->down = malloc(sizeof(t_asset) * 5);
