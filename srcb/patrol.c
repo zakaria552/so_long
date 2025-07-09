@@ -6,7 +6,7 @@
 /*   By: zfarah <zfarah@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 13:54:23 by zfarah            #+#    #+#             */
-/*   Updated: 2025/07/09 13:54:24 by zfarah           ###   ########.fr       */
+/*   Updated: 2025/07/09 19:46:50 by zfarah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,7 @@ static bool	reached_tile(t_vec2 *pos, int x, int y, const int off[2][2]);
 
 void	patrol(t_ctx *ctx)
 {
-	t_list *path;
-	
-	path = ctx->enemy->path;
-	if (!path)
+	if (!ctx->enemy->path)
 		set_path_to_patrol(ctx);
     change_dir(ctx, ctx->enemy->path, ctx->enemy);
     move_enemy_hook(ctx);
