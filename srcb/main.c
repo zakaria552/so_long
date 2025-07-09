@@ -32,6 +32,7 @@ int	main(int argc, char **args)
 	draw_map(ctx);
 	mlx_loop_hook(ctx->mlx, patrol, ctx);
 	mlx_loop_hook(ctx->mlx, animate_player, ctx);
+	mlx_loop_hook(ctx->mlx, animate_enemy, ctx);
 	mlx_loop_hook(ctx->mlx, move_hook, ctx);
 	mlx_loop_hook(ctx->mlx, hooks, ctx);
 	mlx_loop_hook(ctx->mlx, update_vision, ctx);
