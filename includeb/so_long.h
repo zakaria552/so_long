@@ -6,7 +6,7 @@
 /*   By: zfarah <zfarah@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 17:33:42 by zfarah            #+#    #+#             */
-/*   Updated: 2025/07/07 17:19:50 by zfarah           ###   ########.fr       */
+/*   Updated: 2025/07/09 13:26:21 by zfarah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ void	update_vision(t_ctx *ctx);
 void	init_vision(t_ctx *ctx);
 
 // collision
-bool	check_collision(t_ctx *ctx, char c, const int off[2][2]);
+bool	check_collision(t_ctx *ctx, char c, const int off[2][2], t_vec2 *pos);
 t_vec2	get_collided_tile(t_map *map, t_vec2 *pos, char c);
 
 // collect
@@ -124,5 +124,13 @@ void    initialize_enemy(t_ctx *ctx);
 int random_num(int lower, int upper);
 void	show_path(t_list *p);
 
+// patrol
+void	patrol(t_ctx *ctx);
+
+// patrol path
+void    set_path_to_patrol(t_ctx *ctx);
+
+// move enemy
+void	move_enemy_hook(t_ctx *ctx);
 
 #endif
