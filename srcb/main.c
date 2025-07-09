@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: zfarah <zfarah@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/01 14:47:26 by zfarah            #+#    #+#             */
-/*   Updated: 2025/07/05 22:43:56farah           ###   ########.fr       */
+/*   Created: 2025/07/09 21:24:44 by zfarah            #+#    #+#             */
+/*   Updated: 2025/07/09 21:24:47 by zfarah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ int	main(int argc, char **args)
 	mlx_loop_hook(ctx->mlx, update_vision, ctx);
 	mlx_key_hook(ctx->mlx, key_hooks, ctx);
 	mlx_loop(ctx->mlx);
-	// ft_printf("Freeing....");
 	clean_up(ctx);
 	return (0);
 }
