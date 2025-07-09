@@ -6,7 +6,7 @@
 /*   By: zfarah <zfarah@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 17:35:47 by zfarah            #+#    #+#             */
-/*   Updated: 2025/07/01 17:40:53 by zfarah           ###   ########.fr       */
+/*   Updated: 2025/07/01 17:40:53by zfarah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,6 @@ static void	endgame(t_ctx *ctx)
 		ctx->map->tiles->doors[1].img->instances[0].enabled = true;
 		ctx->map->tiles->doors[0].img->instances[0].enabled = false;
 	}
-	if (check_collision(ctx, 'E', offsets))
+	if (check_collision(ctx, 'E', offsets, ctx->player->pos))
 		ctx->state->exited = true;
 }

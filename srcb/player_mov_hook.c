@@ -97,7 +97,7 @@ void	move_player(t_ctx *ctx, int nx, int ny, t_dir dir)
 	ctx->player->dir = dir;
 	ctx->player->pos->x = nx;
 	ctx->player->pos->y = ny;
-	if (check_collision(ctx, '1', offsets))
+	if (check_collision(ctx, '1', offsets, ctx->player->pos))
 	{
 		ctx->player->pos->x = img->img->instances[0].x;
 		ctx->player->pos->y = img->img->instances[0].y;

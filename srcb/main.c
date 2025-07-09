@@ -46,8 +46,8 @@ void	animate(t_ctx *ctx)
 	t_asset	*img = get_img_from_dir(ctx, ctx->player->dir);
 	double dt = mlx_get_time() - info->lt;
 	i = -1;
-	printf("lt: %.2f, dt: %.2f, fi: %d\n", info->lt, dt, info->frame_index);
-	ft_printf("Dir: %s", dir(ctx->player->dir));
+	//printf("lt: %.2f, dt: %.2f, fi: %d\n", info->lt, dt, info->frame_index);
+	//ft_printf("Dir: %s", dir(ctx->player->dir));
 	if ((dt > 0.07 && ctx->player->dir != IDLE) || dt > 0.25)
 	{
 		ft_printf("Moving to next frame....\n");
@@ -67,15 +67,7 @@ void	animate(t_ctx *ctx)
 	}
 
 }
-void	patrol(t_ctx *ctx)
-{
-	t_list *path;
-	
-	path = ctx->enemy->path;
-	if (!path)
-		//return set_path_to_patrol(ctx);
-	//set_dir(ctx path);	
-}
+
 int	main(int argc, char **args)
 {
 	t_ctx	*ctx;
@@ -93,7 +85,7 @@ int	main(int argc, char **args)
 		clean_exit(ctx, NULL, errno);
 	load_textures(ctx);
 	draw_map(ctx);
-	//mlx_loop_hook(ctx->mlx, patrol, ctx);
+	mlx_loop_hook(ctx->mlx, patrol, ctx);
 	mlx_loop_hook(ctx->mlx, animate, ctx);
 	mlx_loop_hook(ctx->mlx, move_hook, ctx);
 	mlx_loop_hook(ctx->mlx, hooks, ctx);
