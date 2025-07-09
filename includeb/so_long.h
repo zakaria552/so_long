@@ -6,7 +6,7 @@
 /*   By: zfarah <zfarah@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 17:33:42 by zfarah            #+#    #+#             */
-/*   Updated: 2025/07/09 19:53:46 by zfarah           ###   ########.fr       */
+/*   Updated: 2025/07/09 20:16:14 by zfarah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,6 +120,7 @@ mlx_image_t *new_img(t_ctx *ctx, uint32_t w, uint32_t h);
 
 // animate
 void	animate_player(t_ctx *ctx);
+void	animate_enemy(t_ctx *ctx);
 
 // enemy
 void    initialize_enemy(t_ctx *ctx);
