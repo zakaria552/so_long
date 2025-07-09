@@ -6,47 +6,55 @@
 /*   By: zfarah <zfarah@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 19:19:39 by zfarah            #+#    #+#             */
-/*   Updated: 2025/07/09 20:15:42 by zfarah           ###   ########.fr       */
+/*   Updated: 2025/07/09 21:10:44 by zfarah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_types.h"
 
-static disable_images(t_asset *sprites[5], t_dir dir, int i);
-static void	animate(t_asset *sprites[5], t_asset *img, t_animation_info *info, t_dir dir);
-static char *dir(t_dir dir);
+static void	disable_images(t_asset *sprites[5], t_dir dir, int i);
+static void	animate(t_asset *sprites[5], t_asset *img, t_animation_info *info,
+				t_dir dir);
+static char	*dir(t_dir dir);
 
 void	animate_player(t_ctx *ctx)
 {
-	const t_asset	*img = ctx->player->sprites[ctx->player->dir];
-	t_animation_info *info = ctx->player->ani_info;
+	const t_asset		*img = ctx->player->sprites[ctx->player->dir];
+	t_animation_info	*info;
+
+	info = ctx->player->ani_info;
 	animate(ctx->player->sprites, img, info, ctx->player->dir);
 }
+
 void	animate_enemy(t_ctx *ctx)
 {
-	const t_asset	*img = ctx->enemy->sprites[ctx->enemy->dir];
-	t_animation_info *info = &(ctx->enemy->ani_info);
+	const t_asset		*img = ctx->enemy->sprites[ctx->enemy->dir];
+	t_animation_info	*info;
+
+	info = &(ctx->enemy->ani_info);
 	animate(ctx->enemy->sprites, img, info, ctx->enemy->dir);
 }
 
-static disable_images(t_asset *sprites[5], t_dir dir, int i)
+static void	disable_images(t_asset *sprites[5], t_dir dir, int i)
 {
-	int j;
+	int	j;
 
 	j = -1;
 	while (++j < 5)
 	{
 		if (dir != j)
-			sprites[j][i].img->enabled = false; 
+			sprites[j][i].img->enabled = false;
 	}
 }
 
-static void	animate(t_asset *sprites[5], t_asset *img, t_animation_info *info, t_dir dir)
+static void	animate(t_asset *sprites[5], t_asset *img, t_animation_info *info,
+		t_dir dir)
 {
-	int i;
-	double dt = mlx_get_time() - info->lt;
-	i = -1;
+	int		i;
+	double	dt;
 
+	dt = mlx_get_time() - info->lt;
+	i = -1;
 	if ((dt > 0.07 && dir != IDLE) || dt > 0.25)
 	{
 		while (++i < 5)
@@ -63,17 +71,16 @@ static void	animate(t_asset *sprites[5], t_asset *img, t_animation_info *info, t
 	}
 }
 
-
-static char *dir(t_dir dir)
+static char	*dir(t_dir dir)
 {
 	if (dir == IDLE)
-		return "idle";
+		return ("idle");
 	else if (dir == RIGHT)
-		return "right";
+		return ("right");
 	else if (dir == LEFT)
-		return "left";
+		return ("left");
 	else if (dir == UP)
-		return "up";
+		return ("up");
 	else if (dir == DOWN)
-		return "down";
+		return ("down");
 }
