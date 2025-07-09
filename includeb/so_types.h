@@ -6,7 +6,7 @@
 /*   By: zfarah <zfarah@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 17:34:14 by zfarah            #+#    #+#             */
-/*   Updated: 2025/07/05 22:35:30 by zfarah           ###   ########.fr       */
+/*   Updated: 2025/07/07 14:16:37 by zfarah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,24 @@ typedef struct s_animation_info
 	int frame_index;
 	double	lt;
 	int frame;
-} t_animation_info;
+}	t_animation_info;
+
+typedef struct s_asset
+{
+	mlx_texture_t	*txt;
+	mlx_image_t		*img;
+}					t_asset;
+
+typedef struct s_enemy
+{
+	t_vec2		pos;
+	bool		moving;
+	t_dir		dir;
+	t_vision	*vision;
+	int			speed;
+	t_asset		*idle;
+	t_list		*path;
+} t_enemy;
 
 typedef struct s_player
 {
@@ -66,11 +83,6 @@ typedef struct s_textures
 	mlx_texture_t	*empty_tile;
 }					t_textures;
 
-typedef struct s_asset
-{
-	mlx_texture_t	*txt;
-	mlx_image_t		*img;
-}					t_asset;
 
 typedef struct s_tiles
 {
@@ -112,10 +124,9 @@ typedef struct s_ctx
 {
 	mlx_t			*mlx;
 	t_player		*player;
-	t_player		*enemies;
+	t_enemy			*enemy;
 	t_map			*map;
 	t_game_state	*state;
-
 }					t_ctx;
 
 #endif

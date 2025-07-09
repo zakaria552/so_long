@@ -6,7 +6,7 @@
 /*   By: zfarah <zfarah@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 17:33:42 by zfarah            #+#    #+#             */
-/*   Updated: 2025/07/05 21:57:22 by zfarah           ###   ########.fr       */
+/*   Updated: 2025/07/07 17:19:50 by zfarah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,11 +47,23 @@ char	*read_from_file(char *name);
 void	load_textures(t_ctx *ctx);
 void	init_assets(t_asset *asset, int size);
 
-// textures utils
+// map textures
 void	load_wall_textures(t_ctx *ctx, t_tiles *tiles);
 void	load_floor_textures(t_ctx *ctx, t_tiles *tiles);
 void	load_doors_textures(t_ctx *ctx, t_tiles *tiles);
 void	load_orbs_textures(t_ctx *ctx, t_tiles *tiles);
+
+// player textures
+void	load_player_textures(t_ctx *ctx, t_tiles *tiles);
+void	load_right(t_ctx *ctx, t_tiles *tiles);
+void	load_idle(t_ctx *ctx, t_tiles *tiles);
+void	load_right(t_ctx *ctx, t_tiles *tiles);
+void	load_left(t_ctx *ctx, t_tiles *tiles);
+void	load_up(t_ctx *ctx, t_tiles *tiles);
+void	load_down(t_ctx *ctx, t_tiles *tiles);
+
+// enemy textures
+void	load_enemy(t_ctx *ctx);
 
 // draw
 void	draw_map(t_ctx *ctx);
@@ -104,4 +116,13 @@ mlx_image_t *new_img(t_ctx *ctx, uint32_t w, uint32_t h);
 // animate
 void	animate(t_ctx *ctx);
 t_asset *get_img_from_dir(t_ctx *ctx, t_dir dir);
+
+// enemy
+void    initialize_enemy(t_ctx *ctx);
+
+// random
+int random_num(int lower, int upper);
+void	show_path(t_list *p);
+
+
 #endif

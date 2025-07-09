@@ -1,19 +1,20 @@
 CC = cc
 CFLAGS = -g -Wall
-SRC = ./src/
+SRC = ./srcb/
 OBJ_DIR = ./obj/
 CFILES = main.c map_validator.c draw.c valid_path.c ctx_init.c \
 		valid_path_utils.c player.c clean_up.c collision.c \
  		vision.c collect.c player_mov_hook.c parser.c io_utils.c \
- 		errors.c textures.c textures_utils.c path_finder.c clean_up_utils.c \
-		map_validator_utils.c hooks.c mlx_safe_funcs.c
+ 		errors.c textures.c map_textures.c path_finder.c clean_up_utils.c \
+		map_validator_utils.c hooks.c mlx_safe_funcs.c enemy.c player_textures.c \
+		player_textures_utils.c enemy_textures.c random.c patrol.c
 OBJ = $(addprefix $(OBJ_DIR),$(CFILES:.c=.o))
 NAME = so_long
 mlx = mlx_linux/libmlx.a
 libft_dir = libft
 libft = $(libft_dir)/libft.a
 MLX = ./MLX42/build/libmlx42.a
-HEADERS = -I ./include -I ./MLX42/include/MLX42 -I libft
+HEADERS = -I ./includeb -I ./MLX42/include/MLX42 -I libft
 
 all: $(NAME)
 

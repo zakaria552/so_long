@@ -6,7 +6,7 @@
 /*   By: zfarah <zfarah@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 14:50:24 by zfarah            #+#    #+#             */
-/*   Updated: 2025/07/01 18:34:45 by zfarah           ###   ########.fr       */
+/*   Updated: 2025/07/06 15:49:18 by zfarah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ bool	valid_char_set(char **map)
 		x = -1;
 		while (map[y][++x])
 		{
-			if (!ft_strchr("01CEP", map[y][x]))
+			if (!ft_strchr("01CEPX", map[y][x]))
 				return (false);
 			if (map[y][x] == 'P')
 				p++;

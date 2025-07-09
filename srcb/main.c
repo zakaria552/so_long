@@ -67,7 +67,15 @@ void	animate(t_ctx *ctx)
 	}
 
 }
-
+void	patrol(t_ctx *ctx)
+{
+	t_list *path;
+	
+	path = ctx->enemy->path;
+	if (!path)
+		//return set_path_to_patrol(ctx);
+	//set_dir(ctx path);	
+}
 int	main(int argc, char **args)
 {
 	t_ctx	*ctx;
@@ -77,6 +85,7 @@ int	main(int argc, char **args)
 		clean_exit(ctx, strerror(EINVAL), EINVAL);
 	ctx = ctx_init(args[1]);
 	initialize_player(ctx);
+	initialize_enemy(ctx);
 	if (!valid_path_exists(ctx->map, ctx->player))
 		clean_exit(ctx, strerror(errno), errno);
 	ctx->mlx = mlx_init(ctx->map->width, ctx->map->height, args[0], true);
@@ -84,6 +93,7 @@ int	main(int argc, char **args)
 		clean_exit(ctx, NULL, errno);
 	load_textures(ctx);
 	draw_map(ctx);
+	//mlx_loop_hook(ctx->mlx, patrol, ctx);
 	mlx_loop_hook(ctx->mlx, animate, ctx);
 	mlx_loop_hook(ctx->mlx, move_hook, ctx);
 	mlx_loop_hook(ctx->mlx, hooks, ctx);
