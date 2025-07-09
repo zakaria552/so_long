@@ -6,7 +6,7 @@
 /*   By: zfarah <zfarah@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 17:33:42 by zfarah            #+#    #+#             */
-/*   Updated: 2025/07/09 20:16:14 by zfarah           ###   ########.fr       */
+/*   Updated: 2025/07/09 21:14:27 by zfarah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ void	load_enemy_down(t_ctx *ctx);
 
 // draw
 void	draw_map(t_ctx *ctx);
+void	draw_enemy(t_ctx *ctx);
 
 // player
 void	move_hook(t_ctx *ctx);
