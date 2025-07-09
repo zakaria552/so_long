@@ -8,12 +8,12 @@ CFILES = main.c map_validator.c draw.c valid_path.c ctx_init.c \
  		errors.c textures.c map_textures.c path_finder.c clean_up_utils.c \
 		map_validator_utils.c hooks.c mlx_safe_funcs.c enemy.c player_textures.c \
 		player_textures_utils.c enemy_textures.c random.c patrol.c enemy_mov_hook.c \
-		patrol_path.c
+		patrol_path.c enemy_textures_utils.c animate.c
 OBJ = $(addprefix $(OBJ_DIR),$(CFILES:.c=.o))
 NAME = so_long
 mlx = mlx_linux/libmlx.a
 libft_dir = libft
-libft = $(libft_dir)/libft.a
+libft = $(libft_dir)/libft
 MLX = ./MLX42/build/libmlx42.a
 HEADERS = -I ./includeb -I ./MLX42/include/MLX42 -I libft
 
