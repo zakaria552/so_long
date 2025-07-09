@@ -6,7 +6,7 @@
 /*   By: zfarah <zfarah@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 17:33:42 by zfarah            #+#    #+#             */
-/*   Updated: 2025/07/09 13:26:21 by zfarah           ###   ########.fr       */
+/*   Updated: 2025/07/09 19:53:46 by zfarah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,12 @@ void	load_up(t_ctx *ctx, t_tiles *tiles);
 void	load_down(t_ctx *ctx, t_tiles *tiles);
 
 // enemy textures
-void	load_enemy(t_ctx *ctx);
+void	load_enemy_textures(t_ctx *ctx);
+void	load_enemy_idle(t_ctx *ctx);
+void	load_enemy_right(t_ctx *ctx);
+void	load_enemy_left(t_ctx *ctx);
+void	load_enemy_up(t_ctx *ctx);
+void	load_enemy_down(t_ctx *ctx);
 
 // draw
 void	draw_map(t_ctx *ctx);
@@ -114,8 +119,7 @@ void	img_to_window(t_ctx *ctx, mlx_image_t *img, int32_t x, int32_t y);
 mlx_image_t *new_img(t_ctx *ctx, uint32_t w, uint32_t h);
 
 // animate
-void	animate(t_ctx *ctx);
-t_asset *get_img_from_dir(t_ctx *ctx, t_dir dir);
+void	animate_player(t_ctx *ctx);
 
 // enemy
 void    initialize_enemy(t_ctx *ctx);
