@@ -64,6 +64,7 @@ typedef struct s_enemy
 	t_asset		*down;
 	t_list		*path;
 	t_animation_info ani_info;
+	t_asset 	*sprites[5];
 } t_enemy;
 
 typedef struct s_player
