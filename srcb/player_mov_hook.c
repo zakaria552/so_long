@@ -5,15 +5,15 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: zfarah <zfarah@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/01 15:46:42 by zfarah            #+#    #+#             */
-/*   Updated: 2025/07/05 15:15:30y zfarah           ###   ########.fr       */
+/*   Created: 2025/07/09 21:33:44 by zfarah            #+#    #+#             */
+/*   Updated: 2025/07/09 21:33:48 by zfarah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
 static void	move_player(t_ctx *ctx, int nx, int ny, t_dir dir);
-static void update_pos(t_asset *sprites[5], int nx, int ny);
+static void	update_pos(t_asset *sprites[5], int nx, int ny);
 
 void	move_hook(t_ctx *ctx)
 {
@@ -43,10 +43,11 @@ void	move_hook(t_ctx *ctx)
 		}
 	}
 }
-static void update_pos(t_asset *sprites[5], int nx, int ny)
+
+static void	update_pos(t_asset *sprites[5], int nx, int ny)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = -1;
 	while (++i < 5)
@@ -63,10 +64,11 @@ static void update_pos(t_asset *sprites[5], int nx, int ny)
 static void	move_player(t_ctx *ctx, int nx, int ny, t_dir dir)
 {
 	static int	move_count;
-	t_asset	*img = ctx->player->sprites[dir];
+	t_asset		*img;
 	const int	offsets[2][2] = {{10, 10}, {0, 36}};
 	const int	frame_index = ctx->player->ani_info->frame;
 
+	img = ctx->player->sprites[dir];
 	if (dir != ctx->player->dir)
 	{
 		ctx->player->ani_info->frame = 0;
@@ -83,7 +85,6 @@ static void	move_player(t_ctx *ctx, int nx, int ny, t_dir dir)
 		ctx->player->pos->y = img->img->instances[0].y;
 		return ;
 	}
-	
 	ft_printf("Move count: %d\n", ++move_count);
 	update_pos(ctx->player->sprites, nx, ny);
 	return ;
