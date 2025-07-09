@@ -6,7 +6,7 @@
 /*   By: zfarah <zfarah@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 19:19:39 by zfarah            #+#    #+#             */
-/*   Updated: 2025/07/09 19:33:35 by zfarah           ###   ########.fr       */
+/*   Updated: 2025/07/09 20:15:42 by zfarah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,12 @@ void	animate_player(t_ctx *ctx)
 	const t_asset	*img = ctx->player->sprites[ctx->player->dir];
 	t_animation_info *info = ctx->player->ani_info;
 	animate(ctx->player->sprites, img, info, ctx->player->dir);
+}
+void	animate_enemy(t_ctx *ctx)
+{
+	const t_asset	*img = ctx->enemy->sprites[ctx->enemy->dir];
+	t_animation_info *info = &(ctx->enemy->ani_info);
+	animate(ctx->enemy->sprites, img, info, ctx->enemy->dir);
 }
 
 static disable_images(t_asset *sprites[5], t_dir dir, int i)
