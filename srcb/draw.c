@@ -6,18 +6,16 @@
 /*   By: zfarah <zfarah@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 18:19:52 by zfarah            #+#    #+#             */
-/*   Updated: 2025/07/09 15:59:41 by zfarah           ###   ########.fr       */
+/*   Updated: 2025/07/09 21:16:33 by zfarah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-#include <math.h>
 
 static void	draw_player(t_ctx *ctx);
 static void	draw_exit(t_ctx *ctx);
 static void	draw_map_borders(t_ctx *ctx, t_asset *walls, int size);
 static void	draw_map_grid(t_ctx *ctx, t_map *map);
-void	draw_enemy(t_ctx *ctx);
 
 void	draw_map(t_ctx *ctx)
 {
@@ -34,27 +32,7 @@ void	draw_map(t_ctx *ctx)
 	draw_enemy(ctx);
 	draw_player(ctx);
 }
-void	draw_enemy(t_ctx *ctx)
-{
-	const int		tile_size = ctx->map->size;
-	t_vec2	*pos;
-	int i;
 
-	i = -1;
-	pos = &ctx->enemy->pos;
-	pos->x *= ctx->map->size;
-	pos->y *= ctx->map->size;
-	ctx->player->vision->img = new_img(ctx, ctx->map->width, ctx->map->height);
-	img_to_window(ctx, ctx->player->vision->img, 0, 0);
-	while (++i < 5)
-	{
-		img_to_window(ctx, ctx->enemy->idle[i].img, pos->x, pos->y);
-		img_to_window(ctx, ctx->enemy->right[i].img, pos->x, pos->y);
-		img_to_window(ctx, ctx->enemy->left[i].img, pos->x, pos->y);
-		img_to_window(ctx, ctx->enemy->up[i].img, pos->x, pos->y);
-		img_to_window(ctx, ctx->enemy->down[i].img, pos->x, pos->y);
-	}
-}
 static void	draw_map_borders(t_ctx *ctx, t_asset *walls, int size)
 {
 	int	x;
@@ -116,7 +94,8 @@ static void	draw_player(t_ctx *ctx)
 	t_tiles	*tiles;
 	int		tile_size;
 	t_vec2	*pos;
-	int i;
+	int		i;
+
 	i = -1;
 	tiles = ctx->map->tiles;
 	tile_size = ctx->map->size;
@@ -144,10 +123,10 @@ static void	draw_exit(t_ctx *ctx)
 	tiles = ctx->map->tiles;
 	tile_size = ctx->map->size;
 	exit = ctx->map->exit;
-	img_to_window(ctx, tiles->doors[1].img, exit->x * ctx->map->size,
-		exit->y * ctx->map->size);
-	img_to_window(ctx, tiles->doors[0].img, exit->x * ctx->map->size,
-		exit->y * ctx->map->size);
+	img_to_window(ctx, tiles->doors[1].img, exit->x * ctx->map->size, exit->y
+		* ctx->map->size);
+	img_to_window(ctx, tiles->doors[0].img, exit->x * ctx->map->size, exit->y
+		* ctx->map->size);
 	if (tiles->doors[0].img < 0 || tiles->doors[1].img < 0)
 		clean_exit(ctx, NULL, errno);
 	tiles->doors[1].img->instances[0].enabled = false;
