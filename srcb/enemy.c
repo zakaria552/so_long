@@ -13,8 +13,11 @@ void    initialize_enemy(t_ctx *ctx)
     ctx->enemy->pos.x = 0;
     ctx->enemy->pos.y = 0;
     ctx->enemy->dir = IDLE;
-	ctx->enemy->speed = 3;
+	ctx->enemy->speed = 1;
 	ctx->enemy->path = NULL;
+	ctx->enemy->ani_info.frame_index = 0;
+	ctx->enemy->ani_info.frame = 0;
+	ctx->enemy->ani_info.lt = 0;
     init_enemy_pos(ctx);
 }
 
