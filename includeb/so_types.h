@@ -70,6 +70,7 @@ typedef struct s_enemy
 typedef struct s_player
 {
 	t_vec2			*pos;
+	int				steps;
 	int				orbs;
 	int				speed;
 	t_dir			prev_dir;
@@ -128,6 +129,19 @@ typedef struct s_game_state
 	bool			exited;
 }					t_game_state;
 
+typedef struct s_ui_text
+{
+	t_asset asset;
+	t_vec2 pos;
+	char *str;
+} t_ui_text;
+
+typedef struct s_ui
+{
+	t_ui_text steps;
+	t_ui_text collected;
+} t_ui;
+
 typedef struct s_ctx
 {
 	mlx_t			*mlx;
@@ -135,6 +149,7 @@ typedef struct s_ctx
 	t_enemy			*enemy;
 	t_map			*map;
 	t_game_state	*state;
+	t_ui			ui;
 }					t_ctx;
 
 #endif
