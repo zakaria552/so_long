@@ -6,7 +6,7 @@
 /*   By: zfarah <zfarah@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 21:23:53 by zfarah            #+#    #+#             */
-/*   Updated: 2025/07/10 17:45:57 by zfarah           ###   ########.fr       */
+/*   Updated: 2025/07/10 19:12:21 by zfarah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,14 @@ void	key_hooks(mlx_key_data_t keydata, t_ctx *ctx)
 static void	endgame(t_ctx *ctx)
 {
 	const offsets[2][2] = {{40, 40}, {40, 40}};
+	const offsets2[2][2] = {{15, 15}, {10, 10}};
 	if (ctx->state->exited)
 		mlx_close_window(ctx->mlx);
+	if (player_collision(ctx->player->pos, &ctx->enemy->pos, offsets2))
+	{
+		ft_printf("You've been spotted\n");
+		mlx_close_window(ctx->mlx);
+	}
 	if (!ctx->state->ready_to_exit)
 		return ;
 	if (!ctx->map->tiles->doors[1].img->instances[0].enabled)
