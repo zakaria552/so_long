@@ -6,7 +6,7 @@
 /*   By: zfarah <zfarah@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 15:48:01 by zfarah            #+#    #+#             */
-/*   Updated: 2025/07/05 21:24:23 by zfarah           ###   ########.fr       */
+/*   Updated: 2025/07/10 17:46:55 by zfarah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ void	initialize_player(t_ctx *ctx)
 	ctx->player->ani_info->lt = 0;
 	ctx->player->dir = IDLE;
 	ctx->player->prev_dir = IDLE;
+	ctx->player->steps = 0;
 	init_player_pos(ctx);
 }
 
