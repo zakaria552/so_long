@@ -6,7 +6,7 @@
 /*   By: zfarah <zfarah@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 18:19:52 by zfarah            #+#    #+#             */
-/*   Updated: 2025/07/09 21:16:33 by zfarah           ###   ########.fr       */
+/*   Updated: 2025/07/10 15:38:16by zfarah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ void	draw_map(t_ctx *ctx)
 	draw_exit(ctx);
 	draw_enemy(ctx);
 	draw_player(ctx);
+	draw_ui(ctx);
 }
 
 static void	draw_map_borders(t_ctx *ctx, t_asset *walls, int size)
