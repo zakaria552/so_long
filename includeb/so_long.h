@@ -6,7 +6,7 @@
 /*   By: zfarah <zfarah@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 17:33:42 by zfarah            #+#    #+#             */
-/*   Updated: 2025/07/09 22:14:35 by zfarah           ###   ########.fr       */
+/*   Updated: 2025/07/10 19:01:12 by zfarah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,7 @@ void	init_vision(t_ctx *ctx);
 // collision
 bool	check_collision(t_ctx *ctx, char c, const int off[2][2], t_vec2 *pos);
 t_vec2	get_collided_tile(t_map *map, t_vec2 *pos, char c);
+bool	player_collision(t_vec2 *pos, t_vec2 *pos2, int off[2][2]);
 
 // collect
 void	collect(t_ctx *ctx);
