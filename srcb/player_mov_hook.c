@@ -6,7 +6,7 @@
 /*   By: zfarah <zfarah@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 21:33:44 by zfarah            #+#    #+#             */
-/*   Updated: 2025/07/09 21:33:48 by zfarah           ###   ########.fr       */
+/*   Updated: 2025/07/10 17:51:32 by zfarah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,6 @@ static void	update_pos(t_asset *sprites[5], int nx, int ny)
 
 static void	move_player(t_ctx *ctx, int nx, int ny, t_dir dir)
 {
-	static int	move_count;
 	t_asset		*img;
 	const int	offsets[2][2] = {{10, 10}, {0, 36}};
 	const int	frame_index = ctx->player->ani_info->frame;
@@ -85,7 +84,7 @@ static void	move_player(t_ctx *ctx, int nx, int ny, t_dir dir)
 		ctx->player->pos->y = img->img->instances[0].y;
 		return ;
 	}
-	ft_printf("Move count: %d\n", ++move_count);
+	ctx->player->steps++;
 	update_pos(ctx->player->sprites, nx, ny);
 	return ;
 }
