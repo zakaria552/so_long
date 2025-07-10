@@ -6,7 +6,7 @@
 /*   By: zfarah <zfarah@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 14:04:26 by zfarah            #+#    #+#             */
-/*   Updated: 2025/07/08 22:05:31 by zfarah           ###   ########.fr       */
+/*   Updated: 2025/07/10 19:14:37 by zfarah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,4 +75,13 @@ static void	init_vals(t_vec2 *tile, int *x, int *y)
 	tile->y = -1;
 	*x = -1;
 	*y = -1;
+}
+
+bool	player_collision(t_vec2 *pos, t_vec2 *pos2, int off[2][2])
+{
+	if ((pos->x + off[0][0]) < (pos2->x + 48) && (pos->x + 48
+			- off[0][0]) > pos2->x && (pos->y + off[1][1]) < (pos2->y + 48)
+		&& (pos->y + 48 - off[1][0]) > pos2->y)
+		return (true);
+	return (false);
 }
