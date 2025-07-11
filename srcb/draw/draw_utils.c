@@ -14,7 +14,6 @@
 
 void	draw_enemy(t_ctx *ctx)
 {
-	const int	tile_size = ctx->map->size;
 	t_vec2		*pos;
 	int			i;
 
@@ -46,9 +45,9 @@ void    draw_ui(t_ctx *ctx)
 	ctx->ui.steps.asset.img = mlx_put_string(ctx->mlx, ctx->ui.steps.str, 10, 4);
 	if (!ctx->ui.steps.asset.img)
 		clean_exit(ctx, NULL, errno);
-	//ctx->ui.collected.pos.x = 10 + 5;
+	// ctx->ui.collected.pos.x = 10 + 5;
 	// ctx->ui.collected.pos.y = 4;
-	//ctx->ui.collected.str = ft_strdup("Collected: 0");
+	// ctx->ui.collected.str = ft_strdup("Collected: 0");
     // ctx->ui.collected.asset.txt = NULL;
 	// if (!ctx->ui.collected.str)
 	// 	clean_exit(ctx, NULL, errno);

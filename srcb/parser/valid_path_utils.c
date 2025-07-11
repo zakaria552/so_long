@@ -6,7 +6,7 @@
 /*   By: zfarah <zfarah@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 15:50:49 by zfarah            #+#    #+#             */
-/*   Updated: 2025/07/07 17:19:28 by zfarah           ###   ########.fr       */
+/*   Updated: 2025/07/11 20:46:18 by zfarah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static bool	is_in_bound(int bounds[2], t_vec2 *adj);
 
-bool	is_valid_adj(t_list **q, t_vec2 *adj, int bounds[2], int **visited)
+bool	is_valid_adj(t_vec2 *adj, int bounds[2], int **visited)
 {
 	if (!is_in_bound(bounds, adj))
 		return (false);
@@ -58,7 +58,7 @@ int	**initialize_visited(int w, int h)
 	return (visited);
 }
 
-void	free_visited(int **visited, int w, int h)
+void	free_visited(int **visited, int h)
 {
 	int	x;
 	int	y;

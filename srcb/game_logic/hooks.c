@@ -6,7 +6,7 @@
 /*   By: zfarah <zfarah@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 21:23:53 by zfarah            #+#    #+#             */
-/*   Updated: 2025/07/10 21:26:47 by zfarah           ###   ########.fr       */
+/*   Updated: 2025/07/11 21:06:40 by zfarah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	hooks(t_ctx *ctx)
 {
 	collect(ctx);
 	endgame(ctx);
-	update_steps(ctx);
+	update_ui(ctx);
 }
 
 void	key_hooks(mlx_key_data_t keydata, t_ctx *ctx)
@@ -31,8 +31,8 @@ void	key_hooks(mlx_key_data_t keydata, t_ctx *ctx)
 
 static void	endgame(t_ctx *ctx)
 {
-	const offsets[2][2] = {{40, 40}, {40, 40}};
-	const offsets2[2][2] = {{15, 15}, {10, 10}};
+	const int offsets[2][2] = {{40, 40}, {40, 40}};
+	const int offsets2[2][2] = {{15, 15}, {10, 10}};
 	if (ctx->state->exited)
 		mlx_close_window(ctx->mlx);
 	if (player_collision(ctx->player->pos, &ctx->enemy->pos, offsets2))
@@ -58,7 +58,11 @@ static void	update_ui(t_ctx *ctx)
 
 static void	update_steps(t_ctx *ctx)
 {
-	const char *num_of_steps = ft_itoa(ctx->player->steps);
+	char *num_of_steps;
+
+	num_of_steps = ft_itoa(ctx->player->steps);
+	if (!num_of_steps)
+		clean_exit(ctx, NULL, errno);
 	free(ctx->ui.steps.str);
 	mlx_delete_image(ctx->mlx, ctx->ui.steps.asset.img);
 	ctx->ui.steps.str = ft_strjoin("steps: ", num_of_steps);

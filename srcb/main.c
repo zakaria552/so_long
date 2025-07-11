@@ -6,7 +6,7 @@
 /*   By: zfarah <zfarah@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 21:24:44 by zfarah            #+#    #+#             */
-/*   Updated: 2025/07/09 21:24:47 by zfarah           ###   ########.fr       */
+/*   Updated: 2025/07/11 21:11:16 by zfarah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,13 @@ int	main(int argc, char **args)
 		clean_exit(ctx, NULL, errno);
 	load_textures(ctx);
 	draw_map(ctx);
-	mlx_loop_hook(ctx->mlx, patrol, ctx);
-	mlx_loop_hook(ctx->mlx, animate_player, ctx);
-	mlx_loop_hook(ctx->mlx, animate_enemy, ctx);
-	mlx_loop_hook(ctx->mlx, move_hook, ctx);
-	mlx_loop_hook(ctx->mlx, hooks, ctx);
-	mlx_loop_hook(ctx->mlx, update_vision, ctx);
-	mlx_key_hook(ctx->mlx, key_hooks, ctx);
+	mlx_loop_hook(ctx->mlx, (void *) patrol, ctx);
+	mlx_loop_hook(ctx->mlx, (void *) animate_player, ctx);
+	mlx_loop_hook(ctx->mlx, (void *) animate_enemy, ctx);
+	mlx_loop_hook(ctx->mlx, (void *) move_hook, ctx);
+	mlx_loop_hook(ctx->mlx, (void *) hooks, ctx);
+	mlx_loop_hook(ctx->mlx, (void *) update_vision, ctx);
+	mlx_key_hook(ctx->mlx, (void *) key_hooks, ctx);
 	mlx_loop(ctx->mlx);
 	clean_up(ctx);
 	return (0);

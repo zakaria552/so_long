@@ -6,7 +6,7 @@
 /*   By: zfarah <zfarah@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 21:33:44 by zfarah            #+#    #+#             */
-/*   Updated: 2025/07/10 17:51:32 by zfarah           ###   ########.fr       */
+/*   Updated: 2025/07/11 21:07:07 by zfarah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,6 @@ static void	move_player(t_ctx *ctx, int nx, int ny, t_dir dir)
 {
 	t_asset		*img;
 	const int	offsets[2][2] = {{10, 10}, {0, 36}};
-	const int	frame_index = ctx->player->ani_info->frame;
 
 	img = ctx->player->sprites[dir];
 	if (dir != ctx->player->dir)
