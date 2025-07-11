@@ -6,7 +6,7 @@
 /*   By: zfarah <zfarah@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 13:59:58 by zfarah            #+#    #+#             */
-/*   Updated: 2025/07/01 18:57:52 by zfarah           ###   ########.fr       */
+/*   Updated: 2025/07/10 21:30:44 by zfarah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ void	free_player(t_ctx *ctx, t_player *player)
 			mlx_delete_image(ctx->mlx, player->vision->img);
 		free(player->vision);
 	}
+	if (player->ani_info)
+		free(player->ani_info);
 	free(player);
 }
 
@@ -80,8 +82,16 @@ void	free_tiles(mlx_t *mlx, t_tiles *tiles)
 		free_assets(mlx, tiles->floors, 4);
 	if (tiles->walls)
 		free_assets(mlx, tiles->walls, 2);
-	if (tiles->p_idle)
-		free_assets(mlx, tiles->p_idle, 1);
+	if (tiles->idle)
+		free_assets(mlx, tiles->idle, 5);
+	if (tiles->left)
+		free_assets(mlx, tiles->left, 5);
+	if (tiles->right)
+		free_assets(mlx, tiles->right, 5);
+	if (tiles->up)
+		free_assets(mlx, tiles->up, 5);
+	if (tiles->down)
+		free_assets(mlx, tiles->down, 5);
 	if (tiles->orbs)
 		free_assets(mlx, tiles->orbs, 1);
 	free(tiles);
