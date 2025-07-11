@@ -6,7 +6,7 @@
 /*   By: zfarah <zfarah@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 21:23:53 by zfarah            #+#    #+#             */
-/*   Updated: 2025/07/10 19:12:21 by zfarah           ###   ########.fr       */
+/*   Updated: 2025/07/10 21:26:47 by zfarah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,9 +58,11 @@ static void	update_ui(t_ctx *ctx)
 
 static void	update_steps(t_ctx *ctx)
 {
+	const char *num_of_steps = ft_itoa(ctx->player->steps);
 	free(ctx->ui.steps.str);
 	mlx_delete_image(ctx->mlx, ctx->ui.steps.asset.img);
-	ctx->ui.steps.str = ft_strjoin("steps: ", ft_itoa(ctx->player->steps));
+	ctx->ui.steps.str = ft_strjoin("steps: ", num_of_steps);
+	free(num_of_steps);
 	if (!ctx->ui.steps.str)
 		clean_exit(ctx, NULL, errno);
 	ctx->ui.steps.asset.img = mlx_put_string(ctx->mlx, ctx->ui.steps.str,
