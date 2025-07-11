@@ -6,7 +6,7 @@
 /*   By: zfarah <zfarah@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 14:47:26 by zfarah            #+#    #+#             */
-/*   Updated: 2025/07/01 17:41:22 by zfarah           ###   ########.fr       */
+/*   Updated: 2025/07/11 17:33:40 by zfarah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,10 @@ int	main(int argc, char **args)
 		clean_exit(ctx, NULL, errno);
 	load_textures(ctx);
 	draw_map(ctx);
-	mlx_loop_hook(ctx->mlx, move_hook, ctx);
-	mlx_loop_hook(ctx->mlx, hooks, ctx);
-	mlx_loop_hook(ctx->mlx, update_vision, ctx);
-	mlx_key_hook(ctx->mlx, key_hooks, ctx);
+	mlx_loop_hook(ctx->mlx, (void *) move_hook, ctx);
+	mlx_loop_hook(ctx->mlx, (void *) hooks, ctx);
+	mlx_loop_hook(ctx->mlx, (void *) update_vision, ctx);
+	mlx_key_hook(ctx->mlx, (void *) key_hooks, ctx);
 	mlx_loop(ctx->mlx);
 	ft_printf("Freeing....");
 	clean_up(ctx);

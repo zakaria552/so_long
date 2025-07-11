@@ -6,13 +6,13 @@
 /*   By: zfarah <zfarah@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 14:50:24 by zfarah            #+#    #+#             */
-/*   Updated: 2025/07/01 18:34:45 by zfarah           ###   ########.fr       */
+/*   Updated: 2025/07/11 17:41:22 by zfarah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static bool	init_char_set(int *e, int *c, int *p, int *y);
+static void init_char_set(int *e, int *c, int *p, int *y);
 
 bool	valid_char_set(char **map)
 {
@@ -41,7 +41,7 @@ bool	valid_char_set(char **map)
 	return (p == 1 && c > 0 && e == 1);
 }
 
-static bool	init_char_set(int *e, int *c, int *p, int *y)
+static	void init_char_set(int *e, int *c, int *p, int *y)
 {
 	*e = 0;
 	*p = 0;

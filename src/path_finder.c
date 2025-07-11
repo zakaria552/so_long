@@ -6,7 +6,7 @@
 /*   By: zfarah <zfarah@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 15:41:11 by zfarah            #+#    #+#             */
-/*   Updated: 2025/07/01 15:44:15 by zfarah           ###   ########.fr       */
+/*   Updated: 2025/07/11 17:45:51 by zfarah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ t_list	*dfs_target(t_map *map, int bounds[2], t_vec2 start, t_vec2 target)
 			break ;
 		enqueue_next_adj(&q, bounds, visited, map->grid);
 	}
-	free_visited(visited, bounds[0], bounds[1]);
+	free_visited(visited, bounds[1]);
 	return (q);
 }
 
@@ -59,7 +59,7 @@ static void	enqueue_next_adj(t_list **q, int bounds[2], int **visited,
 		adj->x = ((t_vec2 *)(*q)->content)->x + dir[i][0];
 		adj->y = ((t_vec2 *)(*q)->content)->y + dir[i][1];
 		ft_printf("Visiting adj: (%d, %d)\n", adj->x, adj->y);
-		if (grid[adj->y][adj->x] == '1' || !is_valid_adj(q, adj, bounds,
+		if (grid[adj->y][adj->x] == '1' || !is_valid_adj(adj, bounds,
 				visited))
 		{
 			if (i == 3)
