@@ -6,7 +6,7 @@
 /*   By: zfarah <zfarah@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 14:45:11 by zfarah            #+#    #+#             */
-/*   Updated: 2025/07/01 14:46:41 by zfarah           ###   ########.fr       */
+/*   Updated: 2025/07/12 14:34:13 by zfarah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,9 @@
 
 void	err_msg(char *msg, int errnum)
 {
-	ft_printf("Error: %s\n", msg);
+	ft_putstr_fd("Error\n", 2);
+	if (msg)
+		ft_putstr_fd(msg, 2);
 	if (errnum > 0)
 	{
 		errno = errnum;
