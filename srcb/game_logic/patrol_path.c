@@ -6,7 +6,7 @@
 /*   By: zfarah <zfarah@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 13:18:15 by zfarah            #+#    #+#             */
-/*   Updated: 2025/07/09 21:25:15 by zfarah           ###   ########.fr       */
+/*   Updated: 2025/07/12 21:20:12 by zfarah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,7 @@ void	set_path_to_patrol(t_ctx *ctx)
 		target.y = random_num(1, ctx->map->bounds[1] - 2);
 		if (ctx->map->grid[target.y][target.x] != '0')
 			continue ;
-		ctx->enemy->path = dfs_target(ctx->map, ctx->map->bounds, start,
-				target);
+		ctx->enemy->path = dfs_target(ctx, start, target);
 		if (!ctx->enemy->path)
 			continue ;
 		break ;

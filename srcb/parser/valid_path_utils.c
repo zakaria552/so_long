@@ -6,7 +6,7 @@
 /*   By: zfarah <zfarah@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 15:50:49 by zfarah            #+#    #+#             */
-/*   Updated: 2025/07/11 20:46:18 by zfarah           ###   ########.fr       */
+/*   Updated: 2025/07/12 21:25:05 by zfarah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,25 +21,6 @@ bool	is_valid_adj(t_vec2 *adj, int bounds[2], int **visited)
 	if (visited[adj->y][adj->x])
 		return (false);
 	return (true);
-}
-
-void	print_visit(int **visited, int w, int h)
-{
-	int	x;
-	int	y;
-
-	x = -1;
-	y = -1;
-	ft_printf("\n");
-	while (++y < h)
-	{
-		x = -1;
-		while (++x < w)
-		{
-			ft_printf("%d", visited[y][x]);
-		}
-		ft_printf("\n");
-	}
 }
 
 int	**initialize_visited(int w, int h)
@@ -78,15 +59,4 @@ static bool	is_in_bound(int bounds[2], t_vec2 *adj)
 		|| adj->y >= (bounds[1] - 1))
 		return (false);
 	return (true);
-}
-
-void	show_path(t_list *p)
-{
-	while (p)
-	{
-		ft_printf("(%d, %d)<---", ((t_vec2 *)p->content)->x,
-			((t_vec2 *)p->content)->y);
-		p = p->next;
-	}
-	ft_printf("\n");
 }

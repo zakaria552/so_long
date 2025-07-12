@@ -6,7 +6,7 @@
 /*   By: zfarah <zfarah@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 19:19:39 by zfarah            #+#    #+#             */
-/*   Updated: 2025/07/11 20:54:21 by zfarah           ###   ########.fr       */
+/*   Updated: 2025/07/12 21:32:37 by zfarah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ static void	animate(t_asset *sprites[5], t_asset *img, t_animation_info *info,
 
 void	animate_player(t_ctx *ctx)
 {
-	t_asset		*img; 
 	t_animation_info	*info;
+	t_asset				*img;
 
 	img = ctx->player->sprites[ctx->player->dir];
 	info = ctx->player->ani_info;
@@ -28,8 +28,8 @@ void	animate_player(t_ctx *ctx)
 
 void	animate_enemy(t_ctx *ctx)
 {
-	t_asset		*img; 
 	t_animation_info	*info;
+	t_asset				*img;
 
 	img = ctx->enemy->sprites[ctx->enemy->dir];
 	info = &(ctx->enemy->ani_info);
@@ -71,4 +71,3 @@ static void	animate(t_asset *sprites[5], t_asset *img, t_animation_info *info,
 		info->lt = mlx_get_time();
 	}
 }
-

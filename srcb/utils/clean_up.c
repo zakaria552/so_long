@@ -6,14 +6,14 @@
 /*   By: zfarah <zfarah@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 14:00:06 by zfarah            #+#    #+#             */
-/*   Updated: 2025/07/10 21:23:23 by zfarah           ###   ########.fr       */
+/*   Updated: 2025/07/12 21:28:03 by zfarah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
 static void	free_enemy(t_ctx *ctx, mlx_t *mlx, t_enemy *enemy);
-static void free_ui(t_ctx *ctx, t_ui *ui);
+static void	free_ui(t_ctx *ctx, t_ui *ui);
 
 void	clean_up(t_ctx *ctx)
 {
@@ -29,19 +29,21 @@ void	clean_up(t_ctx *ctx)
 		free(ctx->state);
 	free(ctx);
 }
-static void free_ui(t_ctx *ctx, t_ui *ui)
+
+static void	free_ui(t_ctx *ctx, t_ui *ui)
 {
 	if (ui->steps.asset.img)
 		mlx_delete_image(ctx->mlx, ui->steps.asset.img);
 	if (ui->steps.str)
 		free(ui->steps.str);
 }
+
 static void	free_enemy(t_ctx *ctx, mlx_t *mlx, t_enemy *enemy)
 {
 	if (!mlx)
 		return ;
 	if (!enemy)
-		return;
+		return ;
 	if (enemy->idle)
 		free_assets(mlx, enemy->idle, 5);
 	if (enemy->left)
