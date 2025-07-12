@@ -6,7 +6,7 @@
 /*   By: zfarah <zfarah@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 15:55:51 by zfarah            #+#    #+#             */
-/*   Updated: 2025/07/11 19:40:58 by zfarah           ###   ########.fr       */
+/*   Updated: 2025/07/12 15:15:40 by zfarah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	update_vision(t_ctx *ctx)
 
 void	init_vision(t_ctx *ctx)
 {
-	const mlx_image_t	*img = ctx->player->vision->img;
+	const mlx_image_t			*img = ctx->player->vision->img;
 	uint32_t					x;
 	uint32_t					y;
 

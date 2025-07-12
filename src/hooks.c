@@ -6,7 +6,7 @@
 /*   By: zfarah <zfarah@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 17:35:47 by zfarah            #+#    #+#             */
-/*   Updated: 2025/07/11 17:30:11 by zfarah           ###   ########.fr       */
+/*   Updated: 2025/07/12 15:13:53 by zfarah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@ void	key_hooks(mlx_key_data_t keydata, t_ctx *ctx)
 
 static void	endgame(t_ctx *ctx)
 {
-	const int offsets[2][2] = {{40, 40}, {40, 40}};
+	const int	offsets[2][2] = {{40, 40}, {40, 40}};
+
 	if (ctx->state->exited)
 		mlx_close_window(ctx->mlx);
 	if (!ctx->state->ready_to_exit)
