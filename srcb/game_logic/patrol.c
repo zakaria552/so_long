@@ -6,7 +6,7 @@
 /*   By: zfarah <zfarah@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 13:54:23 by zfarah            #+#    #+#             */
-/*   Updated: 2025/07/12 21:33:34 by zfarah           ###   ########.fr       */
+/*   Updated: 2025/07/12 23:29:35 by zfarah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,12 @@ static bool	reached_tile(t_vec2 *pos, int x, int y, const int off[2][2]);
 
 void	patrol(t_ctx *ctx)
 {
-	if (!ctx->enemy->path)
-		set_path_to_patrol(ctx);
+	ft_printf("dir: %d", ctx->enemy->dir);
+	stay_alert(ctx);
+	// return;
+	if(!ctx->enemy->path)
+		return;
+	// 	set_path_to_patrol(ctx);
 	change_dir(ctx, ctx->enemy->path, ctx->enemy);
 	move_enemy_hook(ctx);
 }
@@ -44,6 +48,8 @@ static void	set_dir(t_enemy *enemy)
 		enemy->dir = UP;
 	else if ((next_tile->y - 1) == (enemy->pos.y / 64))
 		enemy->dir = DOWN;
+	else 
+		enemy->dir = IDLE;
 }
 
 static void	rm_visted_tile(t_ctx *ctx)

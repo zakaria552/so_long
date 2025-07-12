@@ -6,13 +6,12 @@
 /*   By: zfarah <zfarah@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 15:53:46 by zfarah            #+#    #+#             */
-/*   Updated: 2025/07/12 21:25:33 by zfarah           ###   ########.fr       */
+/*   Updated: 2025/07/12 23:06:53 by zfarah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static t_vec2	target_vec(int x, int y);
 
 bool	valid_path_exists(t_ctx *ctx)
 {
@@ -40,7 +39,7 @@ bool	valid_path_exists(t_ctx *ctx)
 	return (true);
 }
 
-static t_vec2	target_vec(int x, int y)
+t_vec2	target_vec(int x, int y)
 {
 	t_vec2	target;
 

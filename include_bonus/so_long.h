@@ -6,7 +6,7 @@
 /*   By: zfarah <zfarah@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 17:33:42 by zfarah            #+#    #+#             */
-/*   Updated: 2025/07/12 22:21:32 by zfarah           ###   ########.fr       */
+/*   Updated: 2025/07/12 23:06:07 by zfarah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,6 +105,7 @@ void	free_assets(mlx_t *mlx, t_asset *asset, int size);
 
 // valid path
 bool	valid_path_exists(t_ctx *ctx);
+t_vec2	target_vec(int x, int y);;
 
 // valid path utils
 bool	is_valid_adj(t_vec2 *adj, int bounds[2], int **visited);
@@ -130,6 +131,7 @@ int random_num(int lower, int upper);
 
 // patrol
 void	patrol(t_ctx *ctx);
+void    stay_alert(t_ctx *ctx);
 
 // patrol path
 void    set_path_to_patrol(t_ctx *ctx);
