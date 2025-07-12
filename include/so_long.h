@@ -6,7 +6,7 @@
 /*   By: zfarah <zfarah@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 17:33:42 by zfarah            #+#    #+#             */
-/*   Updated: 2025/07/11 17:45:23 by zfarah           ###   ########.fr       */
+/*   Updated: 2025/07/12 15:07:52 by zfarah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,10 +88,8 @@ t_list	*dfs_target(t_map *map, int bounds[2], t_vec2 start, t_vec2 target);
 bool	valid_path_exists(t_map *map, t_player *player);
 
 // valid path utils
-void	print_visit(int **visited, int w, int h);
 bool	is_valid_adj(t_vec2 *adj, int bounds[2], int **visited);
 int		**initialize_visited(int w, int h);
-void	show_path(t_list *p);
 void	free_visited(int **visited, int h);
 
 // path finder
