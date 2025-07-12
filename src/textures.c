@@ -6,7 +6,7 @@
 /*   By: zfarah <zfarah@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 15:49:34 by zfarah            #+#    #+#             */
-/*   Updated: 2025/07/02 15:57:41 by zfarah           ###   ########.fr       */
+/*   Updated: 2025/07/12 14:50:06 by zfarah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ void	load_textures(t_ctx *ctx)
 	load_doors_textures(ctx, tiles);
 	load_player_textures(ctx, tiles);
 	load_orbs_textures(ctx, tiles);
-	ft_printf("Loaded textures\n");
 }
 
 void	init_assets(t_asset *asset, int size)
@@ -52,7 +51,6 @@ static void	load_player_textures(t_ctx *ctx, t_tiles *tiles)
 	tiles->p_idle = malloc(sizeof(t_asset) * 1);
 	if (!tiles->p_idle)
 		clean_exit(ctx, "Failed to load assets", errno);
-	ft_printf("Reached here");
 	i = -1;
 	init_assets(tiles->p_idle, 1);
 	while (src[++i])

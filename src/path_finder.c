@@ -6,7 +6,7 @@
 /*   By: zfarah <zfarah@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 15:41:11 by zfarah            #+#    #+#             */
-/*   Updated: 2025/07/11 17:45:51 by zfarah           ###   ########.fr       */
+/*   Updated: 2025/07/12 14:46:39 by zfarah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ t_list	*dfs_target(t_map *map, int bounds[2], t_vec2 start, t_vec2 target)
 		return (NULL);
 	q = ft_lstnew(begin);
 	visited[start.y][start.x] = 1;
-	print_visit(visited, bounds[0], bounds[1]);
 	while (ft_lstsize(q) > 0)
 	{
 		if (((t_vec2 *)q->content)->x == target.x
@@ -58,7 +57,6 @@ static void	enqueue_next_adj(t_list **q, int bounds[2], int **visited,
 	{
 		adj->x = ((t_vec2 *)(*q)->content)->x + dir[i][0];
 		adj->y = ((t_vec2 *)(*q)->content)->y + dir[i][1];
-		ft_printf("Visiting adj: (%d, %d)\n", adj->x, adj->y);
 		if (grid[adj->y][adj->x] == '1' || !is_valid_adj(adj, bounds,
 				visited))
 		{
@@ -77,7 +75,6 @@ static void	enqueue_next_adj(t_list **q, int bounds[2], int **visited,
 			free(adj);
 			return ;
 		}
-		ft_printf("Adding to the queue (%d, %d)\n", adj->x, adj->y);
 		ft_lstadd_front(q, to_q);
 		visited[adj->y][adj->x] = 1;
 		break ;
