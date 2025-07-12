@@ -6,7 +6,7 @@
 /*   By: zfarah <zfarah@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 17:33:42 by zfarah            #+#    #+#             */
-/*   Updated: 2025/07/11 21:01:47 by zfarah           ###   ########.fr       */
+/*   Updated: 2025/07/12 21:41:48 by zfarah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,18 +104,15 @@ void	free_player(t_ctx *ctx, t_player *player);
 void	free_assets(mlx_t *mlx, t_asset *asset, int size);
 
 // valid path
-t_list	*dfs_target(t_map *map, int bounds[2], t_vec2 start, t_vec2 target);
-bool	valid_path_exists(t_map *map, t_player *player);
+bool	valid_path_exists(t_ctx *ctx);
 
 // valid path utils
-void	print_visit(int **visited, int w, int h);
 bool	is_valid_adj(t_vec2 *adj, int bounds[2], int **visited);
 int		**initialize_visited(int w, int h);
-void	show_path(t_list *p);
 void	free_visited(int **visited, int h);
 
 // path finder
-t_list	*dfs_target(t_map *map, int bounds[2], t_vec2 start, t_vec2 target);
+t_list	*dfs_target(t_ctx *ctx, t_vec2 start, t_vec2 target);
 
 // safe mlx funcs
 void	img_to_window(t_ctx *ctx, mlx_image_t *img, int32_t x, int32_t y);
