@@ -6,7 +6,7 @@
 /*   By: zfarah <zfarah@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 14:45:11 by zfarah            #+#    #+#             */
-/*   Updated: 2025/07/12 14:34:13 by zfarah           ###   ########.fr       */
+/*   Updated: 2025/07/12 15:12:07 by zfarah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	clean_exit(t_ctx *ctx, char *msg, int err_code)
 	errno = err_code;
 	ft_putstr_fd("Error\n", 2);
 	if (msg)
-		ft_printf("%s\n", msg);
+		ft_putstr_fd(msg, 2);
 	clean_up(ctx);
 	exit(errno);
 }
