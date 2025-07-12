@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: zfarah <zfarah@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/09 21:12:35 by zfarah            #+#    #+#             */
-/*   Updated: 2025/07/10 15:29:23y zfarah           ###   ########.fr       */
+/*   Created: 2025/07/12 21:21:49 by zfarah            #+#    #+#             */
+/*   Updated: 2025/07/12 21:22:02 by zfarah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	draw_enemy(t_ctx *ctx)
 {
-	t_vec2		*pos;
-	int			i;
+	t_vec2	*pos;
+	int		i;
 
 	i = -1;
 	pos = &ctx->enemy->pos;
@@ -33,25 +33,25 @@ void	draw_enemy(t_ctx *ctx)
 	}
 }
 
-
-void    draw_ui(t_ctx *ctx)
+void	draw_ui(t_ctx *ctx)
 {
-    ctx->ui.steps.pos.x = 10;
-    ctx->ui.steps.pos.y = 4;
+	ctx->ui.steps.pos.x = 10;
+	ctx->ui.steps.pos.y = 4;
 	ctx->ui.steps.str = ft_strdup("steps: 0");
 	ctx->ui.steps.asset.txt = NULL;
 	if (!ctx->ui.steps.str)
 		clean_exit(ctx, NULL, errno);
-	ctx->ui.steps.asset.img = mlx_put_string(ctx->mlx, ctx->ui.steps.str, 10, 4);
+	ctx->ui.steps.asset.img = mlx_put_string(ctx->mlx, ctx->ui.steps.str, 10,
+			4);
 	if (!ctx->ui.steps.asset.img)
 		clean_exit(ctx, NULL, errno);
 	// ctx->ui.collected.pos.x = 10 + 5;
 	// ctx->ui.collected.pos.y = 4;
 	// ctx->ui.collected.str = ft_strdup("Collected: 0");
-    // ctx->ui.collected.asset.txt = NULL;
+	// ctx->ui.collected.asset.txt = NULL;
 	// if (!ctx->ui.collected.str)
 	// 	clean_exit(ctx, NULL, errno);
-	//ctx->ui.collected.asset.img = mlx_put_string(ctx->mlx, ctx->ui.collected.str, 100, 4);
+	// ctx->ui.collected.asset.img = mlx_put_string(ctx->mlx,ctx->ui.collected.str, 100, 4);
 	// if (!ctx->ui.collected.asset.img)
 	// 	clean_exit(ctx, NULL, errno);
 }
