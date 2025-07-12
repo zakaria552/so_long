@@ -6,7 +6,7 @@
 /*   By: zfarah <zfarah@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 17:33:42 by zfarah            #+#    #+#             */
-/*   Updated: 2025/07/12 21:41:48 by zfarah           ###   ########.fr       */
+/*   Updated: 2025/07/12 22:21:32 by zfarah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,7 +127,6 @@ void    initialize_enemy(t_ctx *ctx);
 
 // random
 int random_num(int lower, int upper);
-void	show_path(t_list *p);
 
 // patrol
 void	patrol(t_ctx *ctx);
