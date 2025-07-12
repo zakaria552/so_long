@@ -1,399 +1,55 @@
 {
-   SUPP1
-   Memcheck:Leak
-   match-leak-kinds: reachable
-   fun:_Znwm
-   obj:/usr/lib/x86_64-linux-gnu/libLLVM-15.so.1
-   fun:_ZN4llvm16TargetPassConfig7addPassEPKv
-   fun:_ZN4llvm16TargetPassConfig20addOptimizedRegAllocEv
-   fun:_ZN4llvm16TargetPassConfig16addMachinePassesEv
-   fun:_ZN4llvm17LLVMTargetMachine19addPassesToEmitFileERNS_6legacy15PassManagerBaseERNS_17raw_pwrite_streamEPS4_NS_15CodeGenFileTypeEbPNS_28MachineModuleInfoWrapperPassE
-   obj:/usr/lib/x86_64-linux-gnu/dri/radeonsi_dri.so
-   obj:/usr/lib/x86_64-linux-gnu/dri/radeonsi_dri.so
-   obj:/usr/lib/x86_64-linux-gnu/dri/radeonsi_dri.so
-   obj:/usr/lib/x86_64-linux-gnu/dri/radeonsi_dri.so
-   obj:/usr/lib/x86_64-linux-gnu/dri/radeonsi_dri.so
-   obj:/usr/lib/x86_64-linux-gnu/dri/radeonsi_dri.so
-}
-{
-   SUPP2
-   Memcheck:Leak
-   match-leak-kinds: reachable
-   fun:_Znwm
-   obj:/usr/lib/x86_64-linux-gnu/libLLVM-15.so.1
-   fun:_ZN4llvm16TargetPassConfig7addPassEPKv
-   fun:_ZN4llvm16TargetPassConfig20addOptimizedRegAllocEv
-   fun:_ZN4llvm16TargetPassConfig16addMachinePassesEv
-   fun:_ZN4llvm17LLVMTargetMachine19addPassesToEmitFileERNS_6legacy15PassManagerBaseERNS_17raw_pwrite_streamEPS4_NS_15CodeGenFileTypeEbPNS_28MachineModuleInfoWrapperPassE
-   obj:/usr/lib/x86_64-linux-gnu/dri/radeonsi_dri.so
-   obj:/usr/lib/x86_64-linux-gnu/dri/radeonsi_dri.so
-   obj:/usr/lib/x86_64-linux-gnu/dri/radeonsi_dri.so
-   obj:/usr/lib/x86_64-linux-gnu/dri/radeonsi_dri.so
-   obj:/usr/lib/x86_64-linux-gnu/dri/radeonsi_dri.so
-   fun:start_thread
-}
-{
-   SUPP3
-   Memcheck:Addr8
-   fun:strncmp
-   fun:is_dst
-   fun:_dl_dst_count
-   fun:expand_dynamic_string_token
-   fun:fillin_rpath.isra.0
-   fun:decompose_rpath
-   fun:cache_rpath
-   fun:cache_rpath
-   fun:_dl_map_object
-   fun:openaux
-   fun:_dl_catch_exception
-   fun:_dl_map_object_deps
-   fun:dl_open_worker_begin
-   fun:_dl_catch_exception
-   fun:dl_open_worker
-}
-{
-   SUPP4
-   Memcheck:Addr8
-   fun:strncmp
-   fun:is_dst
-   fun:_dl_dst_substitute
-   fun:fillin_rpath.isra.0
-   fun:decompose_rpath
-   fun:cache_rpath
-   fun:cache_rpath
-   fun:_dl_map_object
-   fun:openaux
-   fun:_dl_catch_exception
-   fun:_dl_map_object_deps
-   fun:dl_open_worker_begin
-   fun:_dl_catch_exception
-   fun:dl_open_worker
-}
-{
-   SUPP5
-   Memcheck:Leak
-   match-leak-kinds: reachable
-   fun:malloc
-   fun:_ZN4llvm17LiveIntervalUnion5Array4initERNS_18RecyclingAllocatorINS_20BumpPtrAllocatorImplINS_15MallocAllocatorELm4096ELm4096ELm128EEEcLm192ELm64EEEj
-   fun:_ZN4llvm13LiveRegMatrix20runOnMachineFunctionERNS_15MachineFunctionE
-   fun:_ZN4llvm19MachineFunctionPass13runOnFunctionERNS_8FunctionE
-   fun:_ZN4llvm13FPPassManager13runOnFunctionERNS_8FunctionE
-   obj:/usr/lib/x86_64-linux-gnu/libLLVM-15.so.1
-   fun:_ZN4llvm6legacy15PassManagerImpl3runERNS_6ModuleE
-   obj:/usr/lib/x86_64-linux-gnu/dri/radeonsi_dri.so
-   obj:/usr/lib/x86_64-linux-gnu/dri/radeonsi_dri.so
-   obj:/usr/lib/x86_64-linux-gnu/dri/radeonsi_dri.so
-   obj:/usr/lib/x86_64-linux-gnu/dri/radeonsi_dri.so
-   obj:/usr/lib/x86_64-linux-gnu/dri/radeonsi_dri.so
-}
-{
-   SUPP7
-   Memcheck:Addr8
-   fun:strncmp
-   fun:is_dst
-   fun:_dl_dst_count
-   fun:expand_dynamic_string_token
-   fun:fillin_rpath.isra.0
-   fun:decompose_rpath
-   fun:cache_rpath
-   fun:cache_rpath
-   fun:_dl_map_object
-   fun:openaux
-   fun:_dl_catch_exception
-   fun:_dl_map_object_deps
-   fun:dl_open_worker_begin
-   fun:_dl_catch_exception
-   fun:dl_open_worker
+	<MLX42>
+	Memcheck:Leak
+	...
+	obj:/usr/lib/x86_64-linux-gnu/libnvidia*
 }
 
 {
-   SUPP8
-   Memcheck:Leak
-   match-leak-kinds: reachable
-   fun:malloc
-   fun:_ZN4llvm15SmallVectorBaseIjE13mallocForGrowEmmRm
-   obj:/usr/lib/x86_64-linux-gnu/libLLVM-15.so.1
-   obj:/usr/lib/x86_64-linux-gnu/libLLVM-15.so.1
-   obj:/usr/lib/x86_64-linux-gnu/libLLVM-15.so.1
-   obj:/usr/lib/x86_64-linux-gnu/libLLVM-15.so.1
-   obj:/usr/lib/x86_64-linux-gnu/libLLVM-15.so.1
-   obj:/usr/lib/x86_64-linux-gnu/libLLVM-15.so.1
-   obj:/usr/lib/x86_64-linux-gnu/libLLVM-15.so.1
-   obj:/usr/lib/x86_64-linux-gnu/libLLVM-15.so.1
-   obj:/usr/lib/x86_64-linux-gnu/libLLVM-15.so.1
-   fun:_ZN4llvm30TargetTransformInfoWrapperPass6getTTIERKNS_8FunctionE
-}
-{
-   SUPP9
-   Memcheck:Leak
-   match-leak-kinds: reachable
-   fun:malloc
-   obj:/usr/lib/x86_64-linux-gnu/dri/radeonsi_dri.so
-   obj:/usr/lib/x86_64-linux-gnu/dri/radeonsi_dri.so
-   obj:/usr/lib/x86_64-linux-gnu/dri/radeonsi_dri.so
-   obj:/usr/lib/x86_64-linux-gnu/dri/radeonsi_dri.so
-   obj:/usr/lib/x86_64-linux-gnu/dri/radeonsi_dri.so
-   fun:start_thread
-   fun:clone
-}
-{
-   SUPP10
-   Memcheck:Leak
-   match-leak-kinds: reachable
-   fun:_Znam
-   fun:_ZN4llvm13LiveRegMatrix20runOnMachineFunctionERNS_15MachineFunctionE
-   fun:_ZN4llvm19MachineFunctionPass13runOnFunctionERNS_8FunctionE
-   fun:_ZN4llvm13FPPassManager13runOnFunctionERNS_8FunctionE
-   obj:/usr/lib/x86_64-linux-gnu/libLLVM-15.so.1
-   fun:_ZN4llvm6legacy15PassManagerImpl3runERNS_6ModuleE
-   obj:/usr/lib/x86_64-linux-gnu/dri/radeonsi_dri.so
-   obj:/usr/lib/x86_64-linux-gnu/dri/radeonsi_dri.so
-   obj:/usr/lib/x86_64-linux-gnu/dri/radeonsi_dri.so
-   obj:/usr/lib/x86_64-linux-gnu/dri/radeonsi_dri.so
-   obj:/usr/lib/x86_64-linux-gnu/dri/radeonsi_dri.so
-   obj:/usr/lib/x86_64-linux-gnu/dri/radeonsi_dri.so
-}
-{
-   SUPP11
-   Memcheck:Leak
-   match-leak-kinds: reachable
-   fun:malloc
-   obj:/usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30
-   fun:call_init.part.0
-   fun:call_init
-   fun:_dl_init
-   fun:_dl_catch_exception
-   fun:dl_open_worker
-   fun:dl_open_worker
-   fun:_dl_catch_exception
-   fun:_dl_open
-   fun:dlopen_doit
-   fun:_dl_catch_exception
-   fun:_dl_catch_error
-   fun:_dlerror_run
+	<MLX42>
+	Memcheck:Leak
+	...
+	obj:/usr/lib/x86_64-linux-gnu/libdbus*
 }
 
 {
-   SUPP12
-   Memcheck:Leak
-   match-leak-kinds: reachable
-   fun:calloc
-   obj:/usr/lib/x86_64-linux-gnu/dri/radeonsi_dri.so
-   obj:/usr/lib/x86_64-linux-gnu/dri/radeonsi_dri.so
-   obj:/usr/lib/x86_64-linux-gnu/dri/radeonsi_dri.so
-   fun:amdgpu_winsys_create
-   obj:/usr/lib/x86_64-linux-gnu/dri/radeonsi_dri.so
-   obj:/usr/lib/x86_64-linux-gnu/dri/radeonsi_dri.so
-   obj:/usr/lib/x86_64-linux-gnu/dri/radeonsi_dri.so
-   obj:/usr/lib/x86_64-linux-gnu/dri/radeonsi_dri.so
-   obj:/usr/lib/x86_64-linux-gnu/dri/radeonsi_dri.so
-   obj:/usr/lib/x86_64-linux-gnu/libGLX_mesa.so.0.0.0
-   obj:/usr/lib/x86_64-linux-gnu/libGLX_mesa.so.0.0.0
+	<MLX42>
+	Memcheck:Leak
+	...
+	obj:/usr/lib/x86_64-linux-gnu/libglfw*
 }
 
 {
-   Suppress_Znwm_Leaks
-   Memcheck:Leak
-   fun:_Znwm
-}
-{
-   Suppress_calloc_Leaks
-   Memcheck:Leak
-   fun:calloc
-}
-{
-   SUPP13
-   Memcheck:Leak
-   match-leak-kinds: reachable
-   fun:malloc
-   fun:_XlcSetConverter
-   fun:_XlcAddUtf8Converters
-   fun:_XlcUtf8Loader
-   fun:_XOpenLC
-   fun:_XrmInitParseInfo
-   obj:/usr/lib/x86_64-linux-gnu/libX11.so.6.4.0
-   fun:XrmGetStringDatabase
-   fun:glfwInit
-   fun:mlx_init
-   fun:main
-}
-{
-   SUPP14
-   Memcheck:Leak
-   match-leak-kinds: reachable
-   fun:malloc
-   fun:_XlcSetConverter
-   fun:_XlcAddUtf8Converters
-   fun:_XlcUtf8Loader
-   fun:_XOpenLC
-   fun:_XrmInitParseInfo
-   obj:/usr/lib/x86_64-linux-gnu/libX11.so.6.4.0
-   fun:XrmGetStringDatabase
-   fun:glfwInit
-   fun:mlx_init
-   fun:main
+	<MLX42>
+	Memcheck:Leak
+	...
+	obj:/usr/lib/x86_64-linux-gnu/libX11*
 }
 
 {
-   SUPP15
-   Memcheck:Leak
-   match-leak-kinds: reachable
-   fun:malloc
-   fun:_XlcSetConverter
-   fun:_XlcAddUtf8Converters
-   fun:_XlcUtf8Loader
-   fun:_XOpenLC
-   fun:_XrmInitParseInfo
-   obj:/usr/lib/x86_64-linux-gnu/libX11.so.6.4.0
-   fun:XrmGetStringDatabase
-   fun:glfwInit
-   fun:mlx_init
-   fun:main
+	<MLX42>
+	Memcheck:Leak
+	...
+	obj:/usr/lib/x86_64-linux-gnu/dri*
 }
+
 {
-   SUPP16
-   Memcheck:Leak
-   match-leak-kinds: reachable
-   fun:malloc
-   fun:_XlcSetConverter
-   fun:_XlcAddUtf8Converters
-   fun:_XlcUtf8Loader
-   fun:_XOpenLC
-   fun:_XrmInitParseInfo
-   obj:/usr/lib/x86_64-linux-gnu/libX11.so.6.4.0
-   fun:XrmGetStringDatabase
-   fun:glfwInit
-   fun:mlx_init
-   fun:main
+	<MLX42>
+	Memcheck:Leak
+	...
+	obj:/usr/lib/x86_64-linux-gnu/libLLVM*
 }
+
 {
-   SUPP17
-   Memcheck:Leak
-   match-leak-kinds: reachable
-   fun:malloc
-   fun:_XlcSetConverter
-   fun:_XlcUtf8Loader
-   fun:_XOpenLC
-   fun:_XrmInitParseInfo
-   obj:/usr/lib/x86_64-linux-gnu/libX11.so.6.4.0
-   fun:XrmGetStringDatabase
-   fun:glfwInit
-   fun:mlx_init
-   fun:main
+	<MLX42>
+	Memcheck:Leak
+	...
+	fun:_dl_open
 }
+
 {
-   SUPP18
-   Memcheck:Leak
-   match-leak-kinds: reachable
-   fun:malloc
-   fun:_XrmInternalStringToQuark
-   fun:_XlcGetLocaleDataBase
-   obj:/usr/lib/x86_64-linux-gnu/libX11.so.6.4.0
-   obj:/usr/lib/x86_64-linux-gnu/libX11.so.6.4.0
-   fun:_XlcCreateLC
-   fun:_XlcUtf8Loader
-   fun:_XOpenLC
-   fun:_XrmInitParseInfo
-   obj:/usr/lib/x86_64-linux-gnu/libX11.so.6.4.0
-   fun:XrmGetStringDatabase
-   fun:glfwInit
-}
-{
-   SUPP19
-   Memcheck:Leak
-   match-leak-kinds: reachable
-   fun:malloc
-   obj:/usr/lib/x86_64-linux-gnu/libX11.so.6.4.0
-   fun:_XrmInternalStringToQuark
-   fun:XrmInitialize
-   fun:glfwInit
-   fun:mlx_init
-   fun:main
-}
-{
-   SUPP20
-   Memcheck:Leak
-   match-leak-kinds: reachable
-   fun:malloc
-   fun:_XlcAddCT
-   fun:_XlcInitCTInfo
-   obj:/usr/lib/x86_64-linux-gnu/libX11.so.6.4.0
-   obj:/usr/lib/x86_64-linux-gnu/libX11.so.6.4.0
-   fun:_XlcCreateLC
-   fun:_XlcUtf8Loader
-   fun:_XOpenLC
-   fun:_XrmInitParseInfo
-   obj:/usr/lib/x86_64-linux-gnu/libX11.so.6.4.0
-   fun:XrmGetStringDatabase
-   fun:glfwInit
-}
-{
-   SUPP21
-   Memcheck:Leak
-   match-leak-kinds: reachable
-   fun:malloc
-   fun:_XlcCreateLocaleDataBase
-   obj:/usr/lib/x86_64-linux-gnu/libX11.so.6.4.0
-   obj:/usr/lib/x86_64-linux-gnu/libX11.so.6.4.0
-   fun:_XlcCreateLC
-   fun:_XlcUtf8Loader
-   fun:_XOpenLC
-   fun:_XrmInitParseInfo
-   obj:/usr/lib/x86_64-linux-gnu/libX11.so.6.4.0
-   fun:XrmGetStringDatabase
-   fun:glfwInit
-   fun:mlx_init
-}
-{
-   SUPP22
-   Memcheck:Leak
-   match-leak-kinds: reachable
-   fun:malloc
-   obj:/usr/lib/x86_64-linux-gnu/libX11.so.6.4.0
-   obj:/usr/lib/x86_64-linux-gnu/libX11.so.6.4.0
-   obj:/usr/lib/x86_64-linux-gnu/libX11.so.6.4.0
-   fun:_XlcCreateLocaleDataBase
-   obj:/usr/lib/x86_64-linux-gnu/libX11.so.6.4.0
-   obj:/usr/lib/x86_64-linux-gnu/libX11.so.6.4.0
-   fun:_XlcCreateLC
-   fun:_XlcUtf8Loader
-   fun:_XOpenLC
-   fun:_XrmInitParseInfo
-   obj:/usr/lib/x86_64-linux-gnu/libX11.so.6.4.0
-}
-{
-   SUPP23
-   Memcheck:Leak
-   match-leak-kinds: reachable
-   fun:malloc
-   fun:strdup
-   obj:/usr/lib/x86_64-linux-gnu/libX11.so.6.4.0
-   obj:/usr/lib/x86_64-linux-gnu/libX11.so.6.4.0
-   fun:_XlcCreateLocaleDataBase
-   obj:/usr/lib/x86_64-linux-gnu/libX11.so.6.4.0
-   obj:/usr/lib/x86_64-linux-gnu/libX11.so.6.4.0
-   fun:_XlcCreateLC
-   fun:_XlcUtf8Loader
-   fun:_XOpenLC
-   fun:_XrmInitParseInfo
-   obj:/usr/lib/x86_64-linux-gnu/libX11.so.6.4.0
-}
-{
-   SUPP23
-   Memcheck:Leak
-   match-leak-kinds: definite
-   fun:malloc
-   fun:malloc
-   fun:_dl_find_object_update
-   fun:dl_open_worker_begin
-   fun:_dl_catch_exception
-   fun:dl_open_worker
-   fun:_dl_catch_exception
-   fun:_dl_open
-   fun:dlopen_doit
-   fun:_dl_catch_exception
-   fun:_dl_catch_error
-   fun:_dlerror_run
-   fun:dlopen_implementation
-   fun:dlopen@@GLIBC_2.34
+	<MLX42>
+	Memcheck:Addr8
+	...
+	fun:dl_open_worker
 }
