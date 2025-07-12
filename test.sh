@@ -13,7 +13,7 @@ for file in "$INVALID_MAP_DIR"/*; do
         echo "Running: $PROGRAM $file"
         
         # Run the program with the file as an argument
-        $PROGRAM "$file" > "$OUTPUT_FILE"
+        $PROGRAM "$file" 2> "$OUTPUT_FILE"
 		cat $OUTPUT_FILE >> $TRACE
 		if grep -q "$SEARCH_STRING" "$OUTPUT_FILE"; then
 		    echo "✅ Output contains: '$SEARCH_STRING'"
