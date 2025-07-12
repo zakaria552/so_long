@@ -6,7 +6,7 @@
 /*   By: zfarah <zfarah@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 15:48:01 by zfarah            #+#    #+#             */
-/*   Updated: 2025/07/01 20:50:34 by zfarah           ###   ########.fr       */
+/*   Updated: 2025/07/12 20:58:18 by zfarah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,13 @@ void	initialize_player(t_ctx *ctx)
 	ctx->player = malloc(sizeof(t_player));
 	if (!ctx->player)
 		clean_exit(ctx, NULL, errno);
+	ctx->player->pos = NULL;
 	ctx->player->pos = malloc(sizeof(t_vec2));
 	if (!ctx->player->pos)
 		clean_exit(ctx, NULL, errno);
+	ctx->player->vision = NULL;
 	ctx->player->vision = malloc(sizeof(t_vision));
+	ctx->player->vision->img = NULL;
 	if (!ctx->player->vision)
 		clean_exit(ctx, NULL, errno);
 	ctx->player->orbs = 0;
