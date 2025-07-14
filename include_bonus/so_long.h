@@ -6,7 +6,7 @@
 /*   By: zfarah <zfarah@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 17:33:42 by zfarah            #+#    #+#             */
-/*   Updated: 2025/07/12 23:06:07 by zfarah           ###   ########.fr       */
+/*   Updated: 2025/07/14 19:48:56 by zfarah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,6 +114,7 @@ void	free_visited(int **visited, int h);
 
 // path finder
 t_list	*dfs_target(t_ctx *ctx, t_vec2 start, t_vec2 target);
+t_list *bfs_target(t_ctx *ctx, t_vec2 start, t_vec2 target);
 
 // safe mlx funcs
 void	img_to_window(t_ctx *ctx, mlx_image_t *img, int32_t x, int32_t y);
@@ -138,5 +139,6 @@ void    set_path_to_patrol(t_ctx *ctx);
 
 // move enemy
 void	move_enemy_hook(t_ctx *ctx);
+void print_list2(t_list *head);
 
 #endif

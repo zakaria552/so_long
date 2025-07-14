@@ -54,6 +54,7 @@ typedef struct s_enemy
 {
 	t_vec2		pos;
 	bool		moving;
+	bool		persuing;
 	t_dir		dir;
 	t_vision	*vision;
 	int			speed;
