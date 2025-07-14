@@ -6,7 +6,7 @@
 /*   By: zfarah <zfarah@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 13:54:23 by zfarah            #+#    #+#             */
-/*   Updated: 2025/07/12 23:29:35 by zfarah           ###   ########.fr       */
+/*   Updated: 2025/07/14 20:13:16by zfarah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,17 @@ static bool	reached_tile(t_vec2 *pos, int x, int y, const int off[2][2]);
 
 void	patrol(t_ctx *ctx)
 {
-	ft_printf("dir: %d", ctx->enemy->dir);
-	stay_alert(ctx);
-	// return;
+	if (!ctx->enemy->persuing)
+		stay_alert(ctx);
+	ft_printf("persuing: %d", ctx->enemy->persuing);
+	print_list2(ctx->enemy->path);
+	if (ctx->enemy->persuing && !ctx->enemy->path)
+	{
+		ctx->enemy->persuing = false;
+		ctx->enemy->speed = 1;
+	}
 	if(!ctx->enemy->path)
-		return;
-	// 	set_path_to_patrol(ctx);
+		set_path_to_patrol(ctx);
 	change_dir(ctx, ctx->enemy->path, ctx->enemy);
 	move_enemy_hook(ctx);
 }
@@ -48,8 +53,11 @@ static void	set_dir(t_enemy *enemy)
 		enemy->dir = UP;
 	else if ((next_tile->y - 1) == (enemy->pos.y / 64))
 		enemy->dir = DOWN;
-	else 
+	else
+	{
+		ft_printf("Dir found\n");
 		enemy->dir = IDLE;
+	}
 }
 
 static void	rm_visted_tile(t_ctx *ctx)
@@ -67,9 +75,10 @@ static bool	reached_tile(t_vec2 *pos, int x, int y, const int off[2][2])
 	int	s;
 
 	s = 64;
-	if ((pos->x + 48 - off[0][0]) > x * s && (pos->x + off[0][1]) < (x * s + s)
-		&& (pos->y + 48 - off[1][0]) > (y * s) && (pos->y + off[1][1]) < (y * s
-			+ s))
+	if ((pos->x + 48 - off[0][0]) > x * s 
+		&& (pos->x + off[0][1]) < (x * s + s)
+		&& (pos->y + 48 - off[1][0]) > (y * s)
+		&& (pos->y + off[1][1]) < (y * s + s))
 		return (true);
 	return (false);
 }
@@ -78,7 +87,7 @@ static void	change_dir(t_ctx *ctx, t_list *path, t_enemy *enemy)
 {
 	t_vec2		*tile;
 	const int	off[5][2][2] = {{{0, 0}, {0, 60}}, {{0, 0}, {60, 0}}, {{0, 60},
-	{0, 0}}, {{60, 0}, {0, 0}}, {{20, 50}, {40, 10}}};
+	{0, 0}}, {{60, 0}, {0, 0}}, {{0, 0}, {0, 0}}};
 
 	while (path->next)
 		path = path->next;
