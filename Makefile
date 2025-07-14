@@ -1,8 +1,9 @@
-CC = cc
-CFLAGS = -Wall -Wextra -Werror
+CC = gcc
+CFLAGS = -g -Wall 
 SRC_DIR = src
 SRCB_DIR = srcb
 OBJ_DIR = obj
+VPATH := src:src/whatever:src/whatever2
 SRC = $(addprefix $(SRC_DIR)/, \
 	clean_up.c \
 	clean_up_utils.c \
@@ -44,6 +45,8 @@ SRCB = $(addprefix $(SRCB_DIR)/,\
 	game_logic/enemy_mov_hook.c \
 	game_logic/hooks.c \
 	game_logic/path_finder.c \
+	game_logic/path_finder2.c \
+	game_logic/persue.c \
 	game_logic/patrol.c \
 	game_logic/patrol_path.c \
 	game_logic/player.c \
@@ -115,5 +118,6 @@ clean:
 
 fclean: clean
 	rm -f $(NAME)
+	make -C $(libft_dir)
 
-#valgrind --leak-check=full --show-leak-kinds=all --gen-suppressions=all --suppressions=leaks.supp -s
+#valgrind  --gen-suppressions=all --suppressions=leaks.supp -s
