@@ -10,14 +10,14 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#ifndef SO_LONG_BONUS_H
+# define SO_LONG_BONUS_H
 
 // #include <mlx.h>
 # include "MLX42.h"
 # include "libft.h"
 # include "math.h"
-# include "so_types.h"
+# include "so_types_bonus.h"
 # include <errno.h>
 # include <fcntl.h>
 # include <stdio.h>

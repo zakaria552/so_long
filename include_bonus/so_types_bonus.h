@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_TYPES_H
-# define SO_TYPES_H
+#ifndef SO_TYPES_BONUS_H
+# define SO_TYPES_BONUS_H
 
 # include "MLX42.h"
 #include "libft.h"
