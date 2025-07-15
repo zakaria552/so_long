@@ -6,7 +6,7 @@
 /*   By: zfarah <zfarah@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/15 16:38:30 by zfarah            #+#    #+#             */
-/*   Updated: 2025/07/15 16:38:33 by zfarah           ###   ########.fr       */
+/*   Updated: 2025/07/15 17:33:12 by zfarah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,5 +138,6 @@ static t_list	*back_trace_path(t_ctx *ctx, t_vec2 *parent, t_vec2 target)
 		curr->x = parent[to_index(prev->x, prev->y, ctx->map->bounds[1])].x;
 		curr->y = parent[to_index(prev->x, prev->y, ctx->map->bounds[1])].y;
 	}
+    free(curr);
 	return (path);
 }
