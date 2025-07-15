@@ -6,7 +6,7 @@
 /*   By: zfarah <zfarah@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 17:34:14 by zfarah            #+#    #+#             */
-/*   Updated: 2025/07/01 17:34:40 by zfarah           ###   ########.fr       */
+/*   Updated: 2025/07/15 17:56:26 by zfarah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ typedef struct s_vision
 typedef struct s_player
 {
 	t_vec2			*pos;
+	t_vec2			grid_pos;
 	int				orbs;
 	int				speed;
 	t_vision		*vision;
