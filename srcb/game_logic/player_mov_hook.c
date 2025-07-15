@@ -6,7 +6,7 @@
 /*   By: zfarah <zfarah@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 21:33:44 by zfarah            #+#    #+#             */
-/*   Updated: 2025/07/15 19:01:39 by zfarah           ###   ########.fr       */
+/*   Updated: 2025/07/15 22:09:40 by zfarah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,13 +64,13 @@ static void	update_pos(t_asset *sprites[5], int nx, int ny)
 
 static void	update_steps(t_ctx *ctx)
 {
-	t_vec2 new_pos;
+	t_vec2	new_pos;
 
 	new_pos.x = ctx->player->pos->x / ctx->map->size;
 	new_pos.y = ctx->player->pos->y / ctx->map->size;
 	if (new_pos.x == ctx->player->grid_pos.x
 		&& new_pos.y == ctx->player->grid_pos.y)
-		return;
+		return ;
 	ctx->player->grid_pos.x = new_pos.x;
 	ctx->player->grid_pos.y = new_pos.y;
 	ctx->player->steps += 1;
@@ -79,7 +79,7 @@ static void	update_steps(t_ctx *ctx)
 static void	move_player(t_ctx *ctx, int nx, int ny, t_dir dir)
 {
 	t_asset		*img;
-	const int	offsets[2][2] = {{10, 10}, {0, 36}};
+	const int	offsets[2][2] = {{5, 5}, {0, 36}};
 
 	img = ctx->player->sprites[dir];
 	if (dir != ctx->player->dir)
