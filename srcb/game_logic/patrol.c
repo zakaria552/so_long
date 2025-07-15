@@ -6,7 +6,7 @@
 /*   By: zfarah <zfarah@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/15 16:59:22 by zfarah            #+#    #+#             */
-/*   Updated: 2025/07/15 16:59:25 by zfarah           ###   ########.fr       */
+/*   Updated: 2025/07/15 17:35:57 by zfarah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,10 @@ void	patrol(t_ctx *ctx)
 	}
 	if (!ctx->enemy->path)
 		set_path_to_patrol(ctx);
-	change_dir(ctx, ctx->enemy->path, ctx->enemy);
-	move_enemy_hook(ctx);
+	if (ctx->enemy->path)
+		change_dir(ctx, ctx->enemy->path, ctx->enemy);
+	if (ctx->enemy->path)
+		move_enemy_hook(ctx);
 }
 
 static void	set_dir(t_enemy *enemy)
