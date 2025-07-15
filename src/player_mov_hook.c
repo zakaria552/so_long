@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: zfarah <zfarah@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/01 15:46:42 by zfarah            #+#    #+#             */
-/*   Updated: 2025/07/15 17:53:16 zfarah           ###   ########.fr       */
+/*   Created: 2025/07/15 21:46:02 by zfarah            #+#    #+#             */
+/*   Updated: 2025/07/15 21:46:05by zfarah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,14 +36,13 @@ void	move_hook(t_ctx *ctx)
 
 static void	update_move_count(t_ctx *ctx, int *count)
 {
-	t_vec2 new_pos;
+	t_vec2	new_pos;
 
 	new_pos.x = ctx->player->pos->x / ctx->map->size;
 	new_pos.y = ctx->player->pos->y / ctx->map->size;
-	ft_printf("New: (%d, %d), grid: (%d, %d)\n", new_pos.x, new_pos.y, ctx->player->grid_pos.x, ctx->player->grid_pos.y);
 	if (new_pos.x == ctx->player->grid_pos.x
 		&& new_pos.y == ctx->player->grid_pos.y)
-		return;
+		return ;
 	ctx->player->grid_pos.x = new_pos.x;
 	ctx->player->grid_pos.y = new_pos.y;
 	(*count) += 1;
@@ -54,7 +53,7 @@ void	move_player(t_ctx *ctx, int nx, int ny)
 {
 	static int	move_count;
 	mlx_image_t	*img;
-	const int	offsets[2][2] = {{10, 10}, {0, 36}};
+	const int	offsets[2][2] = {{5, 5}, {0, 36}};
 
 	img = ctx->map->tiles->p_idle->img;
 	ctx->player->pos->x = nx;
@@ -65,7 +64,7 @@ void	move_player(t_ctx *ctx, int nx, int ny)
 		ctx->player->pos->y = img->instances[0].y;
 		return ;
 	}
-	update_move_count(ctx,  &move_count);
+	update_move_count(ctx, &move_count);
 	img->instances[0].x = nx;
 	img->instances[0].y = ny;
 	return ;
