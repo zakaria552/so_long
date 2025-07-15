@@ -6,7 +6,7 @@
 /*   By: zfarah <zfarah@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/15 16:38:30 by zfarah            #+#    #+#             */
-/*   Updated: 2025/07/15 23:09:48 by zfarah           ###   ########.fr       */
+/*   Updated: 2025/07/15 23:53:05 by zfarah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ t_list	*bfs_target(t_ctx *ctx, t_vec2 start, t_vec2 target)
 	if (ctx->map->grid[target.y][target.x] == '1'
 		|| ctx->map->grid[start.y][start.x] == '1')
 		return (NULL);
+	path = NULL;
 	parent = init_parent(ctx, ctx->map->bounds[0] * ctx->map->bounds[1]);
 	s = malloc(sizeof(t_vec2));
 	if (!s && clean_bfs(NULL, parent, NULL, NULL))
@@ -72,7 +73,7 @@ static void	enqueue_next_adjs(t_ctx *ctx, t_queue *q, int *visited,
 		t_vec2 *parent)
 {
 	const int	dir[4][2] = {{0, -1}, {1, 0}, {0, 1}, {-1, 0}};
-	const char	**grid = ctx->map->grid;
+	const char	**grid = (const char **)ctx->map->grid;
 	t_vec2		*adj;
 	int			i;
 

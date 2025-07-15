@@ -6,7 +6,7 @@
 /*   By: zfarah <zfarah@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/15 13:34:40 by zfarah            #+#    #+#             */
-/*   Updated: 2025/07/15 23:09:48 by zfarah           ###   ########.fr       */
+/*   Updated: 2025/07/15 23:53:42 by zfarah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,8 @@ bool	clean_bfs(t_queue *q, t_vec2 *parent, t_vec2 *visited, t_vec2 *pos)
 		free(parent);
 	if (visited)
 		free(visited);
+	if (pos)
+		free(pos);
 	return (true);
 }
 
