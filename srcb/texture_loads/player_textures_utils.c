@@ -6,7 +6,7 @@
 /*   By: zfarah <zfarah@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 21:34:45 by zfarah            #+#    #+#             */
-/*   Updated: 2025/07/09 21:35:38 by zfarah           ###   ########.fr       */
+/*   Updated: 2025/07/15 18:59:19 by zfarah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	load_idle(t_ctx *ctx, t_tiles *tiles)
 	tiles->idle = malloc(sizeof(t_asset) * 5);
 	if (!tiles->idle)
 		clean_exit(ctx, "Failed to load assets", errno);
-	ft_printf("Reached here");
+	;
 	i = -1;
 	init_assets(tiles->idle, 5);
 	while (src[++i])
@@ -36,7 +36,7 @@ void	load_idle(t_ctx *ctx, t_tiles *tiles)
 			clean_exit(ctx, "Failed to load assets", errno);
 		mlx_resize_image(tiles->idle[i].img, 48, 48);
 	}
-	ft_printf("Loaded \n");
+	
 }
 
 void	load_right(t_ctx *ctx, t_tiles *tiles)
@@ -50,7 +50,7 @@ void	load_right(t_ctx *ctx, t_tiles *tiles)
 	tiles->right = malloc(sizeof(t_asset) * 5);
 	if (!tiles->right)
 		clean_exit(ctx, "Failed to load assets", errno);
-	ft_printf("Reached here");
+	;
 	i = -1;
 	init_assets(tiles->right, 5);
 	while (src[++i])
@@ -64,7 +64,7 @@ void	load_right(t_ctx *ctx, t_tiles *tiles)
 			clean_exit(ctx, "Failed to load assets", errno);
 		mlx_resize_image(tiles->right[i].img, 48, 48);
 	}
-	ft_printf("Loaded \n");
+	
 }
 
 void	load_left(t_ctx *ctx, t_tiles *tiles)
@@ -78,7 +78,7 @@ void	load_left(t_ctx *ctx, t_tiles *tiles)
 	tiles->left = malloc(sizeof(t_asset) * 5);
 	if (!tiles->left)
 		clean_exit(ctx, "Failed to load assets", errno);
-	ft_printf("Reached here");
+	;
 	i = -1;
 	init_assets(tiles->left, 5);
 	while (src[++i])
@@ -91,7 +91,7 @@ void	load_left(t_ctx *ctx, t_tiles *tiles)
 			clean_exit(ctx, "Failed to load assets", errno);
 		mlx_resize_image(tiles->left[i].img, 48, 48);
 	}
-	ft_printf("Loaded \n");
+	
 }
 
 void	load_up(t_ctx *ctx, t_tiles *tiles)
@@ -105,7 +105,7 @@ void	load_up(t_ctx *ctx, t_tiles *tiles)
 	tiles->up = malloc(sizeof(t_asset) * 5);
 	if (!tiles->up)
 		clean_exit(ctx, "Failed to load assets", errno);
-	ft_printf("Reached here");
+	;
 	i = -1;
 	init_assets(tiles->up, 5);
 	while (src[++i])
@@ -118,7 +118,7 @@ void	load_up(t_ctx *ctx, t_tiles *tiles)
 			clean_exit(ctx, "Failed to load assets", errno);
 		mlx_resize_image(tiles->up[i].img, 48, 48);
 	}
-	ft_printf("Loaded \n");
+	
 }
 
 void	load_down(t_ctx *ctx, t_tiles *tiles)
@@ -132,7 +132,7 @@ void	load_down(t_ctx *ctx, t_tiles *tiles)
 	tiles->down = malloc(sizeof(t_asset) * 5);
 	if (!tiles->down)
 		clean_exit(ctx, "Failed to load assets", errno);
-	ft_printf("Reached here");
+	;
 	i = -1;
 	init_assets(tiles->down, 5);
 	while (src[++i])
@@ -145,5 +145,5 @@ void	load_down(t_ctx *ctx, t_tiles *tiles)
 			clean_exit(ctx, "Failed to load assets", errno);
 		mlx_resize_image(tiles->down[i].img, 48, 48);
 	}
-	ft_printf("Loaded \n");
+	
 }
