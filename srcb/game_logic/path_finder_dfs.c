@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   path_finder.c                                      :+:      :+:    :+:   */
+/*   path_finder_dfs.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zfarah <zfarah@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 15:41:11 by zfarah            #+#    #+#             */
-/*   Updated: 2025/07/14 13:46:08 by zfarah           ###   ########.fr       */
+/*   Updated: 2025/07/15 21:42:57 by zfarah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 static void	dequeue2(t_list **q);
 static bool	enqueue_next_adj(t_list **q, int **visited, char **grid,
 				t_ctx *ctx);
-void		clean_exit_dfs(t_list **q, int **visited, t_vec2 *pos, t_ctx *ctx);
+static void	clean_exit_dfs(t_list **q, int **visited, t_vec2 *pos, t_ctx *ctx);
+static void	init_begin_visted(t_vec2 *begin, t_vec2 start, int **visited);
 
 t_list	*dfs_target(t_ctx *ctx, t_vec2 start, t_vec2 target)
 {
@@ -25,13 +26,12 @@ t_list	*dfs_target(t_ctx *ctx, t_vec2 start, t_vec2 target)
 
 	begin = malloc(sizeof(t_vec2));
 	visited = initialize_visited(ctx->map->bounds[0], ctx->map->bounds[1]);
+	if (!visited || !begin)
+		clean_exit_dfs(NULL, visited, begin, ctx);
 	q = ft_lstnew(begin);
-	if (!q || !visited || !begin)
+	if (!q)
 		clean_exit_dfs(&q, visited, begin, ctx);
-	begin->x = start.x;
-	begin->y = start.y;
-	visited[start.y][start.x] = 1;
-	visited[start.y][start.x] = 1;
+	init_begin_visted(begin, start, visited);
 	while (ft_lstsize(q) > 0)
 	{
 		if (((t_vec2 *)q->content)->x == target.x
@@ -46,7 +46,7 @@ t_list	*dfs_target(t_ctx *ctx, t_vec2 start, t_vec2 target)
 	return (q);
 }
 
-void	clean_exit_dfs(t_list **q, int **visited, t_vec2 *pos, t_ctx *ctx)
+static void	clean_exit_dfs(t_list **q, int **visited, t_vec2 *pos, t_ctx *ctx)
 {
 	if (q)
 		ft_lstclear(q, free);
@@ -55,6 +55,13 @@ void	clean_exit_dfs(t_list **q, int **visited, t_vec2 *pos, t_ctx *ctx)
 	if (pos)
 		free(pos);
 	clean_exit(ctx, NULL, errno);
+}
+
+static void	init_begin_visted(t_vec2 *begin, t_vec2 start, int **visited)
+{
+	begin->x = start.x;
+	begin->y = start.y;
+	visited[start.y][start.x] = 1;
 }
 
 static void	dequeue2(t_list **q)
