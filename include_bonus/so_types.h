@@ -71,6 +71,7 @@ typedef struct s_enemy
 typedef struct s_player
 {
 	t_vec2			*pos;
+	t_vec2			grid_pos;
 	int				steps;
 	int				orbs;
 	int				speed;
