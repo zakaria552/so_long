@@ -6,14 +6,15 @@
 /*   By: zfarah <zfarah@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 17:34:14 by zfarah            #+#    #+#             */
-/*   Updated: 2025/07/15 17:56:26 by zfarah           ###   ########.fr       */
+/*   Updated: 2025/07/09 17:16:04 zfarah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_TYPES_H
-# define SO_TYPES_H
+#ifndef SO_TYPES_BONUS_H
+# define SO_TYPES_BONUS_H
 
 # include "MLX42.h"
+#include "libft.h"
 
 typedef struct s_vec2
 {
@@ -27,13 +28,59 @@ typedef struct s_vision
 	int				r;
 }					t_vision;
 
+typedef enum e_dir
+{
+	UP,
+	DOWN,
+	LEFT,
+	RIGHT,
+	IDLE,
+} t_dir;
+
+typedef struct s_animation_info
+{
+	int frame_index;
+	double	lt;
+	int frame;
+}	t_animation_info;
+
+typedef struct s_asset
+{
+	mlx_texture_t	*txt;
+	mlx_image_t		*img;
+}					t_asset;
+
+typedef struct s_enemy
+{
+	t_vec2		pos;
+	bool		moving;
+	bool		persuing;
+	t_dir		dir;
+	t_vision	*vision;
+	int			speed;
+	t_asset		*idle;
+	t_asset		*left;
+	t_asset		*right;
+	t_asset		*up;
+	t_asset		*down;
+	t_list		*path;
+	t_animation_info ani_info;
+	t_asset 	*sprites[5];
+} t_enemy;
+
 typedef struct s_player
 {
 	t_vec2			*pos;
 	t_vec2			grid_pos;
+	int				steps;
 	int				orbs;
 	int				speed;
+	t_dir			prev_dir;
+	t_dir			dir;
+	bool			idle;
 	t_vision		*vision;
+	t_animation_info *ani_info;
+	t_asset 	*sprites[5];
 }					t_player;
 
 typedef struct s_orb
@@ -47,11 +94,6 @@ typedef struct s_textures
 	mlx_texture_t	*empty_tile;
 }					t_textures;
 
-typedef struct s_asset
-{
-	mlx_texture_t	*txt;
-	mlx_image_t		*img;
-}					t_asset;
 
 typedef struct s_tiles
 {
@@ -60,6 +102,11 @@ typedef struct s_tiles
 	t_asset			*doors;
 	t_asset			*p_idle;
 	t_asset			*orbs;
+	t_asset			*idle;
+	t_asset			*right;
+	t_asset			*left;
+	t_asset			*up;
+	t_asset			*down;
 }					t_tiles;
 
 typedef struct s_map
@@ -84,14 +131,27 @@ typedef struct s_game_state
 	bool			exited;
 }					t_game_state;
 
+typedef struct s_ui_text
+{
+	t_asset asset;
+	t_vec2 pos;
+	char *str;
+} t_ui_text;
+
+typedef struct s_ui
+{
+	t_ui_text steps;
+	t_ui_text collected;
+} t_ui;
+
 typedef struct s_ctx
 {
 	mlx_t			*mlx;
 	t_player		*player;
-	t_player		*enemies;
+	t_enemy			*enemy;
 	t_map			*map;
 	t_game_state	*state;
-
+	t_ui			ui;
 }					t_ctx;
 
 #endif

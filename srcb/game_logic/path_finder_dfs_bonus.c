@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   path_finder.c                                      :+:      :+:    :+:   */
+/*   path_finder_dfs_bonus.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zfarah <zfarah@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/12 20:45:11 by zfarah            #+#    #+#             */
-/*   Updated: 2025/07/15 21:44:03 by zfarah           ###   ########.fr       */
+/*   Created: 2025/07/01 15:41:11 by zfarah            #+#    #+#             */
+/*   Updated: 2025/07/15 23:09:48 by zfarah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 static void	dequeue2(t_list **q);
 static bool	enqueue_next_adj(t_list **q, int **visited, char **grid,
