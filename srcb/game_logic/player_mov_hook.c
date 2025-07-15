@@ -6,7 +6,7 @@
 /*   By: zfarah <zfarah@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 21:33:44 by zfarah            #+#    #+#             */
-/*   Updated: 2025/07/11 21:07:07 by zfarah           ###   ########.fr       */
+/*   Updated: 2025/07/15 19:01:39 by zfarah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 static void	move_player(t_ctx *ctx, int nx, int ny, t_dir dir);
 static void	update_pos(t_asset *sprites[5], int nx, int ny);
+static void	update_steps(t_ctx *ctx);
 
 void	move_hook(t_ctx *ctx)
 {
@@ -61,6 +62,20 @@ static void	update_pos(t_asset *sprites[5], int nx, int ny)
 	}
 }
 
+static void	update_steps(t_ctx *ctx)
+{
+	t_vec2 new_pos;
+
+	new_pos.x = ctx->player->pos->x / ctx->map->size;
+	new_pos.y = ctx->player->pos->y / ctx->map->size;
+	if (new_pos.x == ctx->player->grid_pos.x
+		&& new_pos.y == ctx->player->grid_pos.y)
+		return;
+	ctx->player->grid_pos.x = new_pos.x;
+	ctx->player->grid_pos.y = new_pos.y;
+	ctx->player->steps += 1;
+}
+
 static void	move_player(t_ctx *ctx, int nx, int ny, t_dir dir)
 {
 	t_asset		*img;
@@ -83,7 +98,7 @@ static void	move_player(t_ctx *ctx, int nx, int ny, t_dir dir)
 		ctx->player->pos->y = img->img->instances[0].y;
 		return ;
 	}
-	ctx->player->steps++;
+	update_steps(ctx);
 	update_pos(ctx->player->sprites, nx, ny);
 	return ;
 }
