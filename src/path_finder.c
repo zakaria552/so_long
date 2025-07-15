@@ -6,13 +6,13 @@
 /*   By: zfarah <zfarah@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/12 20:45:11 by zfarah            #+#    #+#             */
-/*   Updated: 2025/07/12 21:43:06 by zfarah           ###   ########.fr       */
+/*   Updated: 2025/07/15 17:03:34 by zfarah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static void	dequeue(t_list **q);
+static void	dequeue2(t_list **q);
 static bool	enqueue_next_adj(t_list **q, int **visited, char **grid,
 				t_ctx *ctx);
 static void		clean_exit_dfs(t_list **q, int **visited, t_vec2 *pos, t_ctx *ctx);
@@ -40,7 +40,7 @@ t_list	*dfs_target(t_ctx *ctx, t_vec2 start, t_vec2 target)
 		if (enqueue_next_adj(&q, visited, ctx->map->grid, ctx))
 			visited[((t_vec2 *)q->content)->y][((t_vec2 *)q->content)->x] = 1;
 		else
-			dequeue(&q);
+			dequeue2(&q);
 	}
 	free_visited(visited, ctx->map->bounds[1]);
 	return (q);
@@ -57,7 +57,7 @@ static void	clean_exit_dfs(t_list **q, int **visited, t_vec2 *pos, t_ctx *ctx)
 	clean_exit(ctx, NULL, errno);
 }
 
-static void	dequeue(t_list **q)
+static void	dequeue2(t_list **q)
 {
 	t_list	*tmp;
 
