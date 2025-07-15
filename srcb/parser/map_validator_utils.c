@@ -6,23 +6,23 @@
 /*   By: zfarah <zfarah@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 14:50:24 by zfarah            #+#    #+#             */
-/*   Updated: 2025/07/12 21:23:35 by zfarah           ###   ########.fr       */
+/*   Updated: 2025/07/15 21:19:11 by zfarah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static	void	init_char_set(int *e, int *c, int *p, int *y);
+static int	c_index(const char chars[4], char c);
 
 bool	valid_char_set(char **map)
 {
-	int	x;
-	int	y;
-	int	e;
-	int	p;
-	int	c;
+	const char	chars[4] = {'P', 'C', 'E', 'X'};
+	int			counts[4];
+	int			x;
+	int			y;
 
-	init_char_set(&e, &c, &p, &y);
+	ft_memset(counts, 0, sizeof(int) * 4);
+	y = -1;
 	while (map[++y])
 	{
 		x = -1;
@@ -30,23 +30,26 @@ bool	valid_char_set(char **map)
 		{
 			if (!ft_strchr("01CEPX", map[y][x]))
 				return (false);
-			if (map[y][x] == 'P')
-				p++;
-			if (map[y][x] == 'C')
-				c++;
-			if (map[y][x] == 'E')
-				e++;
+			if (map[y][x] == '1' || map[y][x] == '1')
+				continue ;
+			counts[c_index(chars, map[y][x])] += 1;
 		}
 	}
-	return (p == 1 && c > 0 && e == 1);
+	return (counts[0] == 1 && counts[1] > 0 && counts[2] == 1
+		&& counts[3] == 1);
 }
 
-static void	init_char_set(int *e, int *c, int *p, int *y)
+static int	c_index(const char chars[4], char c)
 {
-	*e = 0;
-	*p = 0;
-	*c = 0;
-	*y = 0;
+	int	i;
+
+	i = -1;
+	while (++i < 4)
+	{
+		if (chars[i] == c)
+			break ;
+	}
+	return (i);
 }
 
 bool	is_rectangular(char **map)
