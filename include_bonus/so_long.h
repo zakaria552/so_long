@@ -6,7 +6,7 @@
 /*   By: zfarah <zfarah@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 17:33:42 by zfarah            #+#    #+#             */
-/*   Updated: 2025/07/14 19:48:56 by zfarah           ###   ########.fr       */
+/*   Updated: 2025/07/15 13:42:23by zfarah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,9 +112,16 @@ bool	is_valid_adj(t_vec2 *adj, int bounds[2], int **visited);
 int		**initialize_visited(int w, int h);
 void	free_visited(int **visited, int h);
 
-// path finder
+// path finders
 t_list	*dfs_target(t_ctx *ctx, t_vec2 start, t_vec2 target);
 t_list *bfs_target(t_ctx *ctx, t_vec2 start, t_vec2 target);
+
+// path  finder utils
+int to_index(int x, int y, int cols);
+t_vec2 *init_parent(t_ctx *ctx, int size);
+void	update_parent(t_queue *q, t_vec2 *adj, t_vec2 *parent, int bounds[2]);
+bool	clean_bfs(t_queue *q, t_vec2 *parent, t_vec2 *visited, t_vec2 *pos);
+
 
 // safe mlx funcs
 void	img_to_window(t_ctx *ctx, mlx_image_t *img, int32_t x, int32_t y);
