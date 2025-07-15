@@ -6,7 +6,7 @@
 /*   By: zfarah <zfarah@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 15:48:01 by zfarah            #+#    #+#             */
-/*   Updated: 2025/07/12 20:58:18 by zfarah           ###   ########.fr       */
+/*   Updated: 2025/07/15 18:16:55 by zfarah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ void	initialize_player(t_ctx *ctx)
 	ctx->player->speed = 6;
 	ctx->player->vision->r = 150;
 	init_player_pos(ctx);
+	ctx->player->grid_pos.x = ctx->player->pos->x;
+	ctx->player->grid_pos.y = ctx->player->pos->y;
 }
 
 static void	init_player_pos(t_ctx *ctx)
