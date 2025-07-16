@@ -6,13 +6,13 @@
 /*   By: zfarah <zfarah@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 14:50:24 by zfarah            #+#    #+#             */
-/*   Updated: 2025/07/16 15:33:01 by zfarah           ###   ########.fr       */
+/*   Updated: 2025/07/16 16:08:20 by zfarah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static bool splitted_by_line(char *map);
+static bool	splitted_by_line(char *map);
 
 bool	validate_map(char *fname, char *map)
 {
@@ -42,9 +42,9 @@ bool	validate_map(char *fname, char *map)
 	return (true);
 }
 
-static bool splitted_by_line(char *map)
+static bool	splitted_by_line(char *map)
 {
-	int i;
+	int	i;
 
 	i = -1;
 	if (map[0] == '\n')
@@ -54,7 +54,7 @@ static bool splitted_by_line(char *map)
 		if (map[i] == '\n' && map[i + 1] == '\n')
 			return (false);
 	}
-	if(map[i - 1] == '\n' && map[i - 2])
+	if (map[i - 1] == '\n' && map[i - 2])
 		return (false);
 	return (true);
 }
