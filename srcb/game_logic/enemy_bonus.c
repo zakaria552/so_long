@@ -6,7 +6,7 @@
 /*   By: zfarah <zfarah@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 21:22:53 by zfarah            #+#    #+#             */
-/*   Updated: 2025/07/16 17:02:39 by zfarah           ###   ########.fr       */
+/*   Updated: 2025/07/16 18:59:39 by zfarah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ void	initialize_enemy(t_ctx *ctx)
 	ctx->enemy->ani_info.lt = 0;
 	ctx->enemy->persuing = false;
 	init_enemy_pos(ctx);
-	set_patrol_paths(ctx);
 }
 
 static void	init_enemy_pos(t_ctx *ctx)
