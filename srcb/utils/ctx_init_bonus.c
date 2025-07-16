@@ -6,7 +6,7 @@
 /*   By: zfarah <zfarah@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 14:41:21 by zfarah            #+#    #+#             */
-/*   Updated: 2025/07/15 23:09:48 by zfarah           ###   ########.fr       */
+/*   Updated: 2025/07/16 18:46:07 by zfarah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ t_ctx	*ctx_init(char *map_name)
 {
 	t_ctx	*ctx;
 
+	srand(time(NULL));
 	ctx = malloc(sizeof(t_ctx));
 	if (!ctx)
 		clean_exit(ctx, strerror(errno), errno);
