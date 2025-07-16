@@ -6,7 +6,7 @@
 /*   By: zfarah <zfarah@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 18:19:52 by zfarah            #+#    #+#             */
-/*   Updated: 2025/07/16 13:35:30 by zfarah           ###   ########.fr       */
+/*   Updated: 2025/07/16 15:49:58 by zfarah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,8 @@ static void	draw_map_grid(t_ctx *ctx, t_map *map);
 void	draw_map(t_ctx *ctx)
 {
 	t_tiles	*tiles;
-	char	**grid;
 	int		tile_size;
 
-	grid = ctx->map->grid;
 	tiles = ctx->map->tiles;
 	tile_size = ctx->map->size;
 	draw_map_borders(ctx, tiles->walls, tile_size);
@@ -92,33 +90,25 @@ static void	draw_map_grid(t_ctx *ctx, t_map *map)
 static void	draw_player(t_ctx *ctx)
 {
 	t_tiles	*tiles;
-	int		tile_size;
 	t_vec2	*pos;
 
 	tiles = ctx->map->tiles;
-	tile_size = ctx->map->size;
 	pos = ctx->player->pos;
 	pos->x *= ctx->map->size;
 	pos->y *= ctx->map->size;
 	img_to_window(ctx, tiles->p_idle[0].img, pos->x, pos->y);
-	if (tiles->p_idle[0].img < 0)
-		clean_exit(ctx, NULL, errno);
 }
 
 static void	draw_exit(t_ctx *ctx)
 {
 	t_tiles	*tiles;
-	int		tile_size;
 	t_vec2	*exit;
 
 	tiles = ctx->map->tiles;
-	tile_size = ctx->map->size;
 	exit = ctx->map->exit;
 	img_to_window(ctx, tiles->doors[1].img, exit->x * ctx->map->size,
 		exit->y * ctx->map->size);
 	img_to_window(ctx, tiles->doors[0].img, exit->x * ctx->map->size,
 		exit->y * ctx->map->size);
-	if (tiles->doors[0].img < 0 || tiles->doors[1].img < 0)
-		clean_exit(ctx, NULL, errno);
 	tiles->doors[1].img->instances[0].enabled = false;
 }

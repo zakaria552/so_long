@@ -6,7 +6,7 @@
 /*   By: zfarah <zfarah@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 15:50:49 by zfarah            #+#    #+#             */
-/*   Updated: 2025/07/12 14:44:19 by zfarah           ###   ########.fr       */
+/*   Updated: 2025/07/16 15:48:17 by zfarah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,9 @@ bool	is_valid_adj(t_vec2 *adj, int bounds[2], int **visited)
 int	**initialize_visited(int w, int h)
 {
 	int	**visited;
-	int	x;
 	int	y;
 
 	visited = malloc(sizeof(int *) * h);
-	x = -1;
 	y = -1;
 	while (++y < h)
 	{
@@ -41,10 +39,8 @@ int	**initialize_visited(int w, int h)
 
 void	free_visited(int **visited, int h)
 {
-	int	x;
 	int	y;
 
-	x = -1;
 	y = -1;
 	while (++y < h)
 	{
