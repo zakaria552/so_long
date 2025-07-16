@@ -6,7 +6,7 @@
 /*   By: zfarah <zfarah@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 14:04:17 by zfarah            #+#    #+#             */
-/*   Updated: 2025/07/01 14:04:18 by zfarah           ###   ########.fr       */
+/*   Updated: 2025/07/16 13:34:52 by zfarah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,6 @@ void	collect(t_ctx *ctx)
 		return ;
 	ctx->map->tiles->orbs->img->instances[i].enabled = false;
 	ctx->state->collected += 1;
-	ctx->player->vision->r += 50;
 	if (ctx->state->collected == ctx->state->total_orbs)
 		ctx->state->ready_to_exit = true;
 }

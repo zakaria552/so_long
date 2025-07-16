@@ -6,24 +6,18 @@
 /*   By: zfarah <zfarah@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 13:59:58 by zfarah            #+#    #+#             */
-/*   Updated: 2025/07/01 18:57:52 by zfarah           ###   ########.fr       */
+/*   Updated: 2025/07/16 13:38:43 by zfarah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	free_player(t_ctx *ctx, t_player *player)
+void	free_player(t_player *player)
 {
 	if (!player)
 		return ;
 	if (player->pos)
 		free(player->pos);
-	if (player->vision)
-	{
-		if (player->vision->img)
-			mlx_delete_image(ctx->mlx, player->vision->img);
-		free(player->vision);
-	}
 	free(player);
 }
 

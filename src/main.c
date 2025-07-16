@@ -6,7 +6,7 @@
 /*   By: zfarah <zfarah@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 14:47:26 by zfarah            #+#    #+#             */
-/*   Updated: 2025/07/12 20:26:53 by zfarah           ###   ########.fr       */
+/*   Updated: 2025/07/16 13:36:26 by zfarah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ int	main(int argc, char **args)
 	draw_map(ctx);
 	mlx_loop_hook(ctx->mlx, (void *) move_hook, ctx);
 	mlx_loop_hook(ctx->mlx, (void *) hooks, ctx);
-	mlx_loop_hook(ctx->mlx, (void *) update_vision, ctx);
 	mlx_key_hook(ctx->mlx, (void *) key_hooks, ctx);
 	mlx_loop(ctx->mlx);
 	clean_up(ctx);

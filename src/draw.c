@@ -6,7 +6,7 @@
 /*   By: zfarah <zfarah@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 18:19:52 by zfarah            #+#    #+#             */
-/*   Updated: 2025/07/01 18:27:29 by zfarah           ###   ########.fr       */
+/*   Updated: 2025/07/16 13:35:30 by zfarah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,10 +100,8 @@ static void	draw_player(t_ctx *ctx)
 	pos = ctx->player->pos;
 	pos->x *= ctx->map->size;
 	pos->y *= ctx->map->size;
-	ctx->player->vision->img = new_img(ctx, ctx->map->width, ctx->map->height);
-	img_to_window(ctx, ctx->player->vision->img, 0, 0);
 	img_to_window(ctx, tiles->p_idle[0].img, pos->x, pos->y);
-	if (ctx->player->vision->img < 0 || tiles->p_idle[0].img < 0)
+	if (tiles->p_idle[0].img < 0)
 		clean_exit(ctx, NULL, errno);
 }
 
