@@ -37,7 +37,6 @@ bool	has_extension(char *name, char *ext);
 bool	is_enclosed(char **map);
 
 // errors
-void	err_msg(char *msg, int errnum);
 void	clean_exit(t_ctx *ctx, char *msg, int err_code);
 
 // io_utils
