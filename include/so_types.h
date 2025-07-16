@@ -6,7 +6,7 @@
 /*   By: zfarah <zfarah@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 17:34:14 by zfarah            #+#    #+#             */
-/*   Updated: 2025/07/15 17:56:26 by zfarah           ###   ########.fr       */
+/*   Updated: 2025/07/16 13:41:30 by zfarah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,19 +21,12 @@ typedef struct s_vec2
 	int				y;
 }					t_vec2;
 
-typedef struct s_vision
-{
-	mlx_image_t		*img;
-	int				r;
-}					t_vision;
-
 typedef struct s_player
 {
 	t_vec2			*pos;
 	t_vec2			grid_pos;
 	int				orbs;
 	int				speed;
-	t_vision		*vision;
 }					t_player;
 
 typedef struct s_orb
@@ -88,7 +81,6 @@ typedef struct s_ctx
 {
 	mlx_t			*mlx;
 	t_player		*player;
-	t_player		*enemies;
 	t_map			*map;
 	t_game_state	*state;
 

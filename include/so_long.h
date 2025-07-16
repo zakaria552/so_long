@@ -6,7 +6,7 @@
 /*   By: zfarah <zfarah@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 17:33:42 by zfarah            #+#    #+#             */
-/*   Updated: 2025/07/12 20:36:29 by zfarah           ###   ########.fr       */
+/*   Updated: 2025/07/16 13:38:50 by zfarah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,10 +64,6 @@ void	initialize_player(t_ctx *ctx);
 void	hooks(t_ctx *ctx);
 void	key_hooks(mlx_key_data_t keydata, t_ctx *ctx);
 
-// vision
-void	update_vision(t_ctx *ctx);
-void	init_vision(t_ctx *ctx);
-
 // collision
 bool	check_collision(t_ctx *ctx, char c, const int off[2][2]);
 t_vec2	get_collided_tile(t_map *map, t_vec2 *pos, char c);
@@ -80,7 +76,7 @@ void	clean_up(t_ctx *ctx);
 bool	free_map(t_map *map, mlx_t *mlx);
 void	*free_matrix_mem(char **matrix);
 void	free_tiles(mlx_t *mlx, t_tiles *tiles);
-void	free_player(t_ctx *ctx, t_player *player);
+void	free_player(t_player *player);
 void	free_assets(mlx_t *mlx, t_asset *asset, int size);
 
 // valid path
