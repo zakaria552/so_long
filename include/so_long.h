@@ -6,17 +6,15 @@
 /*   By: zfarah <zfarah@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 17:33:42 by zfarah            #+#    #+#             */
-/*   Updated: 2025/07/16 15:42:11 by zfarah           ###   ########.fr       */
+/*   Updated: 2025/07/16 16:47:48 by zfarah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-// #include <mlx.h>
 # include "MLX42.h"
 # include "libft.h"
-# include "math.h"
 # include "so_types.h"
 # include <errno.h>
 # include <fcntl.h>
@@ -24,73 +22,73 @@
 # include <string.h>
 
 // parser
-t_map	*parse_map(char *name);
+t_map		*parse_map(char *name);
 
 // ctx init
-t_ctx	*ctx_init(char *map_name);
+t_ctx		*ctx_init(char *map_name);
 
 // map validator/utils
-bool	validate_map(char *fname, char *map);
-bool	valid_char_set(char **map);
-bool	is_rectangular(char **map);
-bool	has_extension(char *name, char *ext);
-bool	is_enclosed(char **map);
+bool		validate_map(char *fname, char *map);
+bool		valid_char_set(char **map);
+bool		is_rectangular(char **map);
+bool		has_extension(char *name, char *ext);
+bool		is_enclosed(char **map);
 
 // errors
-void	clean_exit(t_ctx *ctx, char *msg, int err_code);
+void		clean_exit(t_ctx *ctx, char *msg, int err_code);
 
 // io_utils
-char	*read_from_file(char *name);
+char		*read_from_file(char *name);
 
 // textures
-void	load_textures(t_ctx *ctx);
-void	init_assets(t_asset *asset, int size);
+void		load_textures(t_ctx *ctx);
+void		init_assets(t_asset *asset, int size);
 
 // textures utils
-void	load_wall_textures(t_ctx *ctx, t_tiles *tiles);
-void	load_floor_textures(t_ctx *ctx, t_tiles *tiles);
-void	load_doors_textures(t_ctx *ctx, t_tiles *tiles);
-void	load_orbs_textures(t_ctx *ctx, t_tiles *tiles);
+void		load_wall_textures(t_ctx *ctx, t_tiles *tiles);
+void		load_floor_textures(t_ctx *ctx, t_tiles *tiles);
+void		load_doors_textures(t_ctx *ctx, t_tiles *tiles);
+void		load_orbs_textures(t_ctx *ctx, t_tiles *tiles);
 
 // draw
-void	draw_map(t_ctx *ctx);
+void		draw_map(t_ctx *ctx);
 
 // player
-void	move_hook(t_ctx *ctx);
-void	initialize_player(t_ctx *ctx);
+void		move_hook(t_ctx *ctx);
+void		initialize_player(t_ctx *ctx);
 
 // hooks
-void	hooks(t_ctx *ctx);
-void	key_hooks(mlx_key_data_t keydata, t_ctx *ctx);
+void		hooks(t_ctx *ctx);
+void		key_hooks(mlx_key_data_t keydata, t_ctx *ctx);
 
 // collision
-bool	check_collision(t_ctx *ctx, char c, const int off[2][2]);
-t_vec2	get_collided_tile(t_map *map, t_vec2 *pos, char c);
+bool		check_collision(t_ctx *ctx, char c, const int off[2][2]);
+t_vec2		get_collided_tile(t_map *map, t_vec2 *pos, char c);
 
 // collect
-void	collect(t_ctx *ctx);
+void		collect(t_ctx *ctx);
 
 // clean/utils
-void	clean_up(t_ctx *ctx);
-bool	free_map(t_map *map, mlx_t *mlx);
-void	*free_matrix_mem(char **matrix);
-void	free_tiles(mlx_t *mlx, t_tiles *tiles);
-void	free_player(t_player *player);
-void	free_assets(mlx_t *mlx, t_asset *asset, int size);
+void		clean_up(t_ctx *ctx);
+bool		free_map(t_map *map, mlx_t *mlx);
+void		*free_matrix_mem(char **matrix);
+void		free_tiles(mlx_t *mlx, t_tiles *tiles);
+void		free_player(t_player *player);
+void		free_assets(mlx_t *mlx, t_asset *asset, int size);
 
 // valid path
-bool	valid_path_exists(t_ctx *ctx);
+bool		valid_path_exists(t_ctx *ctx);
 
 // valid path utils
-bool	is_valid_adj(t_vec2 *adj, int bounds[2], int **visited);
-int		**initialize_visited(int w, int h);
-void	free_visited(int **visited, int h);
+bool		is_valid_adj(t_vec2 *adj, int bounds[2], int **visited);
+int			**initialize_visited(int w, int h);
+void		free_visited(int **visited, int h);
 
 // path finder
-t_list	*dfs_target(t_ctx *ctx, t_vec2 start, t_vec2 target);
+t_list		*dfs_target(t_ctx *ctx, t_vec2 start, t_vec2 target);
 
 // safe mlx funcs
-void	img_to_window(t_ctx *ctx, mlx_image_t *img, int32_t x, int32_t y);
-mlx_image_t *new_img(t_ctx *ctx, uint32_t w, uint32_t h);
+void		img_to_window(t_ctx *ctx, mlx_image_t *img, int32_t x, int32_t y);
+mlx_image_t	*new_img(t_ctx *ctx, uint32_t w, uint32_t h);
 
 #endif

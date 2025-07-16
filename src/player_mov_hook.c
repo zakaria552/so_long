@@ -6,7 +6,7 @@
 /*   By: zfarah <zfarah@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/15 22:15:50 by zfarah            #+#    #+#             */
-/*   Updated: 2025/07/16 16:29:08 by zfarah           ###   ########.fr       */
+/*   Updated: 2025/07/16 16:51:24 by zfarah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static void	update_move_count(t_ctx *ctx, int *count, const int off[2][2])
 {
 	t_vec2	new_pos;
 
-	new_pos.x = (ctx->player->pos->x + off[0][1])/ ctx->map->size;
+	new_pos.x = (ctx->player->pos->x + off[0][1]) / ctx->map->size;
 	new_pos.y = (ctx->player->pos->y + off[1][1]) / ctx->map->size;
 	if (new_pos.x == ctx->player->grid_pos.x
 		&& new_pos.y == ctx->player->grid_pos.y)
