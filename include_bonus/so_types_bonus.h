@@ -6,7 +6,7 @@
 /*   By: zfarah <zfarah@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 16:49:13 by zfarah            #+#    #+#             */
-/*   Updated: 2025/07/16 16:49:16 by zfarah           ###   ########.fr       */
+/*   Updated: 2025/07/16 16:55:32 by zfarah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ typedef struct s_enemy
 	t_asset				*up;
 	t_asset				*down;
 	t_list				*path;
+	t_vec2				patrol_paths[5];
 	t_animation_info	ani_info;
 	t_asset				*sprites[5];
 }						t_enemy;
