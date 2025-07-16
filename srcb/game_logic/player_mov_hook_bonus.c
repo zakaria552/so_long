@@ -6,7 +6,7 @@
 /*   By: zfarah <zfarah@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 21:33:44 by zfarah            #+#    #+#             */
-/*   Updated: 2025/07/16 00:02:23 by zfarah           ###   ########.fr       */
+/*   Updated: 2025/07/16 16:31:15 by zfarah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,8 +66,8 @@ static void	update_steps(t_ctx *ctx, const int off[2][2])
 {
 	t_vec2	new_pos;
 
-	new_pos.x = ctx->player->pos->x / ctx->map->size;
-	new_pos.y = (ctx->player->pos->y - off[1][1]) / ctx->map->size;
+	new_pos.x = (ctx->player->pos->x + off[0][1]) / ctx->map->size;
+	new_pos.y = (ctx->player->pos->y + off[1][1]) / ctx->map->size;
 	if (new_pos.x == ctx->player->grid_pos.x
 		&& new_pos.y == ctx->player->grid_pos.y)
 		return ;
