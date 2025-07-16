@@ -28,8 +28,7 @@ SRC = \
 	textures.c \
 	textures_utils.c \
 	valid_path.c \
-	valid_path_utils.c  \
-	vision.c
+	valid_path_utils.c
 
 SRCB_DRAW := draw_bonus.c draw_utils_bonus.c
 
