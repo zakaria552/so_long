@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: zfarah <zfarah@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/09 13:18:15 by zfarah            #+#    #+#             */
-/*   Updated: 2025/07/16 18:50:10by zfarah           ###   ########.fr       */
+/*   Created: 2025/07/16 19:12:36 by zfarah            #+#    #+#             */
+/*   Updated: 2025/07/16 19:12:39 by zfarah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,6 @@ void	set_path_to_patrol(t_ctx *ctx)
 		ctx->enemy->path = bfs_target(ctx, start, target);
 		if (!ctx->enemy->path)
 			continue ;
-		break;
+		break ;
 	}
 }
