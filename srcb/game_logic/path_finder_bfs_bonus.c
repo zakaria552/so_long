@@ -6,7 +6,7 @@
 /*   By: zfarah <zfarah@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/15 16:38:30 by zfarah            #+#    #+#             */
-/*   Updated: 2025/07/15 23:53:05 by zfarah           ###   ########.fr       */
+/*   Updated: 2025/07/16 17:47:08 by zfarah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ static bool	bfs(t_ctx *ctx, t_queue *q, t_vec2 *parent, t_vec2 target)
 		enqueue_next_adjs(ctx, q, visited, parent);
 		dequeue(q, free);
 	}
+	free(visited);
 	return (false);
 }
 
