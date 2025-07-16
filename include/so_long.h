@@ -6,7 +6,7 @@
 /*   By: zfarah <zfarah@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 17:33:42 by zfarah            #+#    #+#             */
-/*   Updated: 2025/07/16 13:38:50 by zfarah           ###   ########.fr       */
+/*   Updated: 2025/07/16 15:42:11 by zfarah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ bool	has_extension(char *name, char *ext);
 bool	is_enclosed(char **map);
 
 // errors
-void	err_msg(char *msg, int errnum);
 void	clean_exit(t_ctx *ctx, char *msg, int err_code);
 
 // io_utils
