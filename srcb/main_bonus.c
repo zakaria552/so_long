@@ -6,7 +6,7 @@
 /*   By: zfarah <zfarah@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 21:24:44 by zfarah            #+#    #+#             */
-/*   Updated: 2025/07/16 16:09:53 by zfarah           ###   ########.fr       */
+/*   Updated: 2025/07/16 16:42:50 by zfarah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	main(int argc, char **args)
 	initialize_enemy(ctx);
 	if (!valid_path_exists(ctx))
 		clean_exit(ctx, NULL, errno);
-	ctx->mlx = mlx_init(ctx->map->width, ctx->map->height, args[0], true);
+	ctx->mlx = mlx_init(ctx->map->width, ctx->map->height, "so long", false);
 	if (!ctx->mlx)
 		clean_exit(ctx, NULL, errno);
 	load_textures(ctx);

@@ -6,7 +6,7 @@
 /*   By: zfarah <zfarah@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 14:47:26 by zfarah            #+#    #+#             */
-/*   Updated: 2025/07/16 14:37:34 by zfarah           ###   ########.fr       */
+/*   Updated: 2025/07/16 16:37:43 by zfarah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	main(int argc, char **args)
 	initialize_player(ctx);
 	if (!valid_path_exists(ctx))
 		clean_exit(ctx, NULL, errno);
-	ctx->mlx = mlx_init(ctx->map->width, ctx->map->height, args[0], true);
+	ctx->mlx = mlx_init(ctx->map->width, ctx->map->height, "so long", false);
 	if (!ctx->mlx)
 		clean_exit(ctx, NULL, errno);
 	load_textures(ctx);
