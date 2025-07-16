@@ -3,7 +3,7 @@
 PROGRAM="./so_long"        # Replace with your actual program path
 INVALID_MAP_DIR="./test"     # Directory containing files
 TRACE="trace.txt"
-SEARCH_STRING="Invalid map"
+SEARCH_STRING="Error"
 OUTPUT_FILE="output.txt"
 
 # Loop through all files in the directory

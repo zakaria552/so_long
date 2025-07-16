@@ -96,7 +96,7 @@ all: .mandatory
 .mandatory: $(MLX) $(libft) $(OBJS)
 	@echo "Building mandatory"
 	@$(CC) $(CFLAGS) $(HEADERS) $(OBJS) $(MLX) $(libft) -ldl -lglfw -pthread -lm -o $(NAME)
-	@rm -f extras
+	@rm -f .extras
 	@touch $@
 	@echo "Done building"
 	
@@ -105,7 +105,7 @@ bonus: .extras
 .extras: $(MLX) $(libft) $(BONUS_OBJS)
 	@echo "Building bonus"
 	@$(CC) $(CFLAGS) $(BONUS_OBJS) $(MLX) $(libft) -ldl -lglfw -pthread -lm -o $(NAME)
-	@rm -f mandatory
+	@rm -f .mandatory
 	@touch $@
 	@echo "Done building"
 
