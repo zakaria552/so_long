@@ -6,7 +6,7 @@
 /*   By: zfarah <zfarah@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 14:50:24 by zfarah            #+#    #+#             */
-/*   Updated: 2025/07/15 23:09:48 by zfarah           ###   ########.fr       */
+/*   Updated: 2025/07/16 15:32:22 by zfarah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ bool	valid_char_set(char **map)
 		{
 			if (!ft_strchr("01CEPX", map[y][x]))
 				return (false);
-			if (map[y][x] == '1' || map[y][x] == '1')
+			if (map[y][x] == '1' || map[y][x] == '0')
 				continue ;
 			counts[c_index(chars, map[y][x])] += 1;
 		}
@@ -78,11 +78,20 @@ bool	is_rectangular(char **map)
 bool	has_extension(char *name, char *ext)
 {
 	char	*last_dot;
+	const int ext_len = ft_strlen(ext);
 
+	name = ft_strrchr(name, '/');
+	if (ft_strrchr(name, '/'))
+	{
+		name = ft_strrchr(name, '/');
+		name++;
+	}
 	last_dot = ft_strrchr(name, '.');
 	if (!*last_dot)
 		return (false);
-	if (ft_strncmp(last_dot, ext, ft_strlen(ext)) == 0)
+	if (ft_strncmp(name, ext, ext_len) == 0 && name[ext_len] == '\0')
+		return (false);
+	if (ft_strncmp(last_dot, ext, ext_len) == 0)
 		return (true);
 	return (false);
 }
