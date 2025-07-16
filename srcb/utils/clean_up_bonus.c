@@ -6,7 +6,7 @@
 /*   By: zfarah <zfarah@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 14:00:06 by zfarah            #+#    #+#             */
-/*   Updated: 2025/07/15 23:09:48 by zfarah           ###   ########.fr       */
+/*   Updated: 2025/07/16 17:29:17 by zfarah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,19 +40,17 @@ static void	free_ui(t_ctx *ctx, t_ui *ui)
 
 static void	free_enemy(t_ctx *ctx, mlx_t *mlx, t_enemy *enemy)
 {
-	if (!mlx)
-		return ;
 	if (!enemy)
 		return ;
-	if (enemy->idle)
+	if (mlx && enemy->idle)
 		free_assets(mlx, enemy->idle, 5);
-	if (enemy->left)
+	if (mlx && enemy->left)
 		free_assets(mlx, enemy->left, 5);
-	if (enemy->right)
+	if (mlx && enemy->right)
 		free_assets(mlx, enemy->right, 5);
-	if (enemy->up)
+	if (mlx && enemy->up)
 		free_assets(mlx, enemy->up, 5);
-	if (enemy->down)
+	if (mlx && enemy->down)
 		free_assets(mlx, enemy->down, 5);
 	if (enemy->vision)
 		free(enemy->vision);
