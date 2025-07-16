@@ -6,7 +6,7 @@
 /*   By: zfarah <zfarah@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 16:49:30 by zfarah            #+#    #+#             */
-/*   Updated: 2025/07/16 18:39:06 by zfarah           ###   ########.fr       */
+/*   Updated: 2025/07/16 18:59:50 by zfarah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include <fcntl.h>
 # include <stdio.h>
 # include <string.h>
+# include <time.h>
 
 // parser
 t_map		*parse_map(char *name);
@@ -141,7 +142,6 @@ void		stay_alert(t_ctx *ctx);
 
 // patrol path
 void		set_path_to_patrol(t_ctx *ctx);
-void        set_patrol_paths(t_ctx *ctx);
 
 // move enemy
 void		move_enemy_hook(t_ctx *ctx);
