@@ -6,12 +6,11 @@
 /*   By: zfarah <zfarah@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 21:24:44 by zfarah            #+#    #+#             */
-/*   Updated: 2025/07/15 23:09:48 by zfarah           ###   ########.fr       */
+/*   Updated: 2025/07/16 16:02:59 by zfarah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long_bonus.h"
-#include <stdio.h>
 
 int	main(int argc, char **args)
 {
@@ -24,7 +23,7 @@ int	main(int argc, char **args)
 	initialize_player(ctx);
 	initialize_enemy(ctx);
 	if (!valid_path_exists(ctx))
-		clean_exit(ctx, "Invalid map", errno);
+		clean_exit(ctx, NULL , errno);
 	ctx->mlx = mlx_init(ctx->map->width, ctx->map->height, args[0], true);
 	if (!ctx->mlx)
 		clean_exit(ctx, NULL, errno);
