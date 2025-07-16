@@ -6,7 +6,7 @@
 /*   By: zfarah <zfarah@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/12 21:22:40 by zfarah            #+#    #+#             */
-/*   Updated: 2025/07/16 15:27:01 by zfarah           ###   ########.fr       */
+/*   Updated: 2025/07/16 19:05:05 by zfarah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ static void	draw_map_grid(t_ctx *ctx, t_map *map)
 				img_to_window(ctx, tiles->walls[0].img, x * map->size, y
 					* map->size);
 			else
-				img_to_window(ctx, tiles->floors[(x * y) % 4].img, x
+				img_to_window(ctx, tiles->floors[random_num(0, 3)].img, x
 					* map->size, y * map->size);
 			if (grid[y][x] == 'C')
 				img_to_window(ctx, tiles->orbs->img, x * map->size, y
