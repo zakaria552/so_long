@@ -6,7 +6,7 @@
 /*   By: zfarah <zfarah@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 14:50:24 by zfarah            #+#    #+#             */
-/*   Updated: 2025/07/16 15:32:22 by zfarah           ###   ########.fr       */
+/*   Updated: 2025/07/16 16:09:47 by zfarah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,8 +77,8 @@ bool	is_rectangular(char **map)
 
 bool	has_extension(char *name, char *ext)
 {
-	char	*last_dot;
-	const int ext_len = ft_strlen(ext);
+	char		*last_dot;
+	const int	ext_len = ft_strlen(ext);
 
 	name = ft_strrchr(name, '/');
 	if (ft_strrchr(name, '/'))
