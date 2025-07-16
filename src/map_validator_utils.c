@@ -6,23 +6,23 @@
 /*   By: zfarah <zfarah@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 14:50:24 by zfarah            #+#    #+#             */
-/*   Updated: 2025/07/12 15:15:14 by zfarah           ###   ########.fr       */
+/*   Updated: 2025/07/16 14:55:02 by zfarah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static void	init_char_set(int *e, int *c, int *p, int *y);
+static int	c_index(const char chars[3], char c);
 
 bool	valid_char_set(char **map)
 {
-	int	x;
-	int	y;
-	int	e;
-	int	p;
-	int	c;
+	const char	chars[3] = {'P', 'C', 'E'};
+	int			counts[3];
+	int			x;
+	int			y;
 
-	init_char_set(&e, &c, &p, &y);
+	ft_memset(counts, 0, sizeof(int) * 3);
+	y = -1;
 	while (map[++y])
 	{
 		x = -1;
@@ -30,23 +30,25 @@ bool	valid_char_set(char **map)
 		{
 			if (!ft_strchr("01CEP", map[y][x]))
 				return (false);
-			if (map[y][x] == 'P')
-				p++;
-			if (map[y][x] == 'C')
-				c++;
-			if (map[y][x] == 'E')
-				e++;
+			if (map[y][x] == '1' || map[y][x] == '0')
+				continue ;
+			counts[c_index(chars, map[y][x])] += 1;
 		}
 	}
-	return (p == 1 && c > 0 && e == 1);
+	return (counts[0] == 1 && counts[1] > 0 && counts[2] == 1);
 }
 
-static	void	init_char_set(int *e, int *c, int *p, int *y)
+static int	c_index(const char chars[3], char c)
 {
-	*e = 0;
-	*p = 0;
-	*c = 0;
-	*y = 0;
+	int	i;
+
+	i = -1;
+	while (++i < 3)
+	{
+		if (chars[i] == c)
+			break ;
+	}
+	return (i);
 }
 
 bool	is_rectangular(char **map)
@@ -75,11 +77,20 @@ bool	is_rectangular(char **map)
 bool	has_extension(char *name, char *ext)
 {
 	char	*last_dot;
+	const int ext_len = ft_strlen(ext);
 
+	name = ft_strrchr(name, '/');
+	if (ft_strrchr(name, '/'))
+	{
+		name = ft_strrchr(name, '/');
+		name++;
+	}
 	last_dot = ft_strrchr(name, '.');
 	if (!*last_dot)
 		return (false);
-	if (ft_strncmp(last_dot, ext, ft_strlen(ext)) == 0)
+	if (ft_strncmp(name, ext, ext_len) == 0 && name[ext_len] == '\0')
+		return (false);
+	if (ft_strncmp(last_dot, ext, ext_len) == 0)
 		return (true);
 	return (false);
 }
