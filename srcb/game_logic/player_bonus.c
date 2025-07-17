@@ -6,7 +6,7 @@
 /*   By: zfarah <zfarah@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 15:48:01 by zfarah            #+#    #+#             */
-/*   Updated: 2025/07/16 18:35:44 by zfarah           ###   ########.fr       */
+/*   Updated: 2025/07/17 12:50:53 by zfarah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ static void	init_player_pos(t_ctx *ctx)
 static void	init_player(t_ctx *ctx)
 {
 	ctx->player->orbs = 0;
-	ctx->player->speed = 6;
+	ctx->player->speed = 4;
 	ctx->player->vision->r = 150;
 	ctx->player->idle = true;
 	ctx->player->ani_info->frame_index = 0;
