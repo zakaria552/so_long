@@ -6,7 +6,7 @@
 /*   By: zfarah <zfarah@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 15:00:25 by zfarah            #+#    #+#             */
-/*   Updated: 2025/07/15 23:09:48 by zfarah           ###   ########.fr       */
+/*   Updated: 2025/07/17 12:47:38 by zfarah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void	load_enemy_idle(t_ctx *ctx)
 {
-	const char	*src[] = {"./textures/player/idle/1.png",
-		"./textures/player/idle/2.png", "./textures/player/idle/3.png",
-		"./textures/player/idle/4.png", "./textures/player/idle/5.png",
+	const char	*src[] = {"./textures/enemy/idle/1.png",
+		"./textures/enemy/idle/2.png", "./textures/enemy/idle/3.png",
+		"./textures/enemy/idle/4.png", "./textures/enemy/idle/5.png",
 		NULL};
 	int			i;
 
@@ -40,9 +40,9 @@ void	load_enemy_idle(t_ctx *ctx)
 
 void	load_enemy_right(t_ctx *ctx)
 {
-	const char	*src[] = {"./textures/player/right/1.png",
-		"./textures/player/right/2.png", "./textures/player/right/3.png",
-		"./textures/player/right/4.png", "./textures/player/right/5.png",
+	const char	*src[] = {"./textures/enemy/right/1.png",
+		"./textures/enemy/right/2.png", "./textures/enemy/right/3.png",
+		"./textures/enemy/right/4.png", "./textures/enemy/right/5.png",
 		NULL};
 	int			i;
 
@@ -66,9 +66,9 @@ void	load_enemy_right(t_ctx *ctx)
 
 void	load_enemy_left(t_ctx *ctx)
 {
-	const char	*src[] = {"./textures/player/left/1.png",
-		"./textures/player/left/2.png", "./textures/player/left/3.png",
-		"./textures/player/left/4.png", "./textures/player/left/5.png",
+	const char	*src[] = {"./textures/enemy/left/1.png",
+		"./textures/enemy/left/2.png", "./textures/enemy/left/3.png",
+		"./textures/enemy/left/4.png", "./textures/enemy/left/5.png",
 		NULL};
 	int			i;
 
@@ -92,9 +92,9 @@ void	load_enemy_left(t_ctx *ctx)
 
 void	load_enemy_up(t_ctx *ctx)
 {
-	const char	*src[] = {"./textures/player/up/1.png",
-		"./textures/player/up/2.png", "./textures/player/up/3.png",
-		"./textures/player/up/4.png", "./textures/player/up/5.png", NULL};
+	const char	*src[] = {"./textures/enemy/up/1.png",
+		"./textures/enemy/up/2.png", "./textures/enemy/up/3.png",
+		"./textures/enemy/up/4.png", "./textures/enemy/up/5.png", NULL};
 	int			i;
 
 	ctx->enemy->up = malloc(sizeof(t_asset) * 5);
@@ -117,9 +117,9 @@ void	load_enemy_up(t_ctx *ctx)
 
 void	load_enemy_down(t_ctx *ctx)
 {
-	const char	*src[] = {"./textures/player/down/1.png",
-		"./textures/player/down/2.png", "./textures/player/down/3.png",
-		"./textures/player/down/4.png", "./textures/player/down/5.png",
+	const char	*src[] = {"./textures/enemy/down/1.png",
+		"./textures/enemy/down/2.png", "./textures/enemy/down/3.png",
+		"./textures/enemy/down/4.png", "./textures/enemy/down/5.png",
 		NULL};
 	int			i;
 
