@@ -1,49 +1,50 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_validator_utils.c                              :+:      :+:    :+:   */
+/*   map_validator_utils_bonus.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zfarah <zfarah@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 14:50:24 by zfarah            #+#    #+#             */
-/*   Updated: 2025/07/16 16:08:27 by zfarah           ###   ########.fr       */
+/*   Updated: 2025/07/16 16:09:47 by zfarah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static int	c_index(const char chars[3], char c);
+static int	c_index(const char chars[4], char c);
 
 bool	valid_char_set(char **map)
 {
-	const char	chars[3] = {'P', 'C', 'E'};
-	int			counts[3];
+	const char	chars[4] = {'P', 'C', 'E', 'X'};
+	int			counts[4];
 	int			x;
 	int			y;
 
-	ft_memset(counts, 0, sizeof(int) * 3);
+	ft_memset(counts, 0, sizeof(int) * 4);
 	y = -1;
 	while (map[++y])
 	{
 		x = -1;
 		while (map[y][++x])
 		{
-			if (!ft_strchr("01CEP", map[y][x]))
+			if (!ft_strchr("01CEPX", map[y][x]))
 				return (false);
 			if (map[y][x] == '1' || map[y][x] == '0')
 				continue ;
 			counts[c_index(chars, map[y][x])] += 1;
 		}
 	}
-	return (counts[0] == 1 && counts[1] > 0 && counts[2] == 1);
+	return (counts[0] == 1 && counts[1] > 0 && counts[2] == 1
+		&& counts[3] == 1);
 }
 
-static int	c_index(const char chars[3], char c)
+static int	c_index(const char chars[4], char c)
 {
 	int	i;
 
 	i = -1;
-	while (++i < 3)
+	while (++i < 4)
 	{
 		if (chars[i] == c)
 			break ;

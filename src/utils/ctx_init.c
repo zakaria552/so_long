@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ctx_init.c                                         :+:      :+:    :+:   */
+/*   ctx_init_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zfarah <zfarah@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 14:41:21 by zfarah            #+#    #+#             */
-/*   Updated: 2025/07/16 14:38:23 by zfarah           ###   ########.fr       */
+/*   Updated: 2025/07/16 18:46:07 by zfarah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ t_ctx	*ctx_init(char *map_name)
 {
 	t_ctx	*ctx;
 
+	srand(time(NULL));
 	ctx = malloc(sizeof(t_ctx));
 	if (!ctx)
 		clean_exit(ctx, strerror(errno), errno);
@@ -25,9 +26,12 @@ t_ctx	*ctx_init(char *map_name)
 	ctx->player = NULL;
 	ctx->mlx = NULL;
 	ctx->state = NULL;
+	ctx->ui.steps.str = NULL;
+	ctx->ui.steps.asset.img = NULL;
+	ctx->ui.steps.asset.txt = NULL;
 	ctx->map = parse_map(map_name);
 	if (!ctx->map)
-		clean_exit(ctx, NULL, errno);
+		clean_exit(ctx, strerror(errno), errno);
 	init_game_state(ctx);
 	return (ctx);
 }

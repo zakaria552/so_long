@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   collision.c                                        :+:      :+:    :+:   */
+/*   collision_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zfarah <zfarah@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 14:04:26 by zfarah            #+#    #+#             */
-/*   Updated: 2025/07/01 14:39:22 by zfarah           ###   ########.fr       */
+/*   Updated: 2025/07/15 23:09:48 by zfarah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,13 @@
 
 static void	init_vals(t_vec2 *tile, int *x, int *y);
 
-bool	check_collision(t_ctx *ctx, char c, const int off[2][2])
+bool	check_collision(t_ctx *ctx, char c, const int off[2][2], t_vec2 *pos)
 {
 	char	**grid;
-	t_vec2	*pos;
 	int		s;
 	int		x;
 	int		y;
 
-	pos = ctx->player->pos;
 	s = ctx->map->size;
 	grid = ctx->map->grid;
 	x = -1;
@@ -77,4 +75,13 @@ static void	init_vals(t_vec2 *tile, int *x, int *y)
 	tile->y = -1;
 	*x = -1;
 	*y = -1;
+}
+
+bool	player_collision(t_vec2 *pos, t_vec2 *pos2, const int off[2][2])
+{
+	if ((pos->x + off[0][0]) < (pos2->x + 48) && (pos->x + 48
+			- off[0][0]) > pos2->x && (pos->y + off[1][1]) < (pos2->y + 48)
+		&& (pos->y + 48 - off[1][0]) > pos2->y)
+		return (true);
+	return (false);
 }

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parser.c                                           :+:      :+:    :+:   */
+/*   parser_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zfarah <zfarah@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 15:39:53 by zfarah            #+#    #+#             */
-/*   Updated: 2025/07/12 14:40:11 by zfarah           ###   ########.fr       */
+/*   Updated: 2025/07/16 15:34:19 by zfarah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ t_map	*parse_map(char *name)
 	if (!str_map || !validate_map(name, str_map))
 	{
 		free(str_map);
+		errno = EINVAL;
 		return (NULL);
 	}
 	map = init_map(str_map);

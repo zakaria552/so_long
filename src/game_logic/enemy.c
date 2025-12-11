@@ -1,36 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   player.c                                           :+:      :+:    :+:   */
+/*   enemy_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zfarah <zfarah@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/01 15:48:01 by zfarah            #+#    #+#             */
-/*   Updated: 2025/07/16 13:36:35 by zfarah           ###   ########.fr       */
+/*   Created: 2025/07/09 21:22:53 by zfarah            #+#    #+#             */
+/*   Updated: 2025/07/16 18:59:39 by zfarah           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static void	init_player_pos(t_ctx *ctx);
+static void	init_enemy_pos(t_ctx *ctx);
 
-void	initialize_player(t_ctx *ctx)
+void	initialize_enemy(t_ctx *ctx)
 {
-	ctx->player = malloc(sizeof(t_player));
-	if (!ctx->player)
+	ctx->enemy = malloc(sizeof(t_enemy));
+	if (!ctx->enemy)
 		clean_exit(ctx, NULL, errno);
-	ctx->player->pos = NULL;
-	ctx->player->pos = malloc(sizeof(t_vec2));
-	if (!ctx->player->pos)
+	ctx->enemy->vision = malloc(sizeof(t_vision));
+	if (!ctx->enemy->vision)
 		clean_exit(ctx, NULL, errno);
-	ctx->player->orbs = 0;
-	ctx->player->speed = 6;
-	init_player_pos(ctx);
-	ctx->player->grid_pos.x = ctx->player->pos->x;
-	ctx->player->grid_pos.y = ctx->player->pos->y;
+	ctx->enemy->vision->r = 20;
+	ctx->enemy->pos.x = 0;
+	ctx->enemy->pos.y = 0;
+	ctx->enemy->dir = IDLE;
+	ctx->enemy->speed = 1;
+	ctx->enemy->path = NULL;
+	ctx->enemy->ani_info.frame_index = 0;
+	ctx->enemy->ani_info.frame = 0;
+	ctx->enemy->ani_info.lt = 0;
+	ctx->enemy->persuing = false;
+	init_enemy_pos(ctx);
 }
 
-static void	init_player_pos(t_ctx *ctx)
+static void	init_enemy_pos(t_ctx *ctx)
 {
 	char	**grid;
 	int		x;
@@ -43,10 +48,10 @@ static void	init_player_pos(t_ctx *ctx)
 		x = -1;
 		while (grid[y][++x])
 		{
-			if (grid[y][x] == 'P')
+			if (grid[y][x] == 'X')
 			{
-				ctx->player->pos->x = x;
-				ctx->player->pos->y = y;
+				ctx->enemy->pos.x = x;
+				ctx->enemy->pos.y = y;
 				return ;
 			}
 		}
