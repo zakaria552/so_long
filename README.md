@@ -28,7 +28,7 @@ This was my first 2D game, and some of the interesting concepts I learned includ
 - **P** – Player starting position  
 - **E** – Exit  
 - **C** – Collectible  
-- **X** – Enemy *(bonus)*  
+- **X** – Enemy  
 
 > The map must be rectangular, fully surrounded by walls, and all collectibles and the exit must be accessible to the player.
 
