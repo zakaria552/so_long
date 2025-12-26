@@ -14,9 +14,9 @@
 
 void	load_enemy_idle(t_ctx *ctx)
 {
-	const char	*src[] = {"./textures/enemy/idle/1.png",
-		"./textures/enemy/idle/2.png", "./textures/enemy/idle/3.png",
-		"./textures/enemy/idle/4.png", "./textures/enemy/idle/5.png",
+	const char	*src[] = {"assets/enemy/idle/1.png",
+		"assets/enemy/idle/2.png", "assets/enemy/idle/3.png",
+		"assets/enemy/idle/4.png", "assets/enemy/idle/5.png",
 		NULL};
 	int			i;
 
@@ -40,9 +40,9 @@ void	load_enemy_idle(t_ctx *ctx)
 
 void	load_enemy_right(t_ctx *ctx)
 {
-	const char	*src[] = {"./textures/enemy/right/1.png",
-		"./textures/enemy/right/2.png", "./textures/enemy/right/3.png",
-		"./textures/enemy/right/4.png", "./textures/enemy/right/5.png",
+	const char	*src[] = {"assets/enemy/right/1.png",
+		"assets/enemy/right/2.png", "assets/enemy/right/3.png",
+		"assets/enemy/right/4.png", "assets/enemy/right/5.png",
 		NULL};
 	int			i;
 
@@ -66,9 +66,9 @@ void	load_enemy_right(t_ctx *ctx)
 
 void	load_enemy_left(t_ctx *ctx)
 {
-	const char	*src[] = {"./textures/enemy/left/1.png",
-		"./textures/enemy/left/2.png", "./textures/enemy/left/3.png",
-		"./textures/enemy/left/4.png", "./textures/enemy/left/5.png",
+	const char	*src[] = {"assets/enemy/left/1.png",
+		"assets/enemy/left/2.png", "assets/enemy/left/3.png",
+		"assets/enemy/left/4.png", "assets/enemy/left/5.png",
 		NULL};
 	int			i;
 
@@ -92,9 +92,9 @@ void	load_enemy_left(t_ctx *ctx)
 
 void	load_enemy_up(t_ctx *ctx)
 {
-	const char	*src[] = {"./textures/enemy/up/1.png",
-		"./textures/enemy/up/2.png", "./textures/enemy/up/3.png",
-		"./textures/enemy/up/4.png", "./textures/enemy/up/5.png", NULL};
+	const char	*src[] = {"assets/enemy/up/1.png",
+		"assets/enemy/up/2.png", "assets/enemy/up/3.png",
+		"assets/enemy/up/4.png", "assets/enemy/up/5.png", NULL};
 	int			i;
 
 	ctx->enemy->up = malloc(sizeof(t_asset) * 5);
@@ -117,9 +117,9 @@ void	load_enemy_up(t_ctx *ctx)
 
 void	load_enemy_down(t_ctx *ctx)
 {
-	const char	*src[] = {"./textures/enemy/down/1.png",
-		"./textures/enemy/down/2.png", "./textures/enemy/down/3.png",
-		"./textures/enemy/down/4.png", "./textures/enemy/down/5.png",
+	const char	*src[] = {"assets/enemy/down/1.png",
+		"assets/enemy/down/2.png", "assets/enemy/down/3.png",
+		"assets/enemy/down/4.png", "assets/enemy/down/5.png",
 		NULL};
 	int			i;
 

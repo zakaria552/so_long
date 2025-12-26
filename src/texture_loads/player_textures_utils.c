@@ -14,9 +14,9 @@
 
 void	load_idle(t_ctx *ctx, t_tiles *tiles)
 {
-	const char	*src[] = {"./textures/player/idle/1.png",
-		"./textures/player/idle/2.png", "./textures/player/idle/3.png",
-		"./textures/player/idle/4.png", "./textures/player/idle/5.png",
+	const char	*src[] = {"assets/player/idle/1.png",
+		"assets/player/idle/2.png", "assets/player/idle/3.png",
+		"assets/player/idle/4.png", "assets/player/idle/5.png",
 		NULL};
 	int			i;
 
@@ -39,9 +39,9 @@ void	load_idle(t_ctx *ctx, t_tiles *tiles)
 
 void	load_right(t_ctx *ctx, t_tiles *tiles)
 {
-	const char	*src[] = {"./textures/player/right/1.png",
-		"./textures/player/right/2.png", "./textures/player/right/3.png",
-		"./textures/player/right/4.png", "./textures/player/right/5.png",
+	const char	*src[] = {"assets/player/right/1.png",
+		"assets/player/right/2.png", "assets/player/right/3.png",
+		"assets/player/right/4.png", "assets/player/right/5.png",
 		NULL};
 	int			i;
 
@@ -65,9 +65,9 @@ void	load_right(t_ctx *ctx, t_tiles *tiles)
 
 void	load_left(t_ctx *ctx, t_tiles *tiles)
 {
-	const char	*src[] = {"./textures/player/left/1.png",
-		"./textures/player/left/2.png", "./textures/player/left/3.png",
-		"./textures/player/left/4.png", "./textures/player/left/5.png",
+	const char	*src[] = {"assets/player/left/1.png",
+		"assets/player/left/2.png", "assets/player/left/3.png",
+		"assets/player/left/4.png", "assets/player/left/5.png",
 		NULL};
 	int			i;
 
@@ -90,9 +90,9 @@ void	load_left(t_ctx *ctx, t_tiles *tiles)
 
 void	load_up(t_ctx *ctx, t_tiles *tiles)
 {
-	const char	*src[] = {"./textures/player/up/1.png",
-		"./textures/player/up/2.png", "./textures/player/up/3.png",
-		"./textures/player/up/4.png", "./textures/player/up/5.png",
+	const char	*src[] = {"assets/player/up/1.png",
+		"assets/player/up/2.png", "assets/player/up/3.png",
+		"assets/player/up/4.png", "assets/player/up/5.png",
 		NULL};
 	int			i;
 
@@ -115,9 +115,9 @@ void	load_up(t_ctx *ctx, t_tiles *tiles)
 
 void	load_down(t_ctx *ctx, t_tiles *tiles)
 {
-	const char	*src[] = {"./textures/player/down/1.png",
-		"./textures/player/down/2.png", "./textures/player/down/3.png",
-		"./textures/player/down/4.png", "./textures/player/down/5.png",
+	const char	*src[] = {"assets/player/down/1.png",
+		"assets/player/down/2.png", "assets/player/down/3.png",
+		"assets/player/down/4.png", "assets/player/down/5.png",
 		NULL};
 	int			i;
 
