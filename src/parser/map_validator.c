@@ -54,7 +54,5 @@ static bool	splitted_by_line(char *map)
 		if (map[i] == '\n' && map[i + 1] == '\n')
 			return (false);
 	}
-	if (map[i - 1] == '\n' && map[i - 2])
-		return (false);
 	return (true);
 }
