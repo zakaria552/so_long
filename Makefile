@@ -1,9 +1,11 @@
+# Binary
+NAME = so_long
+
 # Compiler flags
 CC		:= cc
 CFLAGS 	:= -g -Wall -Wextra -Werror 
-VPATH := src:src/draw:src/parser:src/game_logic:src/texture_loads:src/utils
 
-# Dependencies
+# Libraries
 LIB_DIR		:= ./lib
 MLX_DIR		:= $(LIB_DIR)/MLX42
 MLX_BUILD	:= $(MLX_DIR)/build/
@@ -15,6 +17,7 @@ libft_dir = $(LIB_DIR)/libft
 libft = $(libft_dir)/libft
 
 # Source files
+VPATH := src:src/draw:src/parser:src/game_logic:src/texture_loads:src/utils
 SRC_DRAW := draw.c draw_utils.c
 
 SRC_PARSER := \
@@ -68,18 +71,32 @@ SRC := \
 
 SRC_DIR := src
 OBJ_DIR := obj
-OBJS = $(SRC:%.c=$(OBJ_DIR)/%.o)
-NAME = so_long
-mlx = mlx_linux/libmlx.a
+OBJS := $(SRC:%.c=$(OBJ_DIR)/%.o)
+
+# Includes
 includes = -I ./include -I $(LIB_DIR)/MLX42/include/MLX42 -I $(libft_dir)
 
+# Dependencies/Libraries
+LIBS	:= $(MLX) $(libft) $(GLFW) 
+DEPS	:=	-ldl -pthread -lm 
+MACOS_DEPS := -framework Cocoa \
+	    -framework IOKit \
+        -framework CoreVideo \
+    	-framework CoreFoundation \
+        -framework Metal \
+        -framework QuartzCore 
+UNAME_S := $(shell uname -s)
+ifeq ($(UNAME_S),Darwin)
+DEPS += $(MACOS_DEPS) 
+endif
+
+# Build
 all: $(NAME)
 
-$(NAME): $(MLX) $(GLFW) $(libft) $(OBJS)
+$(NAME): $(LIBS) $(OBJS)
 	@echo "Building..."
-	$(CC) $(CFLAGS) $(OBJS) $(MLX) $(libft) $(GLFW) -ldl -pthread -lm -o $(NAME)
+	$(CC) $(CFLAGS) $(DEPS) -o $(NAME) $(OBJS) $(LIBS) 
 	@echo "Done building"
-
 
 $(libft):
 	@git clone -q --depth 1 \
@@ -97,7 +114,10 @@ $(MLX):
 	@$(MAKE) -C $(MLX_BUILD) --no-print-directory
 
 $(GLFW):
-	@git clone https://github.com/glfw/glfw.git $(GLFW_DIR)
+	@git clone -q --depth 1 \
+	--branch 3.4 \
+	--single-branch \
+	https://github.com/glfw/glfw.git $(GLFW_DIR) > /dev/null 2>&1
 	@cmake -S $(GLFW_DIR) -B $(GLFW_BUILD) > /dev/null 2>&1
 	@make -C $(GLFW_BUILD) --no-print-directory
 
@@ -114,4 +134,3 @@ fclean: clean
 	@rm -rf $(LIB_DIR)
 	@echo "Removed binaries"
 
-#valgrind  --gen-suppressions=all --suppressions=leaks.supp -s
