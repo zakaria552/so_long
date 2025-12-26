@@ -59,7 +59,7 @@ static void	init_player_pos(t_ctx *ctx)
 static void	init_player(t_ctx *ctx)
 {
 	ctx->player->orbs = 0;
-	ctx->player->speed = 4;
+	ctx->player->speed = 150;
 	ctx->player->vision->r = 150;
 	ctx->player->idle = true;
 	ctx->player->ani_info->frame_index = 0;
