@@ -14,8 +14,8 @@
 
 void	load_wall_textures(t_ctx *ctx, t_tiles *tiles)
 {
-	const char	*src[] = {"./textures/map/wall.png",
-		"textures/map/wall_shadow.png", NULL};
+	const char	*src[] = {"assets/map/wall.png",
+		"assets/map/wall_shadow.png", NULL};
 	int			i;
 
 	tiles->walls = malloc(sizeof(t_asset) * 2);
@@ -38,8 +38,8 @@ void	load_wall_textures(t_ctx *ctx, t_tiles *tiles)
 
 void	load_floor_textures(t_ctx *ctx, t_tiles *tiles)
 {
-	const char	*src[] = {"./textures/map/tile1.png", "textures/map/tile2.png",
-		"textures/map/tile3.png", "textures/map/tile4.png", NULL};
+	const char	*src[] = {"assets/map/tile1.png", "assets/map/tile2.png",
+		"assets/map/tile3.png", "assets/map/tile4.png", NULL};
 	int			i;
 
 	tiles->floors = malloc(sizeof(t_asset) * 4);
@@ -62,7 +62,7 @@ void	load_floor_textures(t_ctx *ctx, t_tiles *tiles)
 
 void	load_doors_textures(t_ctx *ctx, t_tiles *tiles)
 {
-	const char	*src[] = {"./textures/map/closed.png", "textures/map/open.png",
+	const char	*src[] = {"assets/map/closed.png", "assets/map/open.png",
 		NULL};
 	int			i;
 
@@ -86,7 +86,7 @@ void	load_doors_textures(t_ctx *ctx, t_tiles *tiles)
 
 void	load_orbs_textures(t_ctx *ctx, t_tiles *tiles)
 {
-	const char	*src[] = {"./textures/coin.png", NULL};
+	const char	*src[] = {"assets/coin.png", NULL};
 	int			i;
 
 	tiles->orbs = malloc(sizeof(t_asset));
