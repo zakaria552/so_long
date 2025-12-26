@@ -19,20 +19,23 @@ static void	update_steps(t_ctx *ctx, const int off[2][2]);
 void	move_hook(t_ctx *ctx)
 {
 	const t_vec2	*pos = ctx->player->pos;
-	const int		speed = ctx->player->speed;
+	const float		speed = ctx->player->speed;
+	static float prev;
+	static float dt;
 
+	dt = mlx_get_time() - prev;
 	if (mlx_is_key_down(ctx->mlx, MLX_KEY_W) || mlx_is_key_down(ctx->mlx,
 			MLX_KEY_UP))
-		move_player(ctx, pos->x, pos->y - speed, UP);
+		move_player(ctx, pos->x, (float)pos->y - (speed*dt), UP);
 	else if (mlx_is_key_down(ctx->mlx, MLX_KEY_S) || mlx_is_key_down(ctx->mlx,
 			MLX_KEY_DOWN))
-		move_player(ctx, pos->x, pos->y + speed, DOWN);
+		move_player(ctx, pos->x, (float)pos->y + (speed*dt), DOWN);
 	else if (mlx_is_key_down(ctx->mlx, MLX_KEY_A) || mlx_is_key_down(ctx->mlx,
 			MLX_KEY_LEFT))
-		move_player(ctx, pos->x - speed, pos->y, LEFT);
+		move_player(ctx, (float)pos->x - (speed*dt), pos->y, LEFT);
 	else if (mlx_is_key_down(ctx->mlx, MLX_KEY_D) || mlx_is_key_down(ctx->mlx,
 			MLX_KEY_RIGHT))
-		move_player(ctx, pos->x + speed, pos->y, RIGHT);
+		move_player(ctx, (float)pos->x + (speed*dt), pos->y, RIGHT);
 	else
 	{
 		ctx->player->prev_dir = ctx->player->dir;
@@ -43,6 +46,7 @@ void	move_hook(t_ctx *ctx)
 			ctx->player->ani_info->frame_index = 0;
 		}
 	}
+	prev = mlx_get_time();
 }
 
 static void	update_pos(t_asset *sprites[5], int nx, int ny)
