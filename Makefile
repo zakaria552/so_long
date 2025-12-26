@@ -133,4 +133,6 @@ fclean: clean
 	@rm -f $(NAME)
 	@rm -rf $(LIB_DIR)
 	@echo "Removed binaries"
+re: fclean all
 
+.PHONY: clean fclean re
